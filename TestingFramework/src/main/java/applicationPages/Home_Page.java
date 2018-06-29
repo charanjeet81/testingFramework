@@ -16,5 +16,5 @@ public class Home_Page extends SUPER_Page
 		super(scriptHelper);
 		PageFactory.initElements(driver, this);
 	}
-	//Webelements .
+	//Webelements.
 }

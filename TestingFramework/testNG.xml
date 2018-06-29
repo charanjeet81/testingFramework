@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FreeCRM">
+	<test name="Test-Chrome">
+		<classes>
+			<class name="testScripts.MODULE_1.TC_01_Login" /> 
+			<class name="testScripts.MODULE_1.TC_02_Login" />
+			<!-- <class name="testScripts.MODULE_2.TC_03_Login" />
+				<class name="testScripts.MODULE_2.TC_04_Login" />
+			-->
+		</classes>
+	</test>
+</suite>

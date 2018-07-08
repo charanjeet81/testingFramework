@@ -16,7 +16,7 @@ public class TC_01_Login extends TestCaseBase
 	public void runTC_TC_01_Login() 
 	{
 		//setBrowser(Browser.Chrome);
-		setIteration(TestIteration.RunSingleIteration);
+		//setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to validate login to freeCRM application.");
 		driverScript.startExecution(this.getClass().getName());
 		if(Reporting.failTC)

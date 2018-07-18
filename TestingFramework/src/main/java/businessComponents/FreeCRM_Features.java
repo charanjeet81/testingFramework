@@ -4,29 +4,25 @@ import applicationPages.Login_Page;
 import supportLiberaries.ReusableLiberaries;
 import supportLiberaries.ScriptHelper;
 
-public class Login_Feature extends ReusableLiberaries
+public class FreeCRM_Features extends ReusableLiberaries
 {
-	public Login_Feature(ScriptHelper scriptHelper)
+	public FreeCRM_Features(ScriptHelper scriptHelper)
 	{
 		super(scriptHelper);
 	}
 	
-	public void invokeApplication()
-	{
-		// Will implement keyword driven later.
-	}
-	
-	public void tC_01_Login()
+	public void tC_01_Login_FreeCRM()
 	{
 		Login_Page login = new Login_Page(scriptHelper);
 		login.invokeApplication()
 			 .login_To_Application();
 	}
 	
-	public void tC_04_Login()
+	public void tC_02_Login_FreeCRM_HomePage()
 	{
 		Login_Page login = new Login_Page(scriptHelper);
 		login.invokeApplication()
-			 .login_To_Application();
+			 .login_To_Application()
+			 .validateUser();
 	}
 }

@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
@@ -71,7 +72,11 @@ public class TestCaseBase
 		//Setting-up Execution Mode.
 		switch (properties.getProperty("ExecutionMode")) 
 		{
-			case "Local": driver = getDriver(browser);
+			case "Local": 
+				driver = getDriver(browser);
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				
 				
 				break;
 				
@@ -162,16 +167,17 @@ public class TestCaseBase
 		{
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\Resources\\Browsers\\chromedriver.exe");
 			driver = new ChromeDriver();
+			
 		}
 		else if(this.browser.equalsIgnoreCase("firefox"))
 		{
-			//System.setProperty("webdriver.chrome.driver", "D:\\workD\\TestingFramework\\Resources\\Browsers\\chromedriver.exe");
-			//driver = new FirefoxDriver();
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\Resources\\Browsers\\geckodriver.exe");
+			driver = new FirefoxDriver();
 		}
-		else if(this.browser.equalsIgnoreCase("internet"))
+		else if(this.browser.equalsIgnoreCase("internetExplorer"))
 		{
-			//System.setProperty("webdriver.chrome.driver", "D:\\workD\\TestingFramework\\Resources\\Browsers\\chromedriver.exe");
-			//driver = new InternetExplorerDriver();
+			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\Resources\\Browsers\\IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
 		}
 		else if(this.browser.equalsIgnoreCase("android"))
 		{

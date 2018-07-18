@@ -15,10 +15,16 @@ public class Login_Page extends SUPER_Page
 		PageFactory.initElements(driver, this);
 	}
 	
+	//::::::::::::::::: O B J E C T S  ::::::::::::::::://
+	
 	@FindBy(name = "username")
 	WebElement username;
 	@FindBy(name = "password")
 	WebElement password;
+	@FindBy(css = "input[value='Login']")
+	WebElement logIn_BTN;
+	
+	//::::::::::::::::: M E T H O D S ::::::::::::::::://
 	
 	public Login_Page invokeApplication()
 	{
@@ -31,15 +37,13 @@ public class Login_Page extends SUPER_Page
 	{
 		String userName = dataTable.getData("UserName");
 		username.sendKeys(userName);
-		Reporting("Username set as: "+userName, Status.SCREENSHOT);
-		sync(3);
+		Reporting("Username set as: "+userName, Status.DONE);
 		String strPassword = dataTable.getData("Password");
 		password.sendKeys(strPassword);
-		Reporting("Password set as: "+strPassword, Status.FAIL);
-		Reporting("Username set as: "+userName, Status.PASS);
-		Reporting("Username set as: "+userName, Status.FAIL);
-		//Reporting("Username set as: "+userName, Status.FAIL);
-
+		Reporting("Password set as: "+strPassword, Status.DONE);
+		sync(1);
+		logIn_BTN.click();
+		Reporting("Clicked on 'LogIn' button.", Status.DONE);
 		return new Home_Page(scriptHelper);
 	}
 }

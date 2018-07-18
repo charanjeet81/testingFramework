@@ -596,28 +596,7 @@ public class SUPER_Page extends ReusableLiberaries
 		return true;
 	}
 	
-	public boolean clickable(WebDriver driver,WebElement element){
-		try{
-		WebDriverWait wait = new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-		return true;
-		}catch(Exception e){
-			return false;
-		}
-	}
-	/**
-	 * This method is to get the hexcode
-	 * 
-	 * @author Chetan
-	 * @param  WebElemet-needs to be converted to hex code
-	 *            
-	 **/
-		
-	public String convertColorToHEX(WebElement wb){
-		String color = wb.getCssValue("color");
-		String hexCode = Color.fromString(color).asHex();
-		return hexCode;
-	}
+	
 	
 	/**
 	 * This method is to validate URL 

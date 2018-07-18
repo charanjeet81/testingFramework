@@ -7,13 +7,11 @@ import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import junit.framework.Assert;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.Assert;
 
 public class DriverScript extends ReusableLiberaries
 {
@@ -39,7 +37,7 @@ public class DriverScript extends ReusableLiberaries
 					Method[] testCaseMethods = className.getMethods();
 					for (Method method : testCaseMethods) 
 					{
-						String tcToExecute = testCaseToExecute.replace(String.valueOf(testCaseToExecute.charAt(0)), String.valueOf(testCaseToExecute.charAt(0)).toLowerCase());
+						String tcToExecute = Character.toLowerCase(testCaseToExecute.charAt(0))+testCaseToExecute.substring(1, testCaseToExecute.length());
 						if(method.getName().equals(tcToExecute))
 						{
 							try
@@ -54,7 +52,7 @@ public class DriverScript extends ReusableLiberaries
 								e.printStackTrace();
 						 	} catch (InvocationTargetException e) 
 							{
-								Assert.assertTrue("Exception other than UI validation.", false);
+						 		Assert.assertTrue(false, "Exception other than UI validation.");
 								e.printStackTrace();
 							} catch (IllegalArgumentException e) {
 								e.printStackTrace();

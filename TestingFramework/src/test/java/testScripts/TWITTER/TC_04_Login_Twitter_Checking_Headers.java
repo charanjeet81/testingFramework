@@ -1,4 +1,4 @@
-package testScripts.MODULE_2;
+package testScripts.TWITTER;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -6,19 +6,17 @@ import org.testng.asserts.SoftAssert;
 import supportLiberaries.Reporting;
 import supportLiberaries.TestCaseBase;
 
-public class TC_04_Login extends TestCaseBase 
+public class TC_04_Login_Twitter_Checking_Headers extends TestCaseBase
 {
-private SoftAssert softAssert = new SoftAssert();
-	
+	private SoftAssert softAssert = new SoftAssert();
 	@Test
-	public void runTC_TC_01_Login() 
+	public void runTC_04_Login_Twitter_Checking_Headers() 
 	{
-		//testParameters.setDescription("This TC is to validate login to application.");
-		//testParameters.setIteration(TestIteration. <All running mode>);
-		//testParameters.setBrowser(Browser.Chrome); <all modes>
+		// setBrowser(Browser.Chrome);
+		// setIteration(TestIteration.RunSingleIteration);
+		setDescription("This TC is to validate headers of the Twitter application..");
 		driverScript.startExecution(this.getClass().getName());
-		if(Reporting.failTC)
-		{
+		if (Reporting.failTC) {
 			softAssert.assertTrue(false);
 			softAssert.assertAll();
 		}

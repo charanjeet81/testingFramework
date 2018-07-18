@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="FreeCRM">
+<suite name="Sanity">
 	<test name="Test-Chrome">
 		<classes>
-			<class name="testScripts.MODULE_1.TC_01_Login" /> 
-			<class name="testScripts.MODULE_1.TC_02_Login" />
+			<class name="testScripts.FREE_CRM.TC_01_Login_FreeCRM" /> 
+			<class name="testScripts.FREE_CRM.TC_02_Login_FreeCRM_HomePage" />
+			<class name="testScripts.TWITTER.TC_03_Login_Twitter" /> 
+			<class name="testScripts.TWITTER.TC_04_Login_Twitter_Checking_Headers" />
 			<!-- <class name="testScripts.MODULE_2.TC_03_Login" />
 				<class name="testScripts.MODULE_2.TC_04_Login" />
 			-->

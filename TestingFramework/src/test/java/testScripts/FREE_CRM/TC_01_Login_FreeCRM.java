@@ -1,4 +1,4 @@
-package testScripts.MODULE_1;
+package testScripts.FREE_CRM;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -8,12 +8,11 @@ import supportLiberaries.Reporting;
 import supportLiberaries.TestCaseBase;
 import supportLiberaries.TestIteration;
 
-public class TC_01_Login extends TestCaseBase 
+public class TC_01_Login_FreeCRM extends TestCaseBase 
 {
 	private SoftAssert softAssert = new SoftAssert();
-	
 	@Test
-	public void runTC_TC_01_Login() 
+	public void runTC_01_Login_FreeCRM() 
 	{
 		//setBrowser(Browser.Chrome);
 		//setIteration(TestIteration.RunSingleIteration);

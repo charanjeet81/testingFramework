@@ -1,38 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Sanity]">
-  <test thread-count="5" name="Test-Chrome(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScripts.TWITTER.TC_04_Login_Twitter_Checking_Headers">
+      <class name="testScripts.TWITTER.TC_11_GET_Twitter_oAuth_Latest_Tweet">
         <methods>
           <include name="windUp"/>
           <include name="setScriptHelper"/>
           <include name="testMethodTearDown"/>
-          <include name="runTC_04_Login_Twitter_Checking_Headers"/>
+          <include name="runTC_11_GET_Twitter_oAuth_Latest_Tweet"/>
           <include name="wrapUp"/>
           <include name="initializations"/>
         </methods>
-      </class> <!-- testScripts.TWITTER.TC_04_Login_Twitter_Checking_Headers -->
-      <class name="testScripts.TWITTER.TC_03_Login_Twitter">
-        <methods>
-          <include name="windUp"/>
-          <include name="runTC_03_Login_Twitter"/>
-          <include name="setScriptHelper"/>
-          <include name="testMethodTearDown"/>
-          <include name="wrapUp"/>
-          <include name="initializations"/>
-        </methods>
-      </class> <!-- testScripts.TWITTER.TC_03_Login_Twitter -->
-      <class name="testScripts.FREE_CRM.TC_02_Login_FreeCRM_HomePage">
-        <methods>
-          <include name="windUp"/>
-          <include name="runTC_02_Login_FreeCRM_HomePage"/>
-          <include name="setScriptHelper"/>
-          <include name="testMethodTearDown"/>
-          <include name="wrapUp"/>
-          <include name="initializations"/>
-        </methods>
-      </class> <!-- testScripts.FREE_CRM.TC_02_Login_FreeCRM_HomePage -->
+      </class> <!-- testScripts.TWITTER.TC_11_GET_Twitter_oAuth_Latest_Tweet -->
     </classes>
-  </test> <!-- Test-Chrome(failed) -->
-</suite> <!-- Failed suite [Sanity] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

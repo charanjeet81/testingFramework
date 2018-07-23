@@ -1,0 +1,245 @@
+Request method:	GET
+Request URI:	https://api.twitter.com/1.1/statuses/home_timeline.json?count=1
+Proxy:			<none>
+Request params:	<none>
+Query params:	count=1
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=application/json, application/javascript, text/javascript
+Cookies:		<none>
+Body:			<none>
+[
+    {
+        "created_at": "Fri Jul 20 21:55:13 +0000 2018",
+        "id": 1020426929999089667,
+        "id_str": "1020426929999089667",
+        "text": "RT @simerdmann: An insurance call center slashed supervisor review time by ~40%, providing insights for CSRs and reviewing 8K calls per mon…",
+        "truncated": false,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                {
+                    "screen_name": "simerdmann",
+                    "name": "Simon Erdmann",
+                    "id": 874197231217381378,
+                    "id_str": "874197231217381378",
+                    "indices": [
+                        3,
+                        14
+                    ]
+                }
+            ],
+            "urls": [
+                
+            ]
+        },
+        "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 69687111,
+            "id_str": "69687111",
+            "name": "Cognizant",
+            "screen_name": "Cognizant",
+            "location": "Global (HQ: Teaneck, N.J.)",
+            "description": "Cognizant (Nasdaq: CTSH) is dedicated to helping the world's leading companies build stronger businesses — helping them go from doing #digital to being digital.",
+            "url": "http://t.co/EC3PwZlPRQ",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/EC3PwZlPRQ",
+                            "expanded_url": "http://www.cognizant.com",
+                            "display_url": "cognizant.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 405301,
+            "friends_count": 2211,
+            "listed_count": 3010,
+            "created_at": "Fri Aug 28 20:31:48 +0000 2009",
+            "favourites_count": 2219,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 37379,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "3BA6DB",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme4/bg.gif",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme4/bg.gif",
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/752824329453174784/FM7DTGU8_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/752824329453174784/FM7DTGU8_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/69687111/1498043517",
+            "profile_link_color": "179117",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "07A9D6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": false,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweeted_status": {
+            "created_at": "Fri Jul 20 16:06:51 +0000 2018",
+            "id": 1020339262619758594,
+            "id_str": "1020339262619758594",
+            "text": "An insurance call center slashed supervisor review time by ~40%, providing insights for CSRs and reviewing 8K calls… https://t.co/E110WiWvFb",
+            "truncated": true,
+            "entities": {
+                "hashtags": [
+                    
+                ],
+                "symbols": [
+                    
+                ],
+                "user_mentions": [
+                    
+                ],
+                "urls": [
+                    {
+                        "url": "https://t.co/E110WiWvFb",
+                        "expanded_url": "https://twitter.com/i/web/status/1020339262619758594",
+                        "display_url": "twitter.com/i/web/status/1…",
+                        "indices": [
+                            117,
+                            140
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"http://dynamicsignal.com/\" rel=\"nofollow\">Dynamic Signal</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 874197231217381378,
+                "id_str": "874197231217381378",
+                "name": "Simon Erdmann",
+                "screen_name": "simerdmann",
+                "location": "Zürich, Schweiz",
+                "description": "",
+                "url": "https://t.co/xfmndVMezy",
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "https://t.co/xfmndVMezy",
+                                "expanded_url": "http://www.digitallabathsr.ch",
+                                "display_url": "digitallabathsr.ch",
+                                "indices": [
+                                    0,
+                                    23
+                                ]
+                            }
+                        ]
+                    },
+                    "description": {
+                        "urls": [
+                            
+                        ]
+                    }
+                },
+                "protected": false,
+                "followers_count": 56,
+                "friends_count": 77,
+                "listed_count": 6,
+                "created_at": "Mon Jun 12 09:30:36 +0000 2017",
+                "favourites_count": 27,
+                "utc_offset": null,
+                "time_zone": null,
+                "geo_enabled": false,
+                "verified": false,
+                "statuses_count": 729,
+                "lang": "de",
+                "contributors_enabled": false,
+                "is_translator": false,
+                "is_translation_enabled": false,
+                "profile_background_color": "000000",
+                "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+                "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+                "profile_background_tile": false,
+                "profile_image_url": "http://pbs.twimg.com/profile_images/874226431001341952/yFFq526D_normal.jpg",
+                "profile_image_url_https": "https://pbs.twimg.com/profile_images/874226431001341952/yFFq526D_normal.jpg",
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/874197231217381378/1497260885",
+                "profile_link_color": "91D2FA",
+                "profile_sidebar_border_color": "000000",
+                "profile_sidebar_fill_color": "000000",
+                "profile_text_color": "000000",
+                "profile_use_background_image": false,
+                "has_extended_profile": true,
+                "default_profile": false,
+                "default_profile_image": false,
+                "following": false,
+                "follow_request_sent": false,
+                "notifications": false,
+                "translator_type": "none"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 9,
+            "favorite_count": 30,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "possibly_sensitive_appealable": false,
+            "lang": "en"
+        },
+        "is_quote_status": false,
+        "retweet_count": 9,
+        "favorite_count": 0,
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+    }
+]
+PASSED: runTC_11_GET_Twitter_oAuth_Latest_Tweet
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================
+

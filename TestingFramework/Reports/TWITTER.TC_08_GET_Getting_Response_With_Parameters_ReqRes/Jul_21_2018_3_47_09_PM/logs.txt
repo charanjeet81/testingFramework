@@ -1,0 +1,51 @@
+Request method:	GET
+Request URI:	https://www.reqres.in/api/users?page=2
+Proxy:			<none>
+Request params:	<none>
+Query params:	page=2
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=application/json, application/javascript, text/javascript
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:			<none>
+{
+    "page": 2,
+    "per_page": 3,
+    "total": 12,
+    "total_pages": 4,
+    "data": [
+        {
+            "id": 4,
+            "first_name": "Eve",
+            "last_name": "Holt",
+            "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
+        },
+        {
+            "id": 5,
+            "first_name": "Charles",
+            "last_name": "Morris",
+            "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/stephenmoon/128.jpg"
+        },
+        {
+            "id": 6,
+            "first_name": "Tracey",
+            "last_name": "Ramos",
+            "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/bigmancho/128.jpg"
+        }
+    ]
+}
+PASSED: runTC_08_GET_Getting_Response_With_Parameters_ReqRes
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================
+

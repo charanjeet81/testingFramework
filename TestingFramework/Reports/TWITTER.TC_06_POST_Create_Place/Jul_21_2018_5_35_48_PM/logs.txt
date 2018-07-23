@@ -1,0 +1,100 @@
+SLF4J: Failed to loaCurrenttt------48 Pirrama Road, Pyrmont, NSW 2009, Australia
+jsonPath-address newValue-Kanpur
+before doc context
+Currenttt------(02) 9374 4000
+jsonPath-phone_number newValue-9035691372
+{"location":{"lat":-33.866971,"lng":151.195875},"accuracy":50,"name":"Google Shoes!","phone_number":"9035691372","address":"Kanpur","types":["shoe_store"],"website":"http://www.google.com.au/","language":"en-AU"}
+Request method:	GET
+Request URI:	https://maps.googleapis.com/maps/api/place/add/json?key=AIzaSyDlxWVxZPkOVTslECBOqX8PjpK68t8EZF0
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=AIzaSyDlxWVxZPkOVTslECBOqX8PjpK68t8EZF0
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=application/json, application/javascript, text/javascript
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "location": {
+        "lat": -33.866971,
+        "lng": 151.195875
+    },
+    "accuracy": 50,
+    "name": "Google Shoes!",
+    "phone_number": "9035691372",
+    "address": "Kanpur",
+    "types": [
+        "shoe_store"
+    ],
+    "website": "http://www.google.com.au/",
+    "language": "en-AU"
+}
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, width=device-width"/>
+    <title>Error 400 (Bad Request)!!1</title>
+    <style>
+    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* &gt; body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}
+  </style>
+  </head>
+  <body>
+    <a shape="rect" href="//www.google.com/">
+      <span id="logo" aria-label="Google"/>
+    </a>
+    <p>
+      <b>400.</b>
+      <ins>That’s an error.</ins>
+    </p>
+    <p>
+Your client has issued a malformed or illegal request.        <ins>That’s all we know.</ins>
+    </p>
+  </body>
+</html>
+HttpStatusCodeValidation@329
+HttpStatusCodeValidation@333
+FAILED: runTC_06_POST_Create_Place
+java.lang.AssertionError: The following asserts failed:
+	expected [true] but found [false]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:43)
+	at testScripts.TWITTER.TC_06_POST_Create_Place.runTC_06_POST_Create_Place(TC_06_POST_Create_Place.java:22)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 1, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 1, Skips: 0
+===============================================
+

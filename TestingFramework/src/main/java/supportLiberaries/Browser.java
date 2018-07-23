@@ -6,7 +6,8 @@ public enum Browser
 	Firefox("Firefox"), 
 	Internet("Internet"), 
 	Android("Android"),
-	iPhone("iPhone");
+	iPhone("iPhone"),
+	HeadLessExecution("headless");
 	
 	private String value;
 	

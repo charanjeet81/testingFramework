@@ -29,6 +29,7 @@ public class Reporting
 	String testStep = "";
 	String testSteps = "";
 	public File currentTCReport;
+	public static String currentTCReportPathForServices;
 	protected ScriptHelper scriptHelper;
 	protected Properties properties;
 	protected WebDriver driver;
@@ -37,103 +38,16 @@ public class Reporting
 	protected String timeTaken;
 	public String tcDescription;
 	
-//	public Reporting(WebDriver driver)
-//	{
-//		this.driver = driver;
-//	}
+	public Reporting()
+	{
+		//this(driver, properties, canonicalName);
+	}
 
 	public Reporting(String startTimeCompleteFormat, String timeTaken)
 	{
 		this.startTimeCompleteFormat = startTimeCompleteFormat;
 		this.timeTaken = timeTaken;
 	}
-
-	/*public Reporting(WebDriver driver, Properties properties, String canonicalName)
-	{
-		this.driver = driver;
-		this.properties = properties;
-		this.canonicalName = canonicalName;
-		startTime =  DateFormat.getDateTimeInstance().format(new Date());
-		String filePath = System.getProperty("user.dir")+"\\Reports";
-		File reports = new File(filePath);
-		if(!reports.exists())
-		{
-			reports.mkdir();
-			File functionality = new File(filePath+"\\"+canonicalName.replace(".", "#").split("#")[0]);
-			if(!functionality.exists())
-			{
-				functionality.mkdir();
-				File currentReport = new File(functionality.getPath()+"\\"+startTime.replace(",", "").replace(" ", "_").replace(":", "_"));
-				if(!currentReport.exists())
-				{
-					currentReport.mkdir();
-					File currentTCReport = new File(currentReport.getPath()+"\\"+canonicalName.replace(".", "#").split("#")[1]);
-					this.currentTCReport = currentTCReport;
-					if(!currentTCReport.exists())
-					{
-						currentTCReport.mkdir();
-						try 
-						{
-							FileUtils.copyDirectory(new File(System.getProperty("user.dir")+"\\Resources\\ReportTemplate"), currentTCReport);
-							System.setOut(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
-							System.setErr(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-		}
-		else
-		{
-			File functionality = new File(filePath+"\\"+canonicalName.replace(".", "#").split("#")[0]);
-			if(!functionality.exists())
-			{
-				functionality.mkdir();
-				File currentReport = new File(functionality.getPath()+"\\"+startTime.replace(",", "").replace(" ", "_").replace(":", "_"));
-				if(!currentReport.exists())
-				{
-					currentReport.mkdir();
-					File currentTCReport = new File(currentReport.getPath()+"\\"+canonicalName.replace(".", "#").split("#")[1]);
-					this.currentTCReport = currentTCReport;
-					if(!currentTCReport.exists())
-					{
-						currentTCReport.mkdir();
-						try
-						{
-							FileUtils.copyDirectory(new File(System.getProperty("user.dir")+"\\Resources\\ReportTemplate"), currentTCReport);
-							System.setOut(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
-							System.setErr(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-			else
-			{
-				File currentReport = new File(functionality.getPath()+"\\"+startTime.replace(",", "").replace(" ", "_").replace(":", "_"));
-				if(!currentReport.exists())
-				{
-					currentReport.mkdir();
-					File currentTCReport = new File(currentReport.getPath()+"\\"+canonicalName.replace(".", "#").split("#")[1]);
-					this.currentTCReport = currentTCReport;
-					if(!currentTCReport.exists())
-					{
-						currentTCReport.mkdir();
-						try 
-						{
-							FileUtils.copyDirectory(new File(System.getProperty("user.dir")+"\\Resources\\ReportTemplate"), currentTCReport);
-							System.setOut(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
-							System.setErr(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-		}
-	}*/
 	
 	public Reporting(WebDriver driver, Properties properties, String canonicalName)
 	{
@@ -164,6 +78,7 @@ public class Reporting
 							FileUtils.copyDirectory(new File(System.getProperty("user.dir")+"\\Resources\\ReportTemplate"), currentTCReport);
 							System.setOut(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
 							System.setErr(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
+							this.currentTCReportPathForServices = currentReport.getPath();
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -191,6 +106,7 @@ public class Reporting
 							FileUtils.copyDirectory(new File(System.getProperty("user.dir")+"\\Resources\\ReportTemplate"), currentTCReport);
 							System.setOut(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
 							System.setErr(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
+							this.currentTCReportPathForServices = currentReport.getPath();
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -213,6 +129,7 @@ public class Reporting
 							FileUtils.copyDirectory(new File(System.getProperty("user.dir")+"\\Resources\\ReportTemplate"), currentTCReport);
 							System.setOut(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
 							System.setErr(new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\logs.txt")));
+							this.currentTCReportPathForServices = currentReport.getPath();
 						} catch (IOException e) {
 							e.printStackTrace();
 						}

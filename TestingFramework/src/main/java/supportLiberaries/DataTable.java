@@ -5,31 +5,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class DataTable
 {
@@ -62,7 +45,8 @@ public class DataTable
 			data = sheet.getRow(rowNumber).getCell(cellNumber).getStringCellValue();
 
 			if (data.isEmpty()) {
-				data = "Data not Found in test data sheet. "+packageName+".xls";
+				data = "";
+				System.err.println("Data not Found in test data sheet. "+packageName+".xls");
 			}
 		} catch (Exception e) {
 			System.err.println("Error while getting Data from "+packageName+".xls");
@@ -92,11 +76,8 @@ public class DataTable
 					 break;
 				 }
 			}
-
-			if (data.isEmpty()) {
-				data = "Data not Found okay.";
-			}
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			System.err.println("Error while getting Data.");
 		}
 		return data;
@@ -106,14 +87,15 @@ public class DataTable
 	{
 		int coloumnIndex = 0;
 		try {
-			for (int count = 0; count<20; count++)
+			for (int count = 0; count<50; count++)
 			{
-				 String fetchedValue = sheet.getRow(0).getCell(count).getStringCellValue();
-				 if(fetchedValue.contains(fieldName))
+				 String fetchedValue = sheet.getRow(0).getCell(count).getStringCellValue().trim();
+				 if(fetchedValue.equals(fieldName))
 				 {
 					 if(fetchedValue.isEmpty())
 					 {
-						 System.out.println("Coloumn Not Found!!!");
+						 //throw new ColumnNotFoundException();
+						 System.err.println("Coloumn Not Found!!!");
 					 }
 					 else
 					 {
@@ -128,27 +110,44 @@ public class DataTable
 		return coloumnIndex;
 	}
 
-	// Need to work later.
-/*	public static void setData(String sheetName, String dataToSet)
+	public void setData(String columnName, String dataToSet)
 	{
-		String path = "C:\\Users\\465839\\Desktop\\Book2.xls";
-		int rowNumber = 1;
-		int cellNumber = 1;
-		try {
-			FileInputStream fis = new FileInputStream(new File(path));
-			Workbook wb = WorkbookFactory.create(fis);
+		try 
+		{
+			FileInputStream file = new FileInputStream(new File(path));
+			HSSFWorkbook workbook = new HSSFWorkbook(file);
+			HSSFSheet sheet = workbook.getSheet(sheetName);
+			Cell cell = null;
 
-			Sheet sh = wb.getSheet(sheetName);
-			Row r = sh.createRow(rowNumber);
-			Cell c = r.createCell(cellNumber);
-			c.setCellValue(dataToSet);
-
-			FileOutputStream fos = new FileOutputStream(path);
-			fos.flush();
-			fos.close();
-			rowNumber++;
-		} catch (Exception e) {
+			int totalRows = sheet.getLastRowNum();
+			for (int count = 0; count < totalRows + 1; count++) 
+			{
+				String fetchedValue = sheet.getRow(count).getCell(0).getStringCellValue();
+				if (fetchedValue.equals(tcName)) 
+				{
+					int cellIndex = getCellIndex(columnName);
+					if (cellIndex == 0)
+					{
+						System.err.println(columnName + " field is not present in the datasheet " + packageName + ".xls");
+					} 
+					else 
+					{
+						Row row = sheet.getRow(count);
+						row.createCell(cellIndex).setCellValue(dataToSet);
+						file.close();
+						FileOutputStream outFile = new FileOutputStream(new File(path));
+						workbook.write(outFile);
+						outFile.close();
+					}
+					break;
+				}
+			}
+		} 
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}*/
+		System.out.println("Data Set to Sheet.");
+	}
 }

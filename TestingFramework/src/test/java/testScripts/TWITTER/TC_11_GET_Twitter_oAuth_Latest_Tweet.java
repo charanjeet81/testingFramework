@@ -12,7 +12,6 @@ public class TC_11_GET_Twitter_oAuth_Latest_Tweet extends TestCaseBase
 	@Test
 	public void runTC_11_GET_Twitter_oAuth_Latest_Tweet() 
 	{
-		// setBrowser(Browser.Chrome);
 		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is for getting latest tweet.");
 		driverScript.startExecution(this.getClass().getName());

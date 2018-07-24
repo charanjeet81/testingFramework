@@ -4,10 +4,10 @@ import static io.restassured.RestAssured.authentication;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.oauth2;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,23 +18,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.openqa.selenium.support.PageFactory;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
-import com.relevantcodes.extentreports.LogStatus;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.http.Headers;
@@ -83,52 +71,7 @@ public class ServiceBase extends SUPER_Page
 		return value;
 	}
 
-	/*
-	 * public static void updateProperty(String updateTime, String startTime)
-	 * 
-	 * {
-	 * 
-	 * 
-	 * 
-	 * try
-	 * 
-	 * {
-	 * 
-	 * FileInputStream in = new FileInputStream("report.properties");
-	 * 
-	 * Properties props = new Properties();
-	 * 
-	 * props.load(in);
-	 * 
-	 * in.close();
-	 * 
-	 * 
-	 * 
-	 * FileOutputStream out = new FileOutputStream("report.properties");
-	 * 
-	 * props.setProperty("TOTAL_TIME", totalTimeTaken.toString());
-	 * 
-	 * props.setProperty("RUN_STARTED", startTime.toString());
-	 * 
-	 * props.store(out, null);
-	 * 
-	 * out.close();
-	 * 
-	 * 
-	 * 
-	 * } catch (IOException e) {
-	 * 
-	 * e.printStackTrace();
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * }
-	 * 
-	 */
-
-	public void GetInstanceURLAndToken() throws Exception
+	/*public void GetInstanceURLAndToken() throws Exception
 	{
 		String baseURL = getURI("baseURL");
 		String accessTokenURL = getURI("accessTokenURL");
@@ -151,7 +94,7 @@ public class ServiceBase extends SUPER_Page
 		accessToken = tokenResp.getString("access_token");
 		instanceURL = tokenResp.getString("instance_url");
 		salesforceUser = sUserName;
-	}
+	}*/
 
 	public Response executeAPI(String requestType, String completeURI, Map<String, String> queryParams, boolean oAuthParams, String requestString)
 	{

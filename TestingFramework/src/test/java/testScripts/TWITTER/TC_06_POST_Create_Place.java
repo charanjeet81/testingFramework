@@ -12,7 +12,6 @@ public class TC_06_POST_Create_Place extends TestCaseBase
 	@Test
 	public void runTC_06_POST_Create_Place() 
 	{
-		// setBrowser(Browser.Chrome);
 		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to Create_Place.");
 		driverScript.startExecution(this.getClass().getName());

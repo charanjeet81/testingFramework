@@ -12,7 +12,6 @@ public class TC_07_POST_Delete_Place extends TestCaseBase
 	@Test
 	public void runTC_07_POST_Delete_Place() 
 	{
-		// setBrowser(Browser.Chrome);
 		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to Delete Places.");
 		driverScript.startExecution(this.getClass().getName());

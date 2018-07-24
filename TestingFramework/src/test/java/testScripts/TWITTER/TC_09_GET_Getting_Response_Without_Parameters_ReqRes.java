@@ -12,7 +12,6 @@ public class TC_09_GET_Getting_Response_Without_Parameters_ReqRes extends TestCa
 	@Test
 	public void runTC_09_GET_Getting_Response_Without_Parameters_ReqRes() 
 	{
-		// setBrowser(Browser.Chrome);
 		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to Getting_Response_Without_Parameters_ReqRes");
 		driverScript.startExecution(this.getClass().getName());

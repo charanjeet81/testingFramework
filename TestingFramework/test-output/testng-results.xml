@@ -2,43 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="47557" started-at="2018-07-23T20:34:20Z" finished-at="2018-07-23T20:35:07Z">
+  <suite name="Default suite" duration-ms="2279" started-at="2018-07-24T07:13:00Z" finished-at="2018-07-24T07:13:03Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="47557" started-at="2018-07-23T20:34:20Z" finished-at="2018-07-23T20:35:07Z">
-      <class name="testScripts.TWITTER.TC_09_GET_Getting_Response_Without_Parameters_ReqRes">
-        <test-method status="PASS" signature="initializations()[pri:0, instance:testScripts.TWITTER.TC_09_GET_Getting_Response_Without_Parameters_ReqRes@49dc7102]" name="initializations" is-config="true" duration-ms="16" started-at="2018-07-23T20:34:20Z" finished-at="2018-07-23T20:34:20Z">
+    <test name="Default test" duration-ms="2279" started-at="2018-07-24T07:13:00Z" finished-at="2018-07-24T07:13:03Z">
+      <class name="testScripts.TWITTER.RA1">
+        <test-method status="PASS" signature="validatingGet()[pri:0, instance:testScripts.TWITTER.RA1@148080bb]" name="validatingGet" duration-ms="2257" started-at="2018-07-24T07:13:01Z" finished-at="2018-07-24T07:13:03Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- initializations -->
-        <test-method status="PASS" signature="setScriptHelper()[pri:0, instance:testScripts.TWITTER.TC_09_GET_Getting_Response_Without_Parameters_ReqRes@49dc7102]" name="setScriptHelper" is-config="true" duration-ms="33328" started-at="2018-07-23T20:34:20Z" finished-at="2018-07-23T20:34:53Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setScriptHelper -->
-        <test-method status="PASS" signature="runTC_09_GET_Getting_Response_Without_Parameters_ReqRes()[pri:0, instance:testScripts.TWITTER.TC_09_GET_Getting_Response_Without_Parameters_ReqRes@49dc7102]" name="runTC_09_GET_Getting_Response_Without_Parameters_ReqRes" duration-ms="3379" started-at="2018-07-23T20:34:53Z" finished-at="2018-07-23T20:34:56Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runTC_09_GET_Getting_Response_Without_Parameters_ReqRes -->
-        <test-method status="PASS" signature="testMethodTearDown(org.testng.ITestResult)[pri:0, instance:testScripts.TWITTER.TC_09_GET_Getting_Response_Without_Parameters_ReqRes@49dc7102]" name="testMethodTearDown" is-config="true" duration-ms="10816" started-at="2018-07-23T20:34:56Z" finished-at="2018-07-23T20:35:07Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=runTC_09_GET_Getting_Response_Without_Parameters_ReqRes status=SUCCESS method=TC_09_GET_Getting_Response_Without_Parameters_ReqRes.runTC_09_GET_Getting_Response_Without_Parameters_ReqRes()[pri:0, instance:testScripts.TWITTER.TC_09_GET_Getting_Response_Without_Parameters_ReqRes@49dc7102] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodTearDown -->
-        <test-method status="PASS" signature="wrapUp()[pri:0, instance:testScripts.TWITTER.TC_09_GET_Getting_Response_Without_Parameters_ReqRes@49dc7102]" name="wrapUp" is-config="true" duration-ms="0" started-at="2018-07-23T20:35:07Z" finished-at="2018-07-23T20:35:07Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- wrapUp -->
-        <test-method status="PASS" signature="windUp()[pri:0, instance:testScripts.TWITTER.TC_09_GET_Getting_Response_Without_Parameters_ReqRes@49dc7102]" name="windUp" is-config="true" duration-ms="0" started-at="2018-07-23T20:35:07Z" finished-at="2018-07-23T20:35:07Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- windUp -->
-      </class> <!-- testScripts.TWITTER.TC_09_GET_Getting_Response_Without_Parameters_ReqRes -->
+        </test-method> <!-- validatingGet -->
+      </class> <!-- testScripts.TWITTER.RA1 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

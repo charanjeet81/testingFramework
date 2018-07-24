@@ -12,7 +12,6 @@ public class TC_05_GET_Google_Search_Place extends TestCaseBase
 	@Test
 	public void runTC_05_GET_Google_Search_Place() 
 	{
-		// setBrowser(Browser.Chrome);
 		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to Search_Place");
 		driverScript.startExecution(this.getClass().getName());

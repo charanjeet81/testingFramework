@@ -3,16 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScripts.FREE_CRM.TC_01_Login_FreeCRM">
+      <class name="testScripts.TWITTER.RA1">
         <methods>
-          <include name="windUp"/>
-          <include name="setScriptHelper"/>
-          <include name="testMethodTearDown"/>
-          <include name="wrapUp"/>
-          <include name="runTC_01_Login_FreeCRM"/>
-          <include name="initializations"/>
+          <include name="validatingGet"/>
         </methods>
-      </class> <!-- testScripts.FREE_CRM.TC_01_Login_FreeCRM -->
+      </class> <!-- testScripts.TWITTER.RA1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

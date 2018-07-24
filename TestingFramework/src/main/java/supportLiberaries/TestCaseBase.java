@@ -15,6 +15,7 @@ import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -40,6 +41,7 @@ public class TestCaseBase
 	public String timeTaken; 
 	public Reporting times;
 	public String browser;
+	public String propBrowser;
 	
 	
 	@BeforeSuite
@@ -68,7 +70,12 @@ public class TestCaseBase
 		
 		//Setting-up DataTables.
 		dataTable = new DataTable(environment, canonicalName);
-		
+		browser = dataTable.getData("Browser");
+	    propBrowser = properties.getProperty("Browser");
+	    if(!browser.isEmpty())
+	    {
+	    	properties.setProperty("Browser", browser);
+	    }
 		//Setting-up Execution Mode.
 		switch (properties.getProperty("ExecutionMode")) 
 		{
@@ -95,6 +102,7 @@ public class TestCaseBase
 		// ====================
 		startTimeTC =  DateFormat.getDateTimeInstance().format(new Date());
 		strStartTime = startTimeTC.split(" ")[3];
+		
 		reporting = new Reporting(driver, properties, canonicalName);
 		scriptHelper = new ScriptHelper(environment, driver, properties, dataTable, reporting);
 		driverScript = new DriverScript(scriptHelper);
@@ -123,6 +131,7 @@ public class TestCaseBase
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		properties.setProperty("Browser", propBrowser);
 		driver.quit();
 	}
 	
@@ -140,7 +149,6 @@ public class TestCaseBase
 //		result.getStatus();
 	}
 	
-	
 	public void setDescription(String description)
 	{
 		reporting.tcDescription = description;
@@ -154,12 +162,12 @@ public class TestCaseBase
 	public void setBrowser(Browser browser)
 	{
 		this.browser = browser.getValue();
-		properties.setProperty("Browser", this.browser);
+		//properties.setProperty("Browser", this.browser);
 	}
 	
 	public WebDriver getDriver(String browser)
 	{
-		if(browser==null)
+		if(browser==null || browser.isEmpty())
 		{
 			this.browser = properties.getProperty("Browser");
 		}
@@ -179,6 +187,10 @@ public class TestCaseBase
 			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\Resources\\Browsers\\IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 		}
+		else if(this.browser.equalsIgnoreCase("HTMLUnitDriver"))
+		{
+			driver = new HtmlUnitDriver();
+		}
 		else if(this.browser.equalsIgnoreCase("android"))
 		{
 			//System.setProperty("webdriver.chrome.driver", "D:\\workD\\TestingFramework\\Resources\\Browsers\\chromedriver.exe");
@@ -191,9 +203,4 @@ public class TestCaseBase
 		}
 		return driver;
 	}
-	
-	
-	
-	
-	
 }

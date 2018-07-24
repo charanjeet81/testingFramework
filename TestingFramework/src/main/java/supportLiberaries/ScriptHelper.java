@@ -12,11 +12,6 @@ public class ScriptHelper
 	protected DataTable dataTable;
 	protected Reporting reporting;
 	
-//	public ScriptHelper(WebDriver driver)
-//	{
-//		this.driver = driver;
-//	}
-	
 	public ScriptHelper(String environment, WebDriver driver, Properties properties, DataTable dataTable, Reporting reporting)
 	{
 		this.environment = environment;

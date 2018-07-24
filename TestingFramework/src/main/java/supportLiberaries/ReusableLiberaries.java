@@ -12,11 +12,6 @@ public class ReusableLiberaries
 	protected DataTable dataTable;
 	protected Reporting reporting;
 	public ScriptHelper scriptHelper;
-//	
-//	public ReusableLiberaries(WebDriver driver)
-//	{
-//		this.driver = driver;
-//	}
 	
 	public ReusableLiberaries(ScriptHelper scriptHelper)
 	{

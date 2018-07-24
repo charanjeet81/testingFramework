@@ -7,15 +7,18 @@ import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.Assert;
 
 public class DriverScript extends ReusableLiberaries
 {
-	public String browser;
+	//public String browser;
 	
 	public DriverScript(ScriptHelper scriptHelper)
 	{
@@ -23,6 +26,11 @@ public class DriverScript extends ReusableLiberaries
 	}
 	
 	public void startExecution(String testCaseToExecute)
+	{
+		triggerExecution(testCaseToExecute);
+	}
+	
+	public void triggerExecution(String testCaseToExecute)
 	{
  		testCaseToExecute = testCaseToExecute.replace(".", "#").split("#")[2];
 		File businessComponents = new File(System.getProperty("user.dir")+"\\target\\classes\\businessComponents");

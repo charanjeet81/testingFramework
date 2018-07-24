@@ -294,7 +294,7 @@
 					<forkMode>never</forkMode>
 					<testFailureIgnore>true</testFailureIgnore>
 					<scope>integration-test</scope>
-					<reportsDirectory>report_${maven.build.timestamp}</reportsDirectory>
+					<!-- <reportsDirectory>report_${maven.build.timestamp}</reportsDirectory> -->
 					<!-- <systemPropertyVariables> <environment>${env.ENV}</environment> 
 						</systemPropertyVariables> -->
 				</configuration>

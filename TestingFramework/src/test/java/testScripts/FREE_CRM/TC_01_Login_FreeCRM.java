@@ -14,7 +14,6 @@ public class TC_01_Login_FreeCRM extends TestCaseBase
 	@Test
 	public void runTC_01_Login_FreeCRM() 
 	{
-		
 		//setBrowser(Browser.Chrome);
 		//setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to validate login to freeCRM application.");

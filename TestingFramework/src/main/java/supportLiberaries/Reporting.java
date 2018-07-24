@@ -17,6 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.asserts.SoftAssert;
@@ -38,11 +39,6 @@ public class Reporting
 	protected String timeTaken;
 	public String tcDescription;
 	
-	public Reporting()
-	{
-		//this(driver, properties, canonicalName);
-	}
-
 	public Reporting(String startTimeCompleteFormat, String timeTaken)
 	{
 		this.startTimeCompleteFormat = startTimeCompleteFormat;
@@ -139,16 +135,6 @@ public class Reporting
 		}
 	//}
 
-	public static void main(String[] args) throws FileNotFoundException 
-	{
-		//completeHTMLReport();
-//		new Reporting("CBOT.TC_02");
-//		new Reporting("CBOB.TC_02");
-//		new Reporting("BILL_PAY.TC_02");
-//		new Reporting("E911.TC_02");
-//		new Reporting("CBOB.TC_02");
-	}
-
 	public void updateReport(String method, String description, Status status)
 	{
 		switch (status.getValue().toUpperCase())
@@ -241,22 +227,9 @@ public class Reporting
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
-		
-//		LineIterator it;
-//		try 
-//		{
-//			it = FileUtils.lineIterator(new File(currentTCReport.getPath()+"\\logs.txt"));
-//			while(!it.nextLine().isEmpty())
-//			{
-//				//System.out.println(".............."+ .nextLine());
-//				lineCount++;
-//			}
-//			System.out.println(lineCount);
-//		} catch (IOException e1) {
-//			e1.printStackTrace();
-//		}
 
-		try {
+		try 
+		{
 			if (result.getStatus() == ITestResult.SUCCESS) 
 			{
 				tcStatus = "<font color='green'><b>Test-Case Passed</b></font>";

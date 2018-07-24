@@ -22,18 +22,17 @@ public class Twitter_Features extends ReusableLiberaries
 		super(scriptHelper);
 	}
 	
-	String googleReqPath = "\\Requests\\Google";
+	String googleReqPath = System.getProperty("user.dir")+"\\Requests\\Google";
 	
 	public void tC_03_Login_Twitter() throws Exception
 	{
-		SoapBase soapBase = new SoapBase(scriptHelper);
-		
-		SOAPMessage response = soapBase.soapCall(googleReqPath, "ADD");
-		String addResult = soapBase.getTagValueFromResponse(response, "AddResult");
+//		SoapBase soapBase = new SoapBase(scriptHelper);
+//		SOAPMessage response = soapBase.soapCall(googleReqPath, "ADD");
+//		String addResult = soapBase.getTagValueFromResponse(response, "AddResult");
 
-		/*	Twitter_Page login = new Twitter_Page(scriptHelper);
+		Twitter_Page login = new Twitter_Page(scriptHelper);
 		login.invokeApplication()
-			 .login_To_Twitter();*/
+			 .login_To_Twitter();
 	}
 	
 	public void tC_04_Login_Twitter_Checking_Headers()
@@ -50,7 +49,7 @@ public class Twitter_Features extends ReusableLiberaries
 		
 		String completeURI = serviceBase.getURI("PlaceSearch_URI");
 		
-		Map<String, String> queryParameter = serviceBase.getQueryParameters();
+		Map<String, String> queryParameter = serviceBase.getQueryParameters("Create_QueryParameters");
 		Response response = serviceBase.executeAPI("GET", completeURI, queryParameter, "{}");
 		serviceBase.HttpStatusCodeValidation(response);
 		
@@ -83,8 +82,9 @@ public class Twitter_Features extends ReusableLiberaries
 		ServiceBase serviceBase = new ServiceBase(scriptHelper);
 		
 		String completeURI = serviceBase.getURI("CreatePlace_URI");
-		Map<String, String> queryParameter = serviceBase.getQueryParameters();
-		Map<String, String> bodyParameter = serviceBase.getBodyParameters();
+		
+		Map<String, String> queryParameter = serviceBase.getQueryParameters("Create_QueryParameters");
+		Map<String, String> bodyParameter = serviceBase.getBodyParameters("Create_BodyParameters");
 		String requestString = serviceBase.generateRequestBody(googleReqPath+"\\POST_CreatePlace.json", bodyParameter);
 		
 		Response response = serviceBase.executeAPI("POST", completeURI, queryParameter, requestString);
@@ -94,16 +94,14 @@ public class Twitter_Features extends ReusableLiberaries
         String files = serviceBase.getJsonFile(Reporting.currentTCReportPathForServices+"\\Response.json");
         DocumentContext documentContext = JsonPath.parse(files);
 
-        //Basic Assertions for the API like,  Response Time, Status-Code and Content-Type.
+        //Basic Assertions for the API like, Response Time, Status-Code and Content-Type.
         String responseTime = serviceBase.getURI("responseTime");
         serviceBase.basicAssertions(response, Integer.parseInt(responseTime));
 
         //Tester-Defined Assertions for the API response
         serviceBase.validateResponse(documentContext, "Header", response);  
         serviceBase.validateResponse(documentContext, "StatusCode", response);
-        serviceBase.validateResponse(documentContext, "Element_Value", response);  
         serviceBase.validateResponse(documentContext, "Contains_Value", response);  
-        serviceBase.validateResponse(documentContext, "Content_Presence", response);  
         serviceBase.validateResponse(documentContext, "Element_Occurrence", response);  
 	}
 	
@@ -118,35 +116,32 @@ public class Twitter_Features extends ReusableLiberaries
 		ServiceBase serviceBase = new ServiceBase(scriptHelper);
 		
 		String completeURI = serviceBase.getURI("CreatePlace_URI");
-		Map<String, String> queryParameter = serviceBase.getQueryParameters();
-		Map<String, String> bodyParameter = serviceBase.getBodyParameters();
+		Map<String, String> queryParameter = serviceBase.getQueryParameters("Create_QueryParameters");
+		Map<String, String> bodyParameter = serviceBase.getBodyParameters("Create_BodyParameters");
 		String requestString = serviceBase.generateRequestBody(googleReqPath+"\\POST_CreatePlace.json", bodyParameter);
-		
 		Response response = serviceBase.executeAPI("POST", completeURI, queryParameter, requestString);
-		serviceBase.HttpStatusCodeValidation(response);
 		
-		//Response File parse
-        String files = serviceBase.getJsonFile(Reporting.currentTCReportPathForServices+"\\Response.json");
-        DocumentContext documentContext = JsonPath.parse(files);
-
-        //Basic Assertions for the API like,  Response Time, Status-Code and Content-Type.
-        String responseTime = serviceBase.getURI("responseTime");
-        serviceBase.basicAssertions(response, Integer.parseInt(responseTime));
-
-        //Tester-Defined Assertions for the API response
-        serviceBase.validateResponse(documentContext, "", response);  
+        String placeId = serviceBase.getValueFromResponse(response, "place_id");
+        System.out.println(placeId);
+        properties.setProperty("Delete_BodyParameters", "place_id:"+placeId);
+		//serviceBase.putRespond("Delete_BodyParameters", "place_id:"+placeId);
+		//String placeId1 = serviceBase.fetchValue("Delete_BodyParameters");
+		
+		completeURI = serviceBase.getURI("DeletePlace_URI");
+		bodyParameter = serviceBase.getBodyParameters("Delete_BodyParameters", false);
+		requestString = serviceBase.generateRequestBody(googleReqPath+"\\POST_DeletePlace.json", bodyParameter);
+		
+		response = serviceBase.executeAPI("POST", completeURI, queryParameter, requestString);
+		serviceBase.HttpStatusCodeValidation(response);
 	}
 	
 	public void tC_09_GET_Getting_Response_Without_Parameters_ReqRes()
 	{
 		ServiceBase serviceBase = new ServiceBase(scriptHelper);
 		
-		String baseURI = serviceBase.getURI("ReqRes_BaseURI");
-		String serviceURI = serviceBase.getURI("SingleUser_ServiceURI");
-
-		String completeAPI = baseURI + serviceURI;
+		String completeAPI = serviceBase.getURI("SingleUser_URI");
 		
-		Map<String, String> queryParameter = serviceBase.getQueryParameters();
+		Map<String, String> queryParameter = serviceBase.getQueryParameters("QueryParameters");
 		Response response = serviceBase.executeAPI("GET", completeAPI, queryParameter, "{}");
 		serviceBase.HttpStatusCodeValidation(response);
 	}
@@ -155,12 +150,9 @@ public class Twitter_Features extends ReusableLiberaries
 	{
 		ServiceBase serviceBase = new ServiceBase(scriptHelper);
 		
-		String baseURI = serviceBase.getURI("ReqRes_BaseURI");
-		String serviceURI = serviceBase.getURI("ListUser_ServiceURI");
-				
-		String completeAPI = baseURI + serviceURI;
+		String completeAPI = serviceBase.getURI("ListUser_URI");
 		
-		Map<String, String> queryParameter = serviceBase.getQueryParameters();
+		Map<String, String> queryParameter = serviceBase.getQueryParameters("QueryParameters");
 		Response response = serviceBase.executeAPI("GET", completeAPI, queryParameter, "{}");
 		serviceBase.HttpStatusCodeValidation(response);
 	}
@@ -170,11 +162,9 @@ public class Twitter_Features extends ReusableLiberaries
 		ServiceBase serviceBase = new ServiceBase(scriptHelper);
 		
 		String completeURI = serviceBase.getURI("LatestTweet_URI");
-		Map<String, String> queryParameter = serviceBase.getQueryParameters();
+		Map<String, String> queryParameter = serviceBase.getQueryParameters("QueryParameters");
 		Response response = serviceBase.executeAPI("GET", completeURI, queryParameter, true, "{}");
 		serviceBase.HttpStatusCodeValidation(response);
-		
-		
 	}
 	
 }

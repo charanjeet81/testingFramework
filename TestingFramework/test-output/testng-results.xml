@@ -2,16 +2,43 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="2279" started-at="2018-07-24T07:13:00Z" finished-at="2018-07-24T07:13:03Z">
+  <suite name="Default suite" duration-ms="7544" started-at="2018-07-24T14:27:11Z" finished-at="2018-07-24T14:27:19Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="2279" started-at="2018-07-24T07:13:00Z" finished-at="2018-07-24T07:13:03Z">
-      <class name="testScripts.TWITTER.RA1">
-        <test-method status="PASS" signature="validatingGet()[pri:0, instance:testScripts.TWITTER.RA1@148080bb]" name="validatingGet" duration-ms="2257" started-at="2018-07-24T07:13:01Z" finished-at="2018-07-24T07:13:03Z">
+    <test name="Default test" duration-ms="7544" started-at="2018-07-24T14:27:11Z" finished-at="2018-07-24T14:27:19Z">
+      <class name="testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place">
+        <test-method status="PASS" signature="initializations()[pri:0, instance:testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place@13a5fe33]" name="initializations" is-config="true" duration-ms="12" started-at="2018-07-24T14:27:11Z" finished-at="2018-07-24T14:27:11Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validatingGet -->
-      </class> <!-- testScripts.TWITTER.RA1 -->
+        </test-method> <!-- initializations -->
+        <test-method status="PASS" signature="setScriptHelper()[pri:0, instance:testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place@13a5fe33]" name="setScriptHelper" is-config="true" duration-ms="4638" started-at="2018-07-24T14:27:11Z" finished-at="2018-07-24T14:27:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setScriptHelper -->
+        <test-method status="PASS" signature="runTC_08_POST_Create_Place_Delete_Place()[pri:0, instance:testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place@13a5fe33]" name="runTC_08_POST_Create_Place_Delete_Place" duration-ms="1586" started-at="2018-07-24T14:27:16Z" finished-at="2018-07-24T14:27:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runTC_08_POST_Create_Place_Delete_Place -->
+        <test-method status="PASS" signature="testMethodTearDown(org.testng.ITestResult)[pri:0, instance:testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place@13a5fe33]" name="testMethodTearDown" is-config="true" duration-ms="1299" started-at="2018-07-24T14:27:18Z" finished-at="2018-07-24T14:27:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=runTC_08_POST_Create_Place_Delete_Place status=SUCCESS method=TC_08_POST_Create_Place_Delete_Place.runTC_08_POST_Create_Place_Delete_Place()[pri:0, instance:testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place@13a5fe33] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodTearDown -->
+        <test-method status="PASS" signature="wrapUp()[pri:0, instance:testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place@13a5fe33]" name="wrapUp" is-config="true" duration-ms="0" started-at="2018-07-24T14:27:19Z" finished-at="2018-07-24T14:27:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+        <test-method status="PASS" signature="windUp()[pri:0, instance:testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place@13a5fe33]" name="windUp" is-config="true" duration-ms="0" started-at="2018-07-24T14:27:19Z" finished-at="2018-07-24T14:27:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- windUp -->
+      </class> <!-- testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

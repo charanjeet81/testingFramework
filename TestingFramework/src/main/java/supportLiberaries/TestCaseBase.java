@@ -182,10 +182,9 @@ public class TestCaseBase
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\Resources\\Browsers\\geckodriver.exe");
 			driver = new FirefoxDriver();
 		}
-		else if(this.browser.equalsIgnoreCase("internetExplorer"))
+		else if(this.browser.equalsIgnoreCase("HTMLUnitDriver"))
 		{
-			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\Resources\\Browsers\\IEDriverServer.exe");
-			driver = new InternetExplorerDriver();
+			driver = new HtmlUnitDriver();
 		}
 		else if(this.browser.equalsIgnoreCase("HTMLUnitDriver"))
 		{

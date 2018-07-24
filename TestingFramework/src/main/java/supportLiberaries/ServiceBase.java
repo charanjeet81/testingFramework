@@ -707,7 +707,11 @@ public class ServiceBase extends SUPER_Page
 	
 	public boolean storeResponseInFile(String responseFilePath, Response response)
 	{
-		File file = new File(responseFilePath);
+	    File file = new File(responseFilePath);
+	    if(file.exists())
+	    {
+	    	
+	    }
 		String responseString = formatResponse(response);
 		try (FileWriter fileWriter = new FileWriter(responseFilePath)) 
 		{
@@ -845,12 +849,12 @@ public class ServiceBase extends SUPER_Page
 		}
 	}
 
-	public Map<String, String> getQueryParameters()
+	public Map<String, String> getQueryParameters(String queryParameters)
 	{
 		Map<String, String> map = new HashMap<>();
-		String queryParameters = dataTable.getData("QueryParameters");
-		String[] queryParameter = queryParameters.split(";");
-		for (String singleQP : queryParameter) 
+		String strQueryParameters = dataTable.getData(queryParameters);
+		String[] strQueryParameter = strQueryParameters.split(";");
+		for (String singleQP : strQueryParameter) 
 		{
 			try
 			{
@@ -891,10 +895,10 @@ public class ServiceBase extends SUPER_Page
 		return query;
 	}
 
-	public Map<String, String> getBodyParameters() 
+	public Map<String, String> getBodyParameters(String bodyParameters) 
 	{
 		Map<String, String> map = new HashMap<>();
-		String queryParameters = dataTable.getData("BodyParameters");
+		String queryParameters = dataTable.getData(bodyParameters);
 		String[] queryParameter = queryParameters.split(";");
 		for (String singleQP : queryParameter) 
 		{
@@ -907,23 +911,33 @@ public class ServiceBase extends SUPER_Page
 				System.err.println("No BodyParameters are present.");
 			}
 		}
-		/*Map<String, String> map = new HashMap<>();
-		HSSFWorkbook wb;
-		HSSFSheet ws;
-		try {
-			FileInputStream file = new FileInputStream(new File("./DataSheet.xls"));
-			wb = new HSSFWorkbook(file);
-			ws = wb.getSheet("RequestParameters");
-			for (int count = 1; count <= ws.getLastRowNum(); count++) {
-				HSSFRow row = ws.getRow(count);
-				if (row.getCell(0).toString().equalsIgnoreCase(testcaseName)
-						&& row.getCell(1).toString().equalsIgnoreCase("BodyParameter")) {
-					map.put(row.getCell(2).toString(), row.getCell(3).toString());
-				}
+		return map;
+	}
+	
+	public Map<String, String> getBodyParameters(String bodyParameters, boolean fromDataTable) 
+	{
+		Map<String, String> map = new HashMap<>();
+		String queryParameters = "";
+		if(fromDataTable)
+		{
+			queryParameters = dataTable.getData(bodyParameters);
+		}
+		else 
+		{
+			queryParameters = properties.getProperty(bodyParameters);
+		}
+		String[] queryParameter = queryParameters.split(";");
+		for (String singleQP : queryParameter) 
+		{
+			try
+			{
+				map.put(singleQP.split(":")[0].trim(), singleQP.split(":")[1].trim());
+			} 
+			catch (Exception e) 
+			{
+				System.err.println("No BodyParameters are present.");
 			}
-		} catch (Exception e) {
-			// e.printStackTrace();
-		}*/
+		}
 		return map;
 	}
 

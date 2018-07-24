@@ -26,7 +26,7 @@ public class Home_Page extends SUPER_Page
 	
 	public Home_Page validateUser()
 	{
-		dataTable.getData("");
+		sync(3);
 		if(driver.getTitle().contains("CRMPRO"))
 			Reporting("Title is coming as expected.", Status.PASS);
 		else

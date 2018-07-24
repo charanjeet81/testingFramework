@@ -10,7 +10,7 @@ public class TC_10_GET_Getting_Response_With_Parameters_ReqRes extends TestCaseB
 {
 	private SoftAssert softAssert = new SoftAssert();
 	@Test
-	public void runTC_07_GET_Getting_Response_Without_Parameters_ReqRes() 
+	public void runTC_10_GET_Getting_Response_With_Parameters_ReqRes() 
 	{
 		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to Getting_Response_With_Parameters_ReqRes.");

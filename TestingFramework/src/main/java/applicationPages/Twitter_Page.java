@@ -29,12 +29,10 @@ public class Twitter_Page extends SUPER_Page
 	@FindBy(css = "input#search-query")
 	WebElement searchField;
 	
-	
-	
 	//::::::::::::::::: M E T H O D S ::::::::::::::::://
-	
 	public Twitter_Page invokeApplication()
 	{
+		sync(2);
 		driver.get(properties.getProperty("Twitter_URL"));
 		Reporting("Application invoked as: "+properties.getProperty("Twitter_URL"), Status.DONE);
 		mainLogIn_BTN.click();
@@ -44,6 +42,7 @@ public class Twitter_Page extends SUPER_Page
 	
 	public Twitter_Page login_To_Twitter()
 	{
+		sync(2);
 		String userName = dataTable.getData("UserName");
 		username.sendKeys(userName);
 		Reporting("Username set as: "+userName, Status.DONE);

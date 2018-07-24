@@ -22,7 +22,7 @@ public class FreeCRM_Features extends ReusableLiberaries
 	{
 		Login_Page login = new Login_Page(scriptHelper);
 		login.invokeApplication()
-			 .login_To_Application();
-			// .validateUser();
+			 .login_To_Application()
+			 .validateUser();
 	}
 }

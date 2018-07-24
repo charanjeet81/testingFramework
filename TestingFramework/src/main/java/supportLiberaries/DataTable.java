@@ -62,7 +62,7 @@ public class DataTable
 			for (int count = 0; count<totalRows+1; count++)
 			{
 				 String fetchedValue = sheet.getRow(count).getCell(0).getStringCellValue();
-				 if(fetchedValue.contains(tcName))
+				 if(fetchedValue.equals(tcName))
 				 {
 					 int cellIndex = getCellIndex(field);
 					 if(cellIndex==0)

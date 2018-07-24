@@ -37,16 +37,17 @@ public class Login_Page extends SUPER_Page
 	public Home_Page login_To_Application()
 	{
 		String userName = dataTable.getData("UserName");
-		userName = dataTable.getData("User");
-		dataTable.setData("Data", "Charanjeet Singh");
-		/*username.sendKeys(userName);
+		userName = dataTable.getData("UserName");
+		
+		username.sendKeys(userName);
 		Reporting("Username set as: "+userName, Status.DONE);
+		
 		String strPassword = dataTable.getData("Password");
 		password.sendKeys(strPassword);
 		Reporting("Password set as: "+strPassword, Status.DONE);
+		
 		sync(1);
-		logIn_BTN.click();
-		Reporting("Clicked on 'LogIn' button.", Status.DONE);*/
+		clickElementUsing_JSE(logIn_BTN, "Log In button");
 		return new Home_Page(scriptHelper);
 	}
 }

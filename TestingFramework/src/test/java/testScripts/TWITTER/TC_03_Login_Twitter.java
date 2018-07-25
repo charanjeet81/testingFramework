@@ -15,7 +15,7 @@ public class TC_03_Login_Twitter extends TestCaseBase
 		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to validate login to Twitter.");
 		driverScript.startExecution(this.getClass().getName());
-		if (Reporting.failTC) 
+		if (reporting.failTC) 
 		{
 			softAssert.assertTrue(false);
 			softAssert.assertAll();

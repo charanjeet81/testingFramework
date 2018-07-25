@@ -3,7 +3,6 @@ package testScripts.TWITTER;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import supportLiberaries.Reporting;
 import supportLiberaries.TestCaseBase;
 
 public class TC_09_GET_Getting_Response_Without_Parameters_ReqRes extends TestCaseBase
@@ -15,7 +14,7 @@ public class TC_09_GET_Getting_Response_Without_Parameters_ReqRes extends TestCa
 		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to Getting_Response_Without_Parameters_ReqRes");
 		driverScript.startExecution(this.getClass().getName());
-		if (Reporting.failTC)
+		if (reporting.failTC)
 		{
 			softAssert.assertTrue(false);
 			softAssert.assertAll();

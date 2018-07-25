@@ -83,7 +83,13 @@ public class SoapBase extends SUPER_Page
 	{
 		// Get Api Mime Headers from the sheet
 		HashMap<String, String> hmap = readExcel(Api);
-		String MimeHeaders = hmap.get("MimeHeaders").toString();
+		String MimeHeaders;
+		try 
+		{
+			MimeHeaders = hmap.get("MimeHeaders").toString();
+		} catch (Exception e) {
+			MimeHeaders = "";
+		}
 		String HeaderUrl = MimeHeaders;
 
 		// Create soapMessage
@@ -104,12 +110,12 @@ public class SoapBase extends SUPER_Page
 
 	public String getAPIRequest(String requestFolder, String requestAPI) throws FileNotFoundException
 	{
-		String soapXMLRequestPath = System.getProperty("user.dir") + requestFolder + "\\" + requestAPI+".xml";
+		String soapXMLRequestPath = requestFolder + "\\" + requestAPI+".xml";
 		String strrequest = null;
 		StringBuffer request = new StringBuffer();
-		BufferedReader reader = new BufferedReader(new FileReader(soapXMLRequestPath));
 		try 
 		{
+			BufferedReader reader = new BufferedReader(new FileReader(soapXMLRequestPath));
 			// as long as there are lines in the file, print them
 			while (true)
 			{
@@ -195,9 +201,12 @@ public class SoapBase extends SUPER_Page
 					String url = cell2.getRichStringCellValue().getString();
 					hMap.put("url", url);
 					hMap.put("api", apiname);
-					HSSFCell cell3 = (HSSFCell) list.get(j + 2);
-					String MimeHeader = cell3.getRichStringCellValue().getString();
-					hMap.put("MimeHeaders", MimeHeader);
+					if(!(list.size()==2))
+					{
+						HSSFCell cell3 = (HSSFCell) list.get(j + 2);
+						String MimeHeader = cell3.getRichStringCellValue().getString();
+						hMap.put("MimeHeaders", MimeHeader);
+					}
 				}
 			}
 			System.out.println("");

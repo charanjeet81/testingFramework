@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Sanity">
+<suite name="Smoke" parallel="classes" thread-count="2" configfailurepolicy="continue">
 <!-- 	<listeners>
 		<listener class-name="supportLiberaries.ExtentReporterNG" />
 	</listeners> -->
 
 	<test name="Test-Chrome" preserve-order="true">
+	<parameter name="browser" value="Chrome"></parameter>
 		<classes>
-			<class name="testScripts.FREE_CRM.TC_02_Login_FreeCRM_HomePage" />
-			<class name="testScripts.TWITTER.TC_06_POST_Create_Place" />
-			<class name="testScripts.TWITTER.TC_11_GET_Twitter_oAuth_Latest_Tweet" />
 			<class name="testScripts.TWITTER.TC_04_Login_Twitter_Checking_Headers" />
+			<class name="testScripts.FREE_CRM.TC_01_Login_FreeCRM" />
+			<class name="testScripts.TWITTER.TC_11_GET_Twitter_oAuth_Latest_Tweet" />
+			<class name="testScripts.FREE_CRM.TC_02_Login_FreeCRM_HomePage" />
+		</classes>
+	</test>
+	<test name="Test-Firefox" preserve-order="true">
+	<parameter name="browser" value="Firefox"></parameter>
+		<classes>
+			<class name="testScripts.TWITTER.TC_04_Login_Twitter_Checking_Headers" />
+			<class name="testScripts.FREE_CRM.TC_01_Login_FreeCRM" />
+			<class name="testScripts.TWITTER.TC_11_GET_Twitter_oAuth_Latest_Tweet" />
+			<class name="testScripts.FREE_CRM.TC_02_Login_FreeCRM_HomePage" />
 		</classes>
 	</test>
 </suite>

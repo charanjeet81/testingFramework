@@ -3,7 +3,6 @@ package testScripts.TWITTER;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import supportLiberaries.Reporting;
 import supportLiberaries.TestCaseBase;
 
 public class TC_05_GET_Google_Search_Place extends TestCaseBase
@@ -15,7 +14,7 @@ public class TC_05_GET_Google_Search_Place extends TestCaseBase
 		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to Search_Place");
 		driverScript.startExecution(this.getClass().getName());
-		if (Reporting.failTC) {
+		if (reporting.failTC) {
 			softAssert.assertTrue(false);
 			softAssert.assertAll();
 		}

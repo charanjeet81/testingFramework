@@ -17,7 +17,7 @@ public class TC_01_Login_FreeCRM extends TestCaseBase
 		//setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to validate login to freeCRM application.");
 		driverScript.startExecution(this.getClass().getName());
-		if(Reporting.failTC)
+		if(reporting.failTC)
 		{
 			softAssert.assertTrue(false);
 			softAssert.assertAll();

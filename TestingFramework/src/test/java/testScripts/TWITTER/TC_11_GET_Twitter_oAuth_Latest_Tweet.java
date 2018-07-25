@@ -15,7 +15,7 @@ public class TC_11_GET_Twitter_oAuth_Latest_Tweet extends TestCaseBase
 		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is for getting latest tweet.");
 		driverScript.startExecution(this.getClass().getName());
-		if (Reporting.failTC) 
+		if (reporting.failTC) 
 		{
 			softAssert.assertTrue(false);
 			softAssert.assertAll();

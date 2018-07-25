@@ -6,17 +6,26 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
@@ -42,7 +51,6 @@ public class TestCaseBase
 	public Reporting times;
 	public String browser;
 	public String propBrowser;
-	
 	
 	@BeforeSuite
 	public void initializations() 
@@ -132,6 +140,7 @@ public class TestCaseBase
 			e.printStackTrace();
 		}
 		properties.setProperty("Browser", propBrowser);
+		
 		driver.quit();
 	}
 	
@@ -174,17 +183,44 @@ public class TestCaseBase
 		if(this.browser.equalsIgnoreCase("chrome"))
 		{
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\Resources\\Browsers\\chromedriver.exe");
-			driver = new ChromeDriver();
+//			String[] switches = { "--ignore-certificate-errors","disable-popup-blocking",};
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("no-sandbox");
+			options.addArguments("test-type");
+			options.addArguments("disable-popup-blocking");
+			options.addArguments("chrome.switches","--disable-extensions");
+			options.addArguments("disable-infobars");
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("credentials_enable_service", false);
+			prefs.put("profile.password_manager_enabled", false);
+			options.setExperimentalOption("prefs", prefs);
+			driver = new ChromeDriver(options);
 			
 		}
 		else if(this.browser.equalsIgnoreCase("firefox"))
 		{
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\Resources\\Browsers\\geckodriver.exe");
-			driver = new FirefoxDriver();
+			FirefoxOptions options = new FirefoxOptions();
+			options.setCapability("marionette", false);
+			driver = new FirefoxDriver(options);
 		}
-		else if(this.browser.equalsIgnoreCase("HTMLUnitDriver"))
+		else if(this.browser.equalsIgnoreCase("InternetExplorer"))
 		{
-			driver = new HtmlUnitDriver();
+			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\Resources\\Browsers\\IEDriverServer.exe");
+			InternetExplorerOptions ieOptions = new InternetExplorerOptions();
+			ieOptions.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+		    ieOptions.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, true);
+		    ieOptions.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+		    ieOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		    ieOptions.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+		    ieOptions.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+		    ieOptions.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+		    ieOptions.setCapability("nativeEvents", false);
+			ieOptions.setCapability("ignoreProtectedModeSettings", true);
+			ieOptions.setCapability("disable-popup-blocking", true);
+			ieOptions.setCapability("enablePersistentHover", true);
+			ieOptions.setCapability("RequireWindowFocus", true);
+			driver = new InternetExplorerDriver(ieOptions);
 		}
 		else if(this.browser.equalsIgnoreCase("HTMLUnitDriver"))
 		{

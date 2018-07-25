@@ -24,7 +24,7 @@ import org.testng.asserts.SoftAssert;
 
 public class Reporting
 {
-	public static boolean failTC = false;
+	public boolean failTC = false;
 	int count = 1;
 	String startTime;
 	String testStep = "";

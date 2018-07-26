@@ -1,9 +1,12 @@
 package supportLiberaries;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
  
 import org.testng.IReporter;
@@ -20,13 +23,15 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class ExtentReporterNG implements IReporter   
 {
-    private ExtentReports extent;
- 
-    public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) 
+	public ExtentReports extent;
+   
+	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) 
     {
-    	System.out.println("*******************"+outputDirectory);
-        extent = new ExtentReports(outputDirectory + File.separator + "ExtentReportsTestNG.html", true);
-        for (ISuite suite : suites) 
+        extent = new ExtentReports(outputDirectory + File.separator + "CompleteExecution.html", true);
+        extent.addSystemInfo("Suite", ScriptHelper.suiteName);
+        extent.addSystemInfo("Project", ScriptHelper.projectName);
+        extent.addSystemInfo("Environment", ScriptHelper.env);
+		for (ISuite suite : suites) 
         {
             Map<String, ISuiteResult> result = suite.getResults();
             for (ISuiteResult r : result.values()) 
@@ -41,15 +46,15 @@ public class ExtentReporterNG implements IReporter
         extent.close();
     }
  
-    private void buildTestNodes(IResultMap tests, LogStatus status) {
+    private void buildTestNodes(IResultMap tests, LogStatus status) 
+    {
         ExtentTest test;
  
-        if (tests.size() > 0) {
-            for (ITestResult result : tests.getAllResults()) {
+        if (tests.size() > 0) 
+        {
+            for (ITestResult result : tests.getAllResults())
+            {
                 test = extent.startTest(result.getMethod().getMethodName());
- 
-                /*test.getTest(). = getTime(result.getStartMillis());
-                test.getTest().endedTime = getTime(result.getEndMillis());*/
  
                 for (String group : result.getMethod().getGroups())
                     test.assignCategory(group);
@@ -64,11 +69,5 @@ public class ExtentReporterNG implements IReporter
                 extent.endTest(test);
             }
         }
-    }
- 
-    private Date getTime(long millis) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(millis);
-        return calendar.getTime();        
     }
 }

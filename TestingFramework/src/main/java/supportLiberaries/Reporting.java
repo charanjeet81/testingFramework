@@ -22,6 +22,8 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.asserts.SoftAssert;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 public class Reporting
 {
 	public boolean failTC = false;
@@ -64,11 +66,7 @@ public class Reporting
 				if(!currentReport.exists())
 				{
 					currentReport.mkdir();
-					//File currentTCReport = new File(currentReport.getPath()+"\\"+canonicalName.replace(".", "#").split("#")[1]);
 					this.currentTCReport = currentReport;
-					//if(!currentTCReport.exists())
-					//{
-						//currentTCReport.mkdir();
 						try 
 						{
 							FileUtils.copyDirectory(new File(System.getProperty("user.dir")+"\\Resources\\ReportTemplate"), currentTCReport);
@@ -78,7 +76,6 @@ public class Reporting
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-					//}
 				}
 			}
 		}
@@ -92,11 +89,7 @@ public class Reporting
 				if(!currentReport.exists())
 				{
 					currentReport.mkdir();
-					//File currentTCReport = new File(currentReport.getPath()+"\\"+canonicalName.replace(".", "#").split("#")[1]);
 					this.currentTCReport = currentReport;
-					//if(!currentTCReport.exists())
-					//{
-						//currentTCReport.mkdir();
 						try
 						{
 							FileUtils.copyDirectory(new File(System.getProperty("user.dir")+"\\Resources\\ReportTemplate"), currentTCReport);
@@ -106,20 +99,13 @@ public class Reporting
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-					//}
 				}
 			}
 			else
 			{
 				File currentReport = new File(functionality.getPath()+"\\"+startTime.replace(",", "").replace(" ", "_").replace(":", "_"));
-				//if(!currentReport.exists())
-				//{
 					currentReport.mkdir();
-					//File currentTCReport = new File(currentReport.getPath()+"\\"+canonicalName.replace(".", "#").split("#")[1]);
 					this.currentTCReport = currentReport;
-					//if(!currentTCReport.exists())
-					//{
-						//currentTCReport.mkdir();
 						try 
 						{
 							FileUtils.copyDirectory(new File(System.getProperty("user.dir")+"\\Resources\\ReportTemplate"), currentTCReport);
@@ -129,11 +115,9 @@ public class Reporting
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-					//}
 				}
 			}
 		}
-	//}
 
 	public void updateReport(String method, String description, Status status)
 	{

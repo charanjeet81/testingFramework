@@ -53,12 +53,12 @@ public class Twitter_Features extends ReusableLiberaries
 		Response response = serviceBase.executeAPI("GET", completeURI, queryParameter, "{}");
 		serviceBase.HttpStatusCodeValidation(response);
 		
-		String respond = serviceBase.getValueFromResponse(response, "status");
+		String respond = serviceBase.getValueFromResponse("Response1.json", response, "status");
 		serviceBase.putRespond("Status", respond);
 		
-		respond = serviceBase.getValueFromResponse(response, "results[0].types");
+		respond = serviceBase.getValueFromResponse("Response2.json", response, "results[0].types");
 		
-		respond = serviceBase.getValueFromResponse(response, "results[0].vicinity");
+		respond = serviceBase.getValueFromResponse("Response3.json", response, "results[0].vicinity");
 		
 		serviceBase.getValuesFromResponse(response, "vicinity");
 		
@@ -121,7 +121,7 @@ public class Twitter_Features extends ReusableLiberaries
 		String requestString = serviceBase.generateRequestBody(googleReqPath+"\\POST_CreatePlace.json", bodyParameter);
 		Response response = serviceBase.executeAPI("POST", completeURI, queryParameter, requestString);
 		
-        String placeId = serviceBase.getValueFromResponse(response, "place_id");
+        String placeId = serviceBase.getValueFromResponse("Response1.json", response, "place_id");
         System.out.println(placeId);
         properties.setProperty("Delete_BodyParameters", "place_id:"+placeId);
 		//serviceBase.putRespond("Delete_BodyParameters", "place_id:"+placeId);

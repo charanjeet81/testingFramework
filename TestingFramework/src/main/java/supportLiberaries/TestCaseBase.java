@@ -26,6 +26,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
@@ -33,6 +34,9 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
 public class TestCaseBase  
@@ -51,16 +55,26 @@ public class TestCaseBase
 	public Reporting times;
 	public String browser;
 	public String propBrowser;
+	ExtentReporterNG extentReport;
 	
 	@BeforeSuite
-	public void initializations() 
+	public void reportInitializations() 
 	{
-		
-		
+//		extentReport = new ExtentReporterNG();
+//		extentReport.getReporter();
+	}
+	
+	@BeforeTest
+	public void initializations(ITestContext ctx) 
+	{
+//		String module = ctx.getCurrentXmlTest().getParameter("classes");
+//		extentReport.test = extentReport.startTest("FREE_CRM:TC_01_Login_FreeCRM");
+//		extentReport.test = extentReport.startTest(module + " : " + ctx.getCurrentXmlTest().getParameter("testname"));
 	}
 	
 	@BeforeMethod
-	public void setScriptHelper()
+	@Parameters("browser")
+	public void setScriptHelper(@Optional String strBrowser, ITestContext ctx)
 	{
 		//Setting-up testcase name.
 		canonicalName = this.getClass().getCanonicalName().split("testScripts.")[1];
@@ -78,19 +92,30 @@ public class TestCaseBase
 		
 		//Setting-up DataTables.
 		dataTable = new DataTable(environment, canonicalName);
-		browser = dataTable.getData("Browser");
-	    propBrowser = properties.getProperty("Browser");
-	    if(!browser.isEmpty())
-	    {
-	    	properties.setProperty("Browser", browser);
-	    }
+		
+		// For TestNG parallel execution.
+		propBrowser = properties.getProperty("Browser");
+		if(strBrowser==null)
+		{
+			browser = dataTable.getData("Browser");
+			if(!browser.isEmpty())
+			{
+				properties.setProperty("Browser", browser);
+			}
+		}
+		else
+		{
+			browser = strBrowser;
+			properties.setProperty("Browser", browser);
+		}
+		
 		//Setting-up Execution Mode.
 		switch (properties.getProperty("ExecutionMode")) 
 		{
 			case "Local": 
 				driver = getDriver(browser);
 				driver.manage().window().maximize();
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 				
 				
 				break;
@@ -113,9 +138,11 @@ public class TestCaseBase
 		
 		reporting = new Reporting(driver, properties, canonicalName);
 		scriptHelper = new ScriptHelper(environment, driver, properties, dataTable, reporting);
+		scriptHelper.settingStaticDetails(ctx);
 		driverScript = new DriverScript(scriptHelper);
 	}
 
+	@SuppressWarnings("deprecation")
 	@AfterMethod
 	public void testMethodTearDown(ITestResult result)
 	{
@@ -146,14 +173,15 @@ public class TestCaseBase
 	
 	@AfterTest
 	public void wrapUp()
-	{
-		//zi
+	{ 
+//		extentReport.extent.endTest(extentReport.getTest());
 	}
 	
 	
 	@AfterSuite
 	public void windUp()
 	{
+//		extentReport.getReporter().flush();
 //		ITestResult  result = Reporter.getCurrentTestResult();
 //		result.getStatus();
 	}
@@ -166,12 +194,6 @@ public class TestCaseBase
 	public void setIteration(TestIteration testIteration)
 	{
 		
-	}
-	
-	public void setBrowser(Browser browser)
-	{
-		this.browser = browser.getValue();
-		//properties.setProperty("Browser", this.browser);
 	}
 	
 	public WebDriver getDriver(String browser)
@@ -200,9 +222,9 @@ public class TestCaseBase
 		else if(this.browser.equalsIgnoreCase("firefox"))
 		{
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\Resources\\Browsers\\geckodriver.exe");
-			FirefoxOptions options = new FirefoxOptions();
-			options.setCapability("marionette", false);
-			driver = new FirefoxDriver(options);
+//			FirefoxOptions options = new FirefoxOptions();
+//			options.setCapability("marionette", false);
+			driver = new FirefoxDriver();
 		}
 		else if(this.browser.equalsIgnoreCase("InternetExplorer"))
 		{

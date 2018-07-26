@@ -206,7 +206,7 @@ public class ServiceBase extends SUPER_Page
 			Reporting("Response recieved successfully.", Status.DONE);
 			if (requestType.toUpperCase() != "PUT" || requestType.toUpperCase() != "PATCH" || requestType.toUpperCase() != "DELETE")
 			{
-				responseFilePath = Reporting.currentTCReportPathForServices+"\\Response.json";
+				responseFilePath = Reporting.currentTCReportPathForServices+"\\Response1.json";
 				storeResponseInFile(responseFilePath, response);
 			}
 		}
@@ -360,9 +360,9 @@ public class ServiceBase extends SUPER_Page
 	}
 
 	// For Single Key. 
-	public String getValueFromResponse(Response response, String jsonpath)
+	public String getValueFromResponse(String responseFile, Response response, String jsonpath)
 	{
-		String files = getJsonFile(Reporting.currentTCReportPathForServices+"\\Response.json");
+		String files = getJsonFile(Reporting.currentTCReportPathForServices+"\\"+responseFile);
         DocumentContext documentContext = JsonPath.parse(files);
         String value = String.valueOf(getJSONValue(documentContext, jsonpath)); 
         Reporting("Value for JSON path: "+jsonpath+" is: "+value, Status.DONE);
@@ -707,10 +707,15 @@ public class ServiceBase extends SUPER_Page
 	
 	public boolean storeResponseInFile(String responseFilePath, Response response)
 	{
-	    File file = new File(responseFilePath);
-	    if(file.exists())
+	    File file1 = new File(responseFilePath);
+	    if(file1.exists())
 	    {
-	    	
+	    	responseFilePath = responseFilePath.replace("Response1.json", "Response2.json");
+    	    File file2 = new File(responseFilePath);
+	 	    if(file2.exists())
+	 	    {
+	 	    	responseFilePath = responseFilePath.replace("Response2.json", "Response3.json");
+	 	    }
 	    }
 		String responseString = formatResponse(response);
 		try (FileWriter fileWriter = new FileWriter(responseFilePath)) 

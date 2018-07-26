@@ -12,7 +12,7 @@ public class TC_01_Login_FreeCRM extends TestCaseBase
 {
 	private SoftAssert softAssert = new SoftAssert();
 	@Test
-	public void runTC_01_Login_FreeCRM() 
+	public void TC_01_Login_FreeCRM() 
 	{
 		//setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to validate login to freeCRM application.");

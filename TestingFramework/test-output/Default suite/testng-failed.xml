@@ -3,16 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScripts.TWITTER.TC_03_Login_Twitter">
+      <class name="testScripts.TWITTER.TC_05_GET_Google_Search_Place">
         <methods>
           <include name="windUp"/>
-          <include name="runTC_03_Login_Twitter"/>
           <include name="setScriptHelper"/>
           <include name="testMethodTearDown"/>
+          <include name="runTC_05_GET_Google_Search_Place"/>
           <include name="wrapUp"/>
+          <include name="reportInitializations"/>
           <include name="initializations"/>
         </methods>
-      </class> <!-- testScripts.TWITTER.TC_03_Login_Twitter -->
+      </class> <!-- testScripts.TWITTER.TC_05_GET_Google_Search_Place -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

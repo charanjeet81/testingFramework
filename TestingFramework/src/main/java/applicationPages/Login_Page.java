@@ -29,8 +29,11 @@ public class Login_Page extends SUPER_Page
 	
 	public Login_Page invokeApplication()
 	{
-		driver.get(properties.getProperty("Application_URL"));
-		Reporting("Application invoked as: "+properties.getProperty("Application_URL"), Status.DONE);
+		String data = dataTable.getData("Data");
+		dataTable.setData("Testing", data);
+        Reporting("Iteration data: "+data, Status.DONE);
+//		driver.get(properties.getProperty("Application_URL"));
+//		Reporting("Application invoked as: "+properties.getProperty("Application_URL"), Status.DONE);
 		return this;
 	}
 	

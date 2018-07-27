@@ -8,10 +8,10 @@ import supportLiberaries.TestCaseBase;
 public class TC_02_Login_FreeCRM_HomePage extends TestCaseBase 
 {
 	private SoftAssert softAssert = new SoftAssert();
-	@Test
+	
+	@Test(invocationCount = 1)
 	public void runTC_02_Login_FreeCRM_HomePage()
 	{
-		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to validate login to freeCRM application and Home Page.");
 		driverScript.startExecution(this.getClass().getName());
 		if (reporting.failTC) 

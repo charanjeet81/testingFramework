@@ -14,22 +14,38 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-public class DataTable
-{
-	String path ;
+public class DataTable {
+	String path;
 	String sheetName;
 	Sheet sheet;
 	String packageName;
 	String tcName;
-	
-	DataTable(String environment, String path)
+	int iteration;
+
+	/*DataTable(String environment, String path) 
 	{
 		this.sheetName = environment;
 		packageName = path.replace(".", "#").split("#")[0];
 		tcName = path.replace(".", "#").split("#")[1];
-		this.path = System.getProperty("user.dir")+"\\Resources\\TestDataSheets\\"+packageName+".xls";
-		try
+		this.path = System.getProperty("user.dir") + "\\Resources\\TestDataSheets\\" + packageName + ".xls";
+		try 
 		{
+			FileInputStream fis = new FileInputStream(new File(this.path));
+			Workbook workbook = WorkbookFactory.create(fis);
+			sheet = workbook.getSheet(sheetName);
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+	}*/
+
+	DataTable(String environment, String path, int iteration) 
+	{
+		this.iteration = iteration;
+		this.sheetName = environment;
+		packageName = path.replace(".", "#").split("#")[0];
+		tcName = path.replace(".", "#").split("#")[1];
+		this.path = System.getProperty("user.dir") + "\\Resources\\TestDataSheets\\" + packageName + ".xls";
+		try {
 			FileInputStream fis = new FileInputStream(new File(this.path));
 			Workbook workbook = WorkbookFactory.create(fis);
 			sheet = workbook.getSheet(sheetName);
@@ -46,72 +62,166 @@ public class DataTable
 
 			if (data.isEmpty()) {
 				data = "";
-				System.err.println("Data not Found in test data sheet. "+packageName+".xls");
+				System.err.println("Data not Found in test data sheet. " + packageName + ".xls");
 			}
 		} catch (Exception e) {
-			System.err.println("Error while getting Data from "+packageName+".xls");
+			System.err.println("Error while getting Data from " + packageName + ".xls");
 		}
 		return data;
+	}
+
+	public int getIterationCount(String testCaseToExecute) 
+	{
+		int coloumnIndex = 0;
+		try {
+			for (int count = 0; count < sheet.getPhysicalNumberOfRows(); count++) {
+				String fetchedValue = sheet.getRow(count).getCell(0).getStringCellValue().trim();
+				if (testCaseToExecute.trim().contains(fetchedValue)) {
+					coloumnIndex++;
+				}
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return coloumnIndex;
+	}
+	
+	public int getStartingCount(String testCaseToExecute) 
+	{
+		int startingCount = 0;
+		try 
+		{
+			for (int count = 0; count < sheet.getPhysicalNumberOfRows(); count++)
+			{
+				String fetchedValue = sheet.getRow(count).getCell(0).getStringCellValue().trim();
+				if (testCaseToExecute.trim().contains(fetchedValue)) 
+				{
+					startingCount = count;
+					break;
+				}
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return startingCount;
+	}
+
+//	public String getData(String field) // Charanjeet
+//	{
+//		String data = null;
+//		try {
+//			int totalRows = sheet.getLastRowNum();
+//			for (int count = 0; count < totalRows + 1; count++) {
+//				String fetchedValue = sheet.getRow(count).getCell(0).getStringCellValue();
+//				if (fetchedValue.equals(tcName)) {
+//					int cellIndex = getCellIndex(field);
+//					if (cellIndex == 0) {
+//						System.err.println(field + " field is not present in the datasheet " + packageName + ".xls");
+//					} else {
+//						data = getData(count, cellIndex);
+//					}
+//					break;
+//				}
+//			}
+//		} catch (Exception e) {
+//			System.err.println("Error while getting Data.");
+//		}
+//		return data;
+//	}
+	
+	public int getEquivalentIntValue(String strNumber)
+	{
+		int intNumber = 0;
+		switch (strNumber.toUpperCase()) 
+		{
+			case "ONE": intNumber = 1; break;
+			case "TWO": intNumber = 2; break;
+			case "THREE": intNumber = 3; break;
+			case "FOUR": intNumber = 4; break;
+			case "FIVE": intNumber = 5; break;
+			case "SIX": intNumber = 6; break;
+			case "SEVEN": intNumber = 7; break;
+			case "EIGHT": intNumber = 8; break;
+			case "NINE": intNumber = 9; break;
+			case "TEN": intNumber = 10; break;
+		
+			default: System.err.println("Iteration exceeding 10.");
+			break;
+		}
+		return intNumber;
 	}
 	
 	public String getData(String field) // Charanjeet
 	{
+		boolean flag = false;
 		String data = null;
-		try {
-			int totalRows = sheet.getLastRowNum();
-			for (int count = 0; count<totalRows+1; count++)
-			{
-				 String fetchedValue = sheet.getRow(count).getCell(0).getStringCellValue();
-				 if(fetchedValue.equals(tcName))
-				 {
-					 int cellIndex = getCellIndex(field);
-					 if(cellIndex==0)
-					 {
-						 System.err.println(field+" field is not present in the datasheet "+packageName+".xls");
-					 }
-					 else
-					 {
-						 data = getData(count, cellIndex);
-					 }
-					 break;
-				 }
-			}
-		} catch (Exception e) 
+		try
 		{
+			int totalRows = sheet.getLastRowNum();
+			for (int count = 0; count < totalRows + 1; count++) 
+			{
+				if(flag)
+				{
+					break;
+				}
+				else
+				{
+					String fetchedTCName =  sheet.getRow(count).getCell(0).getStringCellValue();
+					if (fetchedTCName.equals(tcName)) 
+					{
+						int cellIndex = getCellIndex(field);
+						int totalCount =  getIterationCount(tcName);
+						int startCount = getStartingCount(tcName);
+						for (int rowCount = startCount; rowCount < totalCount + startCount; rowCount++) 
+						{
+							String fetchedIteration = sheet.getRow(rowCount).getCell(1).getStringCellValue();
+							if(fetchedIteration.equals(String.valueOf(iteration)))
+							{
+								if (cellIndex == 0) 
+								{
+									System.err.println(field + " field is not present in the datasheet " + packageName + ".xls");
+								} else 
+								{
+									data = getData(rowCount, cellIndex);
+									flag = true;
+									break;
+								}
+							}
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
 			System.err.println("Error while getting Data.");
 		}
 		return data;
 	}
-	
+
 	private int getCellIndex(String fieldName) // Charanjeet
 	{
 		int coloumnIndex = 0;
 		try {
-			for (int count = 0; count<50; count++)
-			{
-				 String fetchedValue = sheet.getRow(0).getCell(count).getStringCellValue().trim();
-				 if(fetchedValue.equals(fieldName))
-				 {
-					 if(fetchedValue.isEmpty())
-					 {
-						 //throw new ColumnNotFoundException();
-						 System.err.println("Coloumn Not Found!!!");
-					 }
-					 else
-					 {
-						 coloumnIndex = count;
-					 }
-					 break;
-				 }
+			for (int count = 0; count < 50; count++) {
+				String fetchedValue = sheet.getRow(0).getCell(count).getStringCellValue().trim();
+				if (fetchedValue.equals(fieldName)) {
+					if (fetchedValue.isEmpty()) {
+//throw new ColumnNotFoundException();
+						System.err.println("Coloumn Not Found!!!");
+					} else {
+						coloumnIndex = count;
+					}
+					break;
+				}
 			}
 		} catch (Exception e) {
-			System.err.println(fieldName+ " field is not found in datasheet."+e);
+			System.err.println(fieldName + " field is not found in datasheet." + e);
 		}
 		return coloumnIndex;
 	}
 
 	public void setData(String columnName, String dataToSet)
 	{
+		boolean flag = false;
 		try 
 		{
 			FileInputStream file = new FileInputStream(new File(path));
@@ -122,28 +232,44 @@ public class DataTable
 			int totalRows = sheet.getLastRowNum();
 			for (int count = 0; count < totalRows + 1; count++) 
 			{
-				String fetchedValue = sheet.getRow(count).getCell(0).getStringCellValue();
-				if (fetchedValue.equals(tcName)) 
+				if(flag)
 				{
-					int cellIndex = getCellIndex(columnName);
-					if (cellIndex == 0)
-					{
-						System.err.println(columnName + " field is not present in the datasheet " + packageName + ".xls");
-					} 
-					else 
-					{
-						Row row = sheet.getRow(count);
-						row.createCell(cellIndex).setCellValue(dataToSet);
-						file.close();
-						FileOutputStream outFile = new FileOutputStream(new File(path));
-						workbook.write(outFile);
-						outFile.close();
-					}
 					break;
 				}
+				else
+				{
+					String fetchedTCName = sheet.getRow(count).getCell(0).getStringCellValue();
+					if (fetchedTCName.equals(tcName)) 
+					{
+						int cellIndex = getCellIndex(columnName);
+						int totalCount =  getIterationCount(tcName);
+						int startCount = getStartingCount(tcName);
+						for (int rowCount = startCount; rowCount < startCount+totalCount; rowCount++) 
+						{
+							String fetchedIteration = sheet.getRow(rowCount).getCell(1).getStringCellValue();
+							if(fetchedIteration.equals(String.valueOf(iteration)))
+							{
+								if (cellIndex == 0) 
+								{
+									System.err.println(columnName + " field is not present in the datasheet " + packageName + ".xls");
+								} 
+								else 
+								{
+									Row row = sheet.getRow(rowCount);
+									row.createCell(cellIndex).setCellValue(dataToSet);
+									file.close();
+									FileOutputStream outFile = new FileOutputStream(new File(path));
+									workbook.write(outFile);
+									outFile.close();
+									flag = true;
+								    break;
+								}
+							}
+						}
+					}
+				}
 			}
-		} 
-		catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();

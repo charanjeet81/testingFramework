@@ -9,10 +9,10 @@ import supportLiberaries.TestCaseBase;
 public class TC_03_Login_Twitter extends TestCaseBase 
 {
 	private SoftAssert softAssert = new SoftAssert();
-	@Test
+	
+	@Test(invocationCount = 1)
 	public void runTC_03_Login_Twitter() 
 	{
-		// setIteration(TestIteration.RunSingleIteration);
 		setDescription("This TC is to validate login to Twitter.");
 		driverScript.startExecution(this.getClass().getName());
 		if (reporting.failTC) 

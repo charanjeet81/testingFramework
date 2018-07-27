@@ -36,20 +36,18 @@ public class ServiceBase extends SUPER_Page
 		super(scriptHelper);
 		PageFactory.initElements(driver, this);
 	}
-	public String currentTest = "";
-	public static String templateFolder = "Template/";
-	public static String requestFolder = "Request/";
-	public static String responseFolder = "Response/";
+//	public String currentTest = "";
+//	public static String templateFolder = "Template/";
+//	public static String requestFolder = "Request/";
+//	public static String responseFolder = "Response/";
+//	public String requestTemplatePath = templateFolder;
+//	public String APIURL = getURI("API");
 	public static String totalTimeTaken;
 	public String accessToken = null;
 	public String instanceURL = null;
 	public String salesforceUser = null;
-	public String requestFilePath = ""; // requestFolder + "Request_" + //ExtentUtility.timeStamp + "_" + currentTest +
-										// ".json";
-	public String responseFilePath = ""; // responseFolder + "Response_" + //ExtentUtility.timeStamp + "_" + currentTest
-											// + ".json";
-	//public String APIURL = getURI("API");
-	public String requestTemplatePath = templateFolder;
+	public String requestFilePath = ""; 
+	public String responseFilePath = ""; 
 	public String accountID = null;
 	public String accountName = null;
 	public Map<String, String> queryParams = new HashMap<>();
@@ -58,7 +56,8 @@ public class ServiceBase extends SUPER_Page
 	public String getURI(String key)
 	{
 		String value = "";
-		try {
+		try 
+		{
 			FileInputStream fileInputStream = new FileInputStream("./Requests/RequestURIs.properties");
 			Properties property = new Properties();
 			property.load(fileInputStream);
@@ -381,7 +380,6 @@ public class ServiceBase extends SUPER_Page
 		Reporting(value+" value is fetched from sheet for column:"+field, Status.DONE);
 		return value;
 	}
-
 	
 	// For Multiplse Same Keys. 
 	public void getValuesFromResponse(Response response, String key)
@@ -389,68 +387,86 @@ public class ServiceBase extends SUPER_Page
 		String[] allValues = StringUtils.substringsBetween(response.asString(), "\""+key+"\"", ",");
 	}
 
-	public void validateResponse(DocumentContext documentContext, String assertionType, Response response) 
+	public void validateResponse(String responseFilePath, Response response) 
 	{
-		String valueType = "";
-		String jsonPath = "";// = dataTable.getData("Key");
-		String value = "";//= dataTable.getData("Value");
-		try
+		String value = "";
+		String jsonPath = "";
+		String files = getJsonFile(Reporting.currentTCReportPathForServices+"\\"+responseFilePath+".json");
+        DocumentContext documentContext = JsonPath.parse(files);
+		
+        String[] validationTypes = {"HEADERS", "STATUS_CODE", "KEY_OCC", "VALUE_OCC", "CONTAINS_VALUE"};
+		for (String validationType : validationTypes)
 		{
-			switch (assertionType) 
+			try
 			{
-			case "Header":
-				jsonPath = "vary";
-				value = "Accept-Language";
-				validateHeader(response, jsonPath, value);
-				break;
-
-			case "StatusCode":
-				value = "200";
-				HttpStatusCodeValidation(response, value);
-				break;
-				
-			case "Element_Occurrence":
-				jsonPath = "name";
-				value = "GOOGLE";
-				occurenceKeyCount(documentContext, jsonPath, Reporting.currentTCReportPathForServices+"\\Response.json");
-				occurenceValueCount(documentContext, value);
-				/*if (valueType.equalsIgnoreCase("key")) 
+				switch (validationType) 
 				{
-					occurenceKeyCount(documentContext, jsonPath, Reporting.currentTCReportPathForServices+"\\Response.json");
-				} 
-				else if (valueType.equalsIgnoreCase("value")) {
-					occurenceValueCount(documentContext, value);
-				}*/
-				break;
+				case "HEADERS":
+					String data = dataTable.getData("HEADERS");
+					if(data.isEmpty())
+					{ }
+					else
+					{
+						jsonPath = data.split(":")[0];
+						value = data.split(":")[1];
+						validateHeader(response, jsonPath, value);
+					}
+					break;
 
-			case "Contains_Value":
-//				jsonPath = "scope";
-//				value = "APP";
-				jsonPath = "status";
-				value = "OK";
-				containsString(documentContext, jsonPath, value);
-				break;
-/*
-			case "Content_Presence":
-				jsonPath = "scope";
-				value = "APP";
-				contentPresence(documentContext, jsonPath, value);
-				break;
-				
-			case "Element_Value":
-				jsonPath = "scope";
-				value = "APP";
-				valueType = "String";
-				validateContent(documentContext, jsonPath, valueType, value);
-				break;*/
+				case "STATUS_CODE":
+					data = dataTable.getData("STATUS_CODE");
+					if(data.isEmpty())
+					{ }
+					else
+					{
+						value = data;
+						HttpStatusCodeValidation(response, value);
+					}
+					break;
+					
+				case "KEY_OCC":
+					data = dataTable.getData("KEY_OCC");
+					if(data.isEmpty())
+					{ }
+					else
+					{
+						jsonPath = data;
+						occurenceKeyCount(documentContext, jsonPath, Reporting.currentTCReportPathForServices+"\\"+responseFilePath+".json");
+					}
+					break;
+					
+				case "VALUE_OCC":
+					data = dataTable.getData("VALUE_OCC");
+					if(data.isEmpty())
+					{ }
+					else
+					{
+						jsonPath = data.split(":")[0];
+						value = data.split(":")[1];
+						occurenceValueCount(documentContext, value);
+					}
+					break;
 
-			default:
-				System.out.println("Invalid validation.");
+				case "CONTAINS_VALUE":
+					data = dataTable.getData("CONTAINS_VALUE");
+					if(data.isEmpty())
+					{ }
+					else
+					{
+						jsonPath = data.split(":")[0];
+						value = data.split(":")[1];
+						containsString(documentContext, jsonPath, value);
+					}
+					break;
+
+				default:
+					System.out.println("Invalid validation.");
+				}
 			}
-		}
-		catch (Exception e) 
-		{
-			Reporting("Exception occured because of incorrect inputs for: <b>"+assertionType+"</b>", Status.FAIL);
+			catch (Exception e) 
+			{
+				Reporting("Exception occured because of incorrect inputs for: <b>"+validationType+"</b>", Status.FAIL);
+			}
 		}
 	}
 

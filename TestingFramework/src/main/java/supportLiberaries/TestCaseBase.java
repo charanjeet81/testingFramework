@@ -56,6 +56,7 @@ public class TestCaseBase
 	public String browser;
 	public String propBrowser;
 	ExtentReporterNG extentReport;
+	static int invocationCount = 1;
 	
 	@BeforeSuite
 	public void reportInitializations() 
@@ -91,7 +92,8 @@ public class TestCaseBase
 		environment = properties.getProperty("Environment");
 		
 		//Setting-up DataTables.
-		dataTable = new DataTable(environment, canonicalName);
+		dataTable = new DataTable(environment, canonicalName, invocationCount);
+		invocationCount++;
 		
 		// For TestNG parallel execution.
 		propBrowser = properties.getProperty("Browser");
@@ -116,8 +118,6 @@ public class TestCaseBase
 				driver = getDriver(browser);
 				driver.manage().window().maximize();
 				driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-				
-				
 				break;
 				
 			case "Grid":
@@ -132,7 +132,7 @@ public class TestCaseBase
 			reporting.updateReport("SetScriptHelper", "Execution Mode is other than; Local, Grid and Docker.", Status.FAIL);
 				break;
 		}
-		// ====================
+
 		startTimeTC =  DateFormat.getDateTimeInstance().format(new Date());
 		strStartTime = startTimeTC.split(" ")[3];
 		

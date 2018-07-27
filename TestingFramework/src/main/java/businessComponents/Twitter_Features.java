@@ -71,10 +71,7 @@ public class Twitter_Features extends ReusableLiberaries
         serviceBase.basicAssertions(response, Integer.parseInt(responseTime));
 
         //Tester-Defined Assertions for the API response
-        serviceBase.validateResponse(documentContext, "Header", response);  
-        serviceBase.validateResponse(documentContext, "StatusCode", response);
-        serviceBase.validateResponse(documentContext, "Contains_Value", response);  
-        serviceBase.validateResponse(documentContext, "Element_Occurrence", response);  
+        serviceBase.validateResponse("Response1", response);  
 	}
 	
 	public void tC_06_POST_Create_Place()
@@ -99,10 +96,7 @@ public class Twitter_Features extends ReusableLiberaries
         serviceBase.basicAssertions(response, Integer.parseInt(responseTime));
 
         //Tester-Defined Assertions for the API response
-        serviceBase.validateResponse(documentContext, "Header", response);  
-        serviceBase.validateResponse(documentContext, "StatusCode", response);
-        serviceBase.validateResponse(documentContext, "Contains_Value", response);  
-        serviceBase.validateResponse(documentContext, "Element_Occurrence", response);  
+        serviceBase.validateResponse("Response1", response);
 	}
 	
 	public void tC_07_POST_Delete_Place()
@@ -121,15 +115,20 @@ public class Twitter_Features extends ReusableLiberaries
 		String requestString = serviceBase.generateRequestBody(googleReqPath+"\\POST_CreatePlace.json", bodyParameter);
 		Response response = serviceBase.executeAPI("POST", completeURI, queryParameter, requestString);
 		
+		serviceBase.validateResponse("Response1", response);
+		
         String placeId = serviceBase.getValueFromResponse("Response1.json", response, "place_id");
         System.out.println(placeId);
         properties.setProperty("Delete_BodyParameters", "place_id:"+placeId);
-		//serviceBase.putRespond("Delete_BodyParameters", "place_id:"+placeId);
+		serviceBase.putRespond("Delete_BodyParameters", "place_id:"+placeId);
 		//String placeId1 = serviceBase.fetchValue("Delete_BodyParameters");
 		
 		completeURI = serviceBase.getURI("DeletePlace_URI");
 		bodyParameter = serviceBase.getBodyParameters("Delete_BodyParameters", false);
 		requestString = serviceBase.generateRequestBody(googleReqPath+"\\POST_DeletePlace.json", bodyParameter);
+		
+		response = serviceBase.executeAPI("POST", completeURI, queryParameter, requestString);
+		serviceBase.HttpStatusCodeValidation(response);
 		
 		response = serviceBase.executeAPI("POST", completeURI, queryParameter, requestString);
 		serviceBase.HttpStatusCodeValidation(response);

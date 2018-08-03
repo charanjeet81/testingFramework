@@ -14,8 +14,8 @@ public class FreeCRM_Features extends ReusableLiberaries
 	public void tC_01_Login_FreeCRM()
 	{
 		Login_Page login = new Login_Page(scriptHelper);
-		login.invokeApplication();
-//			 .login_To_Application();
+		login.invokeApplication()
+			 .login_To_Application();
 	}
 	
 	public void tC_02_Login_FreeCRM_HomePage()

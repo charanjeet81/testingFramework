@@ -7,13 +7,25 @@
   <test thread-count="2" name="Test-Chrome(failed)" parallel="tests">
     <parameter name="browser" value="Chrome"/>
     <classes>
+      <class name="testScripts.FREE_CRM.TC_01_Login_FreeCRM">
+        <methods>
+          <include name="tC_01_Login_FreeCRM"/>
+          <include name="windUp"/>
+          <include name="setScriptHelper"/>
+          <include name="testMethodTearDown"/>
+          <include name="wrapUp"/>
+          <include name="reportInitializations"/>
+          <include name="initializations"/>
+        </methods>
+      </class> <!-- testScripts.FREE_CRM.TC_01_Login_FreeCRM -->
       <class name="testScripts.TWITTER.TC_04_Login_Twitter_Checking_Headers">
         <methods>
           <include name="windUp"/>
           <include name="setScriptHelper"/>
           <include name="testMethodTearDown"/>
-          <include name="runTC_04_Login_Twitter_Checking_Headers"/>
           <include name="wrapUp"/>
+          <include name="TEST_TC_04_Login_Twitter_Checking_Headers"/>
+          <include name="reportInitializations"/>
           <include name="initializations"/>
         </methods>
       </class> <!-- testScripts.TWITTER.TC_04_Login_Twitter_Checking_Headers -->

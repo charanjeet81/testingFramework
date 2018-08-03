@@ -3,17 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place">
+      <class name="testScripts.BASIC_SANITY_TEST.TC02_Sanity_Test_For_SIGMA_CPQ_Salesforce_Plugin">
         <methods>
           <include name="windUp"/>
           <include name="setScriptHelper"/>
           <include name="testMethodTearDown"/>
           <include name="wrapUp"/>
-          <include name="runTC_08_POST_Create_Place_Delete_Place"/>
+          <include name="Testing_TC02_Sanity_Test_For_SIGMA_CPQ_Salesforce_Plugin"/>
           <include name="reportInitializations"/>
           <include name="initializations"/>
         </methods>
-      </class> <!-- testScripts.TWITTER.TC_08_POST_Create_Place_Delete_Place -->
+      </class> <!-- testScripts.BASIC_SANITY_TEST.TC02_Sanity_Test_For_SIGMA_CPQ_Salesforce_Plugin -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

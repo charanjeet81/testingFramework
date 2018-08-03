@@ -12,6 +12,7 @@ public class TC_04_Login_Twitter_Checking_Headers extends TestCaseBase
 	@Test(invocationCount = 1)
 	public void TEST_TC_04_Login_Twitter_Checking_Headers() 
 	{
+		runAllIteration(false);
 		setDescription("This TC is to validate headers of the Twitter application..");
 		driverScript.startExecution(this.getClass().getName());
 		if (reporting.failTC) 

@@ -18,8 +18,6 @@ import org.testng.Assert;
 
 public class DriverScript extends ReusableLiberaries
 {
-	//public String browser;
-	
 	public DriverScript(ScriptHelper scriptHelper)
 	{
 		super(scriptHelper);

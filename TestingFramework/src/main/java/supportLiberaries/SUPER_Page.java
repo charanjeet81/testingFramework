@@ -24,13 +24,9 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -78,8 +74,7 @@ public class SUPER_Page extends ReusableLiberaries
 	 * This method is to validate URL part, passed as a parameter
 	 * 
 	 * @author Charanjeet
-	 * @param Text
-	 *            to validate
+	 * @param Text to validate
 	 **/
 	public void validate_URL(String textToValidate) 
 	{
@@ -100,7 +95,7 @@ public class SUPER_Page extends ReusableLiberaries
 	 **/
 	public void clickElementIfDisplayed(WebElement element) 
 	{
-		//WaitTool.waitForElementisClickable(driver, element, 9);
+		//waitForElementisClickable(driver, element, 9);
 		try {
 			if (element.isDisplayed()) {
 				Reporting("Element is displyed to click.", Status.DONE);
@@ -116,10 +111,8 @@ public class SUPER_Page extends ReusableLiberaries
 	 * This method is to check placeholder
 	 * 
 	 * @author Charanjeet
-	 * @param Placeholder
-	 *            to validate
-	 * @param Input
-	 *            field for which you want to check placeholder
+	 * @param Placeholder to validate
+	 * @param Input field for which you want to check placeholder
 	 **/
 	public void validate_Placeholder(String placeHolder, WebElement inputField) {
 		//WaitTool.waitForElementDisplayed(driver, inputField, 18);
@@ -133,8 +126,7 @@ public class SUPER_Page extends ReusableLiberaries
 	 * This method is to check title of the page
 	 * 
 	 * @author Charanjeet
-	 * @param Title
-	 *            to validate
+	 * @param Title to validate
 	 **/
 	public void validate_PageTitle(String titleToValidate) {
 		driver.manage().timeouts().pageLoadTimeout(-1, TimeUnit.SECONDS);
@@ -318,10 +310,11 @@ public class SUPER_Page extends ReusableLiberaries
 			Reporting(msg, Status.FAIL);
 	}
 
-	public void clickElementUsing_JSE(WebElement webelement, String description) {
+	public void clickElementUsing_JSE(WebElement webelement, String description)
+	{
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", webelement);
-		Reporting("<u>" + description + "</u> element is clicked using JSE.", Status.DONE);
+		Reporting(description + ", element is clicked using JSE.", Status.DONE);
 	}
 
 	public void clickTo(String link, String linkTag) {
@@ -367,7 +360,8 @@ public class SUPER_Page extends ReusableLiberaries
 
 	}
 
-	public void checkElementExistenance(WebElement element) {
+	public void checkElementExistenance(WebElement element) 
+	{
 		try {
 			//WaitTool.waitForElementDisplayed(driver, element, 13);
 			if (element.isDisplayed()) {
@@ -388,7 +382,8 @@ public class SUPER_Page extends ReusableLiberaries
 		Reporting("<u>" + text + "</u> is selected from dropdown.", Status.DONE);
 	}
 
-	public void SCROLL_PAGE(String value) {
+	public void SCROLL_PAGE(String value)
+	{
 		// for Scroll down the current page
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(0, " + value + ")", "");
@@ -396,7 +391,8 @@ public class SUPER_Page extends ReusableLiberaries
 		sync(2);
 	}
 	
-	public void scrollToElement(WebElement element) {
+	public void scrollToElement(WebElement element) 
+	{
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		sync(2);
 	}
@@ -440,8 +436,6 @@ public class SUPER_Page extends ReusableLiberaries
 			js.executeScript("arguments[0].style.border=''", element);
 		}
 	}
-
-	
 
 	public static String getData(String path, String sheetName, int rowNumber, int cellNumber) // Charanjeet
 	{
@@ -550,29 +544,27 @@ public class SUPER_Page extends ReusableLiberaries
 		}
 	}
 
-	public void verifyLinkActive(String linkUrl) {
-		try {
+	public void verifyLinkActive(String linkUrl)
+	{
+		try 
+		{
 			URL url = new URL(linkUrl);
-
 			HttpURLConnection httpURLConnect = (HttpURLConnection) url.openConnection();
-
 			httpURLConnect.setConnectTimeout(5000);
-
 			httpURLConnect.connect();
-
 			if (httpURLConnect.getResponseCode() == 200) {
 				Reporting(linkUrl + " - " + httpURLConnect.getResponseMessage(), Status.PASS);
 			}
-			if (httpURLConnect.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
+			if (httpURLConnect.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) 
+			{
 				Reporting(linkUrl + " - " + httpURLConnect.getResponseMessage() + " - "
 						+ HttpURLConnection.HTTP_NOT_FOUND, Status.FAIL);
 			}
-		} catch (Exception e) {
-
-		}
+		} catch (Exception e) { }
 	}
 
-	public void verifyBrokenLinks(String pageName) {
+	public void verifyBrokenLinks(String pageName) 
+	{
 		// List<WebElement> allPageLNKS = driver.findElements(By.tagName("a"));
 		List<WebElement> allPageLNKS = driver.findElements(By.tagName("img"));
 		Reporting("Total Links in the" + pageName + "are >> " + allPageLNKS.size(), Status.DONE);
@@ -600,14 +592,12 @@ public class SUPER_Page extends ReusableLiberaries
 	
 	/**
 	 * This method is to validate URL 
-	 * 
-	 * @author Chetan
+	 * @author Charanjeet
 	 * @param  String-url to compare with current url
-	 *            
 	 **/
 	
-	public void compare_URL(String urlToCompare) {
-		//waitForPageToBeReady();
+	public void compare_URL(String urlToCompare) 
+	{
 		String url = driver.getCurrentUrl();
 		if (driver.getCurrentUrl().equals(urlToCompare.trim()))
 			Reporting("URL is displaying as expected. ie <br/>"+url, Status.DONE);

@@ -57,26 +57,30 @@ public class TestCaseBase
 	public String propBrowser;
 	ExtentReporterNG extentReport;
 	static int invocationCount = 1;
+	protected boolean allIterations = false;
 	
 	@BeforeSuite
 	public void reportInitializations() 
 	{
-//		extentReport = new ExtentReporterNG();
-//		extentReport.getReporter();
 	}
 	
 	@BeforeTest
 	public void initializations(ITestContext ctx) 
 	{
-//		String module = ctx.getCurrentXmlTest().getParameter("classes");
-//		extentReport.test = extentReport.startTest("FREE_CRM:TC_01_Login_FreeCRM");
-//		extentReport.test = extentReport.startTest(module + " : " + ctx.getCurrentXmlTest().getParameter("testname"));
+		
 	}
 	
 	@BeforeMethod
 	@Parameters("browser")
 	public void setScriptHelper(@Optional String strBrowser, ITestContext ctx)
 	{
+		if(allIterations)
+		{ }
+		else
+		{
+			invocationCount = 1;
+		}
+	
 		//Setting-up testcase name.
 		canonicalName = this.getClass().getCanonicalName().split("testScripts.")[1];
 		
@@ -174,16 +178,13 @@ public class TestCaseBase
 	@AfterTest
 	public void wrapUp()
 	{ 
-//		extentReport.extent.endTest(extentReport.getTest());
+		
 	}
 	
 	
 	@AfterSuite
 	public void windUp()
 	{
-//		extentReport.getReporter().flush();
-//		ITestResult  result = Reporter.getCurrentTestResult();
-//		result.getStatus();
 	}
 	
 	public void setDescription(String description)
@@ -191,9 +192,9 @@ public class TestCaseBase
 		reporting.tcDescription = description;
 	}
 	
-	public void setIteration(TestIteration testIteration)
+	public void runAllIteration(boolean allIterations)
 	{
-		
+		this.allIterations = allIterations;
 	}
 	
 	public WebDriver getDriver(String browser)
@@ -205,7 +206,7 @@ public class TestCaseBase
 		if(this.browser.equalsIgnoreCase("chrome"))
 		{
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\Resources\\Browsers\\chromedriver.exe");
-//			String[] switches = { "--ignore-certificate-errors","disable-popup-blocking",};
+			String[] switches = { "--ignore-certificate-errors","disable-popup-blocking",};
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("no-sandbox");
 			options.addArguments("test-type");
@@ -217,7 +218,6 @@ public class TestCaseBase
 			prefs.put("profile.password_manager_enabled", false);
 			options.setExperimentalOption("prefs", prefs);
 			driver = new ChromeDriver(options);
-			
 		}
 		else if(this.browser.equalsIgnoreCase("firefox"))
 		{

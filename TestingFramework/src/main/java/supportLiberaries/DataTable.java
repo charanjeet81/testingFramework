@@ -22,22 +22,6 @@ public class DataTable {
 	String tcName;
 	int iteration;
 
-	/*DataTable(String environment, String path) 
-	{
-		this.sheetName = environment;
-		packageName = path.replace(".", "#").split("#")[0];
-		tcName = path.replace(".", "#").split("#")[1];
-		this.path = System.getProperty("user.dir") + "\\Resources\\TestDataSheets\\" + packageName + ".xls";
-		try 
-		{
-			FileInputStream fis = new FileInputStream(new File(this.path));
-			Workbook workbook = WorkbookFactory.create(fis);
-			sheet = workbook.getSheet(sheetName);
-		} catch (Exception e) {
-			System.err.println(e);
-		}
-	}*/
-
 	DataTable(String environment, String path, int iteration) 
 	{
 		this.iteration = iteration;
@@ -106,29 +90,6 @@ public class DataTable {
 		return startingCount;
 	}
 
-//	public String getData(String field) // Charanjeet
-//	{
-//		String data = null;
-//		try {
-//			int totalRows = sheet.getLastRowNum();
-//			for (int count = 0; count < totalRows + 1; count++) {
-//				String fetchedValue = sheet.getRow(count).getCell(0).getStringCellValue();
-//				if (fetchedValue.equals(tcName)) {
-//					int cellIndex = getCellIndex(field);
-//					if (cellIndex == 0) {
-//						System.err.println(field + " field is not present in the datasheet " + packageName + ".xls");
-//					} else {
-//						data = getData(count, cellIndex);
-//					}
-//					break;
-//				}
-//			}
-//		} catch (Exception e) {
-//			System.err.println("Error while getting Data.");
-//		}
-//		return data;
-//	}
-	
 	public int getEquivalentIntValue(String strNumber)
 	{
 		int intNumber = 0;

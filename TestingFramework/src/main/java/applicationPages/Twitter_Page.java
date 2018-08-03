@@ -58,8 +58,8 @@ public class Twitter_Page extends SUPER_Page
 	public Twitter_Page searchPerson()
 	{
 		searchField.sendKeys("@charanjeet_92", Keys.ENTER);
-		Reporting("Searching for user.", Status.SCREENSHOT);
-		Reporting("Failing TC purposefully.", Status.FAIL);
+//		Reporting("Searching for user.", Status.SCREENSHOT);
+//		Reporting("Failing TC purposefully.", Status.FAIL);
 		return this;
 	}
 	

@@ -12,6 +12,7 @@ public class TC_01_Login_FreeCRM extends TestCaseBase
 	@Test(invocationCount = 3)
 	public void tC_01_Login_FreeCRM() 
 	{
+		runAllIteration(true);
 		setDescription("This TC is to validate login to freeCRM application.");
 		driverScript.startExecution(this.getClass().getName());
 		if(reporting.failTC)

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import supportLiberaries.SUPER_Page;
 import supportLiberaries.ScriptHelper;
 import supportLiberaries.Status;
+import supportLiberaries.WaitTools;
 
 public class Login_Page extends SUPER_Page
 {
@@ -29,19 +30,15 @@ public class Login_Page extends SUPER_Page
 	
 	public Login_Page invokeApplication()
 	{
-		String data = dataTable.getData("Data");
-		dataTable.setData("Testing", data);
-        Reporting("Iteration data: "+data, Status.DONE);
-//		driver.get(properties.getProperty("Application_URL"));
-//		Reporting("Application invoked as: "+properties.getProperty("Application_URL"), Status.DONE);
+		driver.get(properties.getProperty("Application_URL"));
+		Reporting("Application invoked as: "+properties.getProperty("Application_URL"), Status.DONE);
 		return this;
 	}
 	
 	public Home_Page login_To_Application()
 	{
 		String userName = dataTable.getData("UserName");
-		userName = dataTable.getData("UserName");
-		
+		WaitTools.waitForElementDisplayed(driver, username, 21);
 		username.sendKeys(userName);
 		Reporting("Username set as: "+userName, Status.DONE);
 		

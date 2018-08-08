@@ -1,0 +1,25 @@
+ValueA
+
+
+Request SOAP Message ========> 
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.dataaccess.com/webservicesserver/">   <soapenv:Header/>   <soapenv:Body>      <web:NumberToDollars>         <web:dNum>13</web:dNum>      </web:NumberToDollars>   </soapenv:Body></soapenv:Envelope>Response SOAP Message =========> 
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <m:NumberToDollarsResponse xmlns:m="http://www.dataaccess.com/webservicesserver/">
+      <m:NumberToDollarsResult>thirteen dollars</m:NumberToDollarsResult>
+    </m:NumberToDollarsResponse>
+  </soap:Body>
+</soap:Envelope>com.sun.xml.internal.messaging.saaj.soap.ver1_1.Message1_1Impl@5da7cee2
+PASSED: runTC_03_Login_Twitter
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================
+

@@ -28,6 +28,7 @@ public class Reporting
 {
 	public boolean failTC = false;
 	int count = 1;
+	String tcStatus;
 	String startTime;
 	String testStep = "";
 	String testSteps = "";
@@ -202,7 +203,6 @@ public class Reporting
 	
 	public String completeHTMLReport(Reporting times, ITestResult result)
 	{
-		String tcStatus = "";
 		StringBuffer completeHTML = new StringBuffer();
 		String currentHTML = currentTCReport.toString()+"\\Report.html";
 		BufferedReader reader = null;
@@ -216,15 +216,15 @@ public class Reporting
 		{
 			if (result.getStatus() == ITestResult.SUCCESS) 
 			{
-				tcStatus = "<font color='green'><b>Test-Case Passed</b></font>";
+				this.tcStatus = "<font color='green'><b>Test-Case Passed</b></font>";
 			}
 			else if (result.getStatus() == ITestResult.FAILURE) 
 			{
-				tcStatus = "<font color='red'><b>Test-Case Failed</b></font>";
+				this.tcStatus = "<font color='red'><b>Test-Case Failed</b></font>";
 			}
 			else if (result.getStatus() == ITestResult.SKIP) 
 			{
-				tcStatus = "<font color='yello'><b>Test-Case Skipped</b></font>";
+				this.tcStatus = "<font color='yello'><b>Test-Case Skipped</b></font>";
 			}
 			new PrintStream(new FileOutputStream(currentTCReport.getPath()+"\\status.txt")).print(StringUtils.substringBetween(tcStatus, "<b>", "</b>").replace("Test-Case", "").trim());
 		} catch (Exception e) {

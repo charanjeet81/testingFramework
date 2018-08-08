@@ -605,46 +605,61 @@ public class SUPER_Page extends ReusableLiberaries
 			Reporting("URL is not displaying as expected. ie <br/>"+url, Status.FAIL);
 	}
 	
-	private static void zipFile(File fileToZip, String fileName, ZipOutputStream zipOut) throws IOException 
+	void zipFile(File fileToZip, String fileName, ZipOutputStream zipOut)  
 	{
-        if (fileToZip.isHidden()) {
+        if (fileToZip.isHidden()) 
+        {
             return;
         }
-        if (fileToZip.isDirectory()) {
+        if (fileToZip.isDirectory()) 
+        {
             File[] children = fileToZip.listFiles();
-            for (File childFile : children) {
+            for (File childFile : children) 
+            {
                 zipFile(childFile, fileName + "/" + childFile.getName(), zipOut);
             }
             return;
         }
-        FileInputStream fis = new FileInputStream(fileToZip);
-        ZipEntry zipEntry = new ZipEntry(fileName);
-        zipOut.putNextEntry(zipEntry);
-        byte[] bytes = new byte[1024];
-        int length;
-        while ((length = fis.read(bytes)) >= 0) {
-            zipOut.write(bytes, 0, length);
-        }
-        fis.close();
+        try 
+        {
+        	FileInputStream fis = new FileInputStream(fileToZip);
+            ZipEntry zipEntry = new ZipEntry(fileName);
+            zipOut.putNextEntry(zipEntry);
+            byte[] bytes = new byte[1024];
+            int length;
+            while ((length = fis.read(bytes)) >= 0) {
+                zipOut.write(bytes, 0, length);
+            }
+            fis.close();
+		} catch (IOException e) 
+        {
+			Reporting("Report Compression got failed."+e.getMessage(), Status.FAIL);
+		}
     }
 	
-	public void pack(String sourceDirPath, String zipFilePath) throws IOException 
+	public void zipReport(String sourceDirPath, String zipFilePath) 
 	{
-	    Path p = Files.createFile(Paths.get(zipFilePath));
-	    try (ZipOutputStream zs = new ZipOutputStream(Files.newOutputStream(p))) {
-	        Path pp = Paths.get(sourceDirPath);
-	        Files.walk(pp)
-	          .filter(path -> !Files.isDirectory(path))
-	          .forEach(path -> {
-	              ZipEntry zipEntry = new ZipEntry(pp.relativize(path).toString());
-	              try {
-	                  zs.putNextEntry(zipEntry);
-	                  Files.copy(path, zs);
-	                  zs.closeEntry();
-	            } catch (IOException e) {
-	                System.err.println(e);
-	            }
-	          });
-	    }
+		try 
+		{
+			Path p = Files.createFile(Paths.get(zipFilePath));
+		    try (ZipOutputStream zs = new ZipOutputStream(Files.newOutputStream(p))) {
+		        Path pp = Paths.get(sourceDirPath);
+		        Files.walk(pp)
+		          .filter(path -> !Files.isDirectory(path))
+		          .forEach(path -> {
+		              ZipEntry zipEntry = new ZipEntry(pp.relativize(path).toString());
+		              try {
+		                  zs.putNextEntry(zipEntry);
+		                  Files.copy(path, zs);
+		                  zs.closeEntry();
+		            } catch (IOException e) {
+		                System.err.println(e);
+		            }
+		          });
+		    }
+		} catch (Exception e2) 
+		{
+			//Reporting("Error occured while zipping the report.", Status.FAIL);
+		}
 	}
 }

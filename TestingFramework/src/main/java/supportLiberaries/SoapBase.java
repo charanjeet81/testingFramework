@@ -241,7 +241,7 @@ public class SoapBase extends SUPER_Page
 		return TagValue;
 	}
 
-	public void createNewAccount_CBMA(String accountNumber)
+	/*public void createNewAccount_CBMA(String accountNumber)
 	{
 		try {
 			RestComponents RestComponents = new RestComponents(scriptHelper);
@@ -279,7 +279,7 @@ public class SoapBase extends SUPER_Page
 		{
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	public void addTwoNumbers()
 	{

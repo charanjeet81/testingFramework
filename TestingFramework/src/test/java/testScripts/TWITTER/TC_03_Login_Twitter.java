@@ -2,8 +2,6 @@ package testScripts.TWITTER;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import supportLiberaries.Reporting;
 import supportLiberaries.TestCaseBase;
 
 public class TC_03_Login_Twitter extends TestCaseBase 

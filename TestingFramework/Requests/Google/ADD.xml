@@ -1,69 +1,8 @@
-<soapenv:Envelope
-	xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-	xmlns:btp="http://tresoap.intecbilling.com/2.0/BTP">
-	<soapenv:Header />
-	<soapenv:Body>
-		<btp:createCustomerRequest_InsertRequest>
-			<btp:EFFECTIVE_DATE>2018-01-01</btp:EFFECTIVE_DATE>
-			<btp:CUSTOMER>
-				<btp:BCM_ID>77785</btp:BCM_ID>
-				<btp:CUSTOMER_TYPE>Post-paid</btp:CUSTOMER_TYPE>
-				<btp:CUSTOMER_NODE_NAME>Simple Node</btp:CUSTOMER_NODE_NAME>
-				<btp:CURRENCY>USD</btp:CURRENCY>
-				<btp:BILLING_CYCLE></btp:BILLING_CYCLE>
-				<btp:PAYMENT_TERM>30D</btp:PAYMENT_TERM>
-				<btp:SELLING_LE>Inmarsat Sol (US) In</btp:SELLING_LE>
-				<btp:SAP_ACCOUNT_NUMBER>23454</btp:SAP_ACCOUNT_NUMBER>
-				<btp:BILLING_PROFILE>564541</btp:BILLING_PROFILE>
-				<btp:PROFIT_CENTRE>7512</btp:PROFIT_CENTRE>
-				<btp:DERIVED_ATTRIBUTES>
-					<btp:DERIVED_ATTRIBUTE>
-						<btp:DERIVED_ATTRIBUTE_NAME>Additional Details
-						</btp:DERIVED_ATTRIBUTE_NAME>
-						<btp:INDEX_VALUES>
-							<btp:INDEX1_VALUE>Billing Profile Name</btp:INDEX1_VALUE>
-						</btp:INDEX_VALUES>
-						<btp:RESULT_VALUES>
-							<btp:RESULT1_VALUE>564546</btp:RESULT1_VALUE>
-						</btp:RESULT_VALUES>
-					</btp:DERIVED_ATTRIBUTE>
-
-				</btp:DERIVED_ATTRIBUTES>
-				<btp:PERSON>
-					<btp:FAMILY_NAME>test123</btp:FAMILY_NAME>
-					<btp:GIVEN_NAMES>test3543</btp:GIVEN_NAMES>
-				</btp:PERSON>
-				<btp:BILLING_ADDRESS>
-					<btp:ADDRESS_LINE_1>dfhhf</btp:ADDRESS_LINE_1>
-					<btp:ADDRESS_LINE_2>dfhdhdf</btp:ADDRESS_LINE_2>
-					<btp:LOCALITY>dhdfhdfh</btp:LOCALITY>
-					<btp:CITY>sdfhsdhh</btp:CITY>
-					<btp:ZIP_CODE>145854</btp:ZIP_CODE>
-					<btp:STATE>FL</btp:STATE>
-					<btp:COUNTRY>CA</btp:COUNTRY>
-					<btp:ADDRESS_LINE_3>sfghsf</btp:ADDRESS_LINE_3>
-				</btp:BILLING_ADDRESS>
-				<btp:MAIN_ADDRESS>
-					<btp:ADDRESS_LINE_1>testing</btp:ADDRESS_LINE_1>
-
-					<btp:ADDRESS_LINE_2>fgdfgdf</btp:ADDRESS_LINE_2>
-					<btp:LOCALITY>manyata</btp:LOCALITY>
-
-					<btp:CITY>sdfhsdhd</btp:CITY>
-					<btp:ZIP_CODE>424524</btp:ZIP_CODE>
-					<btp:STATE>FL</btp:STATE>
-					<btp:COUNTRY>CA</btp:COUNTRY>
-				</btp:MAIN_ADDRESS>
-				<btp:ESB_METADATA_ATTR>
-
-				</btp:ESB_METADATA_ATTR>
-				<btp:INVOICING_NODE>Invoice</btp:INVOICING_NODE>
-			</btp:CUSTOMER>
-		</btp:createCustomerRequest_InsertRequest>
-	</soapenv:Body>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.dataaccess.com/webservicesserver/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:NumberToDollars>
+         <web:dNum>13</web:dNum>
+      </web:NumberToDollars>
+   </soapenv:Body>
 </soapenv:Envelope>
-
-
-
-
-

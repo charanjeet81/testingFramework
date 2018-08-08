@@ -381,7 +381,7 @@ public class ServiceBase extends SUPER_Page
 		return value;
 	}
 	
-	// For Multiplse Same Keys. 
+	// For Multiple Same Keys. 
 	public void getValuesFromResponse(Response response, String key)
 	{
 		String[] allValues = StringUtils.substringsBetween(response.asString(), "\""+key+"\"", ",");
@@ -1029,8 +1029,8 @@ public class ServiceBase extends SUPER_Page
 
 	// *******************Service Methods**************************//
 
-	/*
-	public Response createSalesforceObject(String objName, Map<String, String> bodyParameters, String requestFilePath,
+	
+	/*public Response createSalesforceObject(String objName, Map<String, String> bodyParameters, String requestFilePath,
 			String responseFilePath) throws Exception {
 		Response response = null;
 		try {
@@ -1054,7 +1054,8 @@ public class ServiceBase extends SUPER_Page
 		}
 		return response;
 	}
-
+*/
+	/*
 	public Response getSalesforceObject(String objName, String objID, String requestFilePath, String responseFilePath)
 			throws Exception
 	{

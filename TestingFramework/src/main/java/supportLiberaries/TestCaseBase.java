@@ -39,6 +39,8 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
+import com.zapi.base.ZapiBase;
+
 public class TestCaseBase  
 {
 	protected String environment;
@@ -163,6 +165,7 @@ public class TestCaseBase
 		} 
 		times = new Reporting(startTimeTC, timeTaken);
 		String completeHTMLReport = reporting.completeHTMLReport(times, result);
+		
 		File finalReport = new File(reporting.currentTCReport.getPath()+"\\Report.html");
 		try
 		{
@@ -171,6 +174,17 @@ public class TestCaseBase
 			e.printStackTrace();
 		}
 		properties.setProperty("Browser", propBrowser);
+		
+		SUPER_Page superPage = new SUPER_Page(scriptHelper);
+		superPage.zipReport(reporting.currentTCReport.getPath(), reporting.currentTCReport.getPath()+".zip");
+		try 
+		{
+			zapiUpdate(reporting.tcStatus);
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 		
 		driver.quit();
 	}
@@ -259,5 +273,56 @@ public class TestCaseBase
 			//driver = new InternetExplorerDriver();
 		}
 		return driver;
+	}
+	
+	public void zapiUpdate(String logstatus) throws Exception
+	{
+		String status = null;
+		String comment = null;
+		String currentTest = canonicalName.replace(".", "#").split("#")[1]; 
+		if (Boolean.parseBoolean(properties.getProperty("JIRA_Update"))) 
+		{
+			if (logstatus.contains("Passed")) 
+			{
+				status = JIRAStatus.PASS.getValue();
+			} 
+			else if (logstatus.contains("Failed"))
+			{
+				status = JIRAStatus.FAIL.getValue();
+			}
+			ZapiBase zapi = new ZapiBase(currentTest);
+			String issueKey = dataTable.getData("IssueKey");
+			String versionName = dataTable.getData("VersionName");
+			String cycleName = dataTable.getData("CycleName");
+			//reporting.updateReport("ZapiUpdate", "Test Status update for, IssueKey: "+issueKey+", VersionName: "+versionName+" and CycleName: "+cycleName, Status.DONE);
+			Map<String, Map<String, String>> cycleList = zapi.getListOfCycles(versionName);
+			System.out.println("cycleList "+cycleList);
+			Map<String, String> testList = zapi.getTestList(cycleList, cycleName);
+			System.out.println("testList "+testList);
+
+			if (status.equals("1")) 
+			{
+				comment = currentTest + ", is Passed and updated using Automation.";
+			} 
+			else 	if (status.equals("2"))
+			{
+				comment = currentTest + ", is Failed and updated using Automation.";
+			}
+			zapi.cloneExecution(versionName, issueKey, comment, testList, cycleList, status);
+			zapi.addAttachment(testList, cycleList, reporting.currentTCReport.getPath()+".zip", issueKey);
+		}
+	}
+	
+	public static enum JIRAStatus 
+	{
+		PASS("1"), FAIL("2"), WIP("3"), BLOCKED("4"), UNEXECUTED("5");
+		private final String value;
+		private JIRAStatus(final String value) {
+			this.value = value;
+		}
+		public String getValue() 
+		{
+			return value;
+		}
 	}
 }

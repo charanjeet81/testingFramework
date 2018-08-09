@@ -175,17 +175,22 @@ public class TestCaseBase
 		}
 		properties.setProperty("Browser", propBrowser);
 		
-		SUPER_Page superPage = new SUPER_Page(scriptHelper);
-		superPage.zipReport(reporting.currentTCReport.getPath(), reporting.currentTCReport.getPath()+".zip");
-		try 
+		// JIRA Update if true.
+		if(JIRAUpdate())
 		{
-			zapiUpdate(reporting.tcStatus);
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
+			SUPER_Page superPage = new SUPER_Page(scriptHelper);
+			superPage.zipReport(reporting.currentTCReport.getPath(), reporting.currentTCReport.getPath()+".zip");
+			try 
+			{
+				zapiUpdate(reporting.tcStatus);
+			}
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+			}
 		}
 		
+		// Quitting Browser.
 		driver.quit();
 	}
 	
@@ -280,7 +285,7 @@ public class TestCaseBase
 		String status = null;
 		String comment = null;
 		String currentTest = canonicalName.replace(".", "#").split("#")[1]; 
-		if (Boolean.parseBoolean(properties.getProperty("JIRA_Update"))) 
+		if (JIRAUpdate()) 
 		{
 			if (logstatus.contains("Passed")) 
 			{
@@ -313,7 +318,7 @@ public class TestCaseBase
 		}
 	}
 	
-	public static enum JIRAStatus 
+	public enum JIRAStatus 
 	{
 		PASS("1"), FAIL("2"), WIP("3"), BLOCKED("4"), UNEXECUTED("5");
 		private final String value;
@@ -324,5 +329,10 @@ public class TestCaseBase
 		{
 			return value;
 		}
+	}
+	
+	public boolean JIRAUpdate()
+	{
+		return Boolean.parseBoolean(properties.getProperty("JIRA_Update"));
 	}
 }

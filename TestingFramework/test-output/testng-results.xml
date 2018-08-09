@@ -2,64 +2,64 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="14907" started-at="2018-08-08T14:02:04Z" finished-at="2018-08-08T14:02:19Z">
+  <suite name="Default suite" duration-ms="43379" started-at="2018-08-09T12:19:50Z" finished-at="2018-08-09T12:20:33Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="14907" started-at="2018-08-08T14:02:04Z" finished-at="2018-08-08T14:02:19Z">
-      <class name="testScripts.TWITTER.TC_03_Login_Twitter">
-        <test-method status="PASS" signature="reportInitializations()[pri:0, instance:testScripts.TWITTER.TC_03_Login_Twitter@3ecd23d9]" name="reportInitializations" is-config="true" duration-ms="9" started-at="2018-08-08T14:02:04Z" finished-at="2018-08-08T14:02:04Z">
+    <test name="Default test" duration-ms="43379" started-at="2018-08-09T12:19:50Z" finished-at="2018-08-09T12:20:33Z">
+      <class name="testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue">
+        <test-method status="PASS" signature="reportInitializations()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="reportInitializations" is-config="true" duration-ms="9" started-at="2018-08-09T12:19:50Z" finished-at="2018-08-09T12:19:50Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reportInitializations -->
-        <test-method status="PASS" signature="initializations(org.testng.ITestContext)[pri:0, instance:testScripts.TWITTER.TC_03_Login_Twitter@3ecd23d9]" name="initializations" is-config="true" duration-ms="4" started-at="2018-08-08T14:02:04Z" finished-at="2018-08-08T14:02:04Z">
+        <test-method status="PASS" signature="initializations(org.testng.ITestContext)[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="initializations" is-config="true" duration-ms="4" started-at="2018-08-09T12:19:50Z" finished-at="2018-08-09T12:19:50Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@71391b3f]]>
+                <![CDATA[org.testng.TestRunner@6e1f8469]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializations -->
-        <test-method status="PASS" signature="setScriptHelper(java.lang.String, org.testng.ITestContext)[pri:0, instance:testScripts.TWITTER.TC_03_Login_Twitter@3ecd23d9]" name="setScriptHelper" is-config="true" duration-ms="4737" started-at="2018-08-08T14:02:04Z" finished-at="2018-08-08T14:02:09Z">
+        <test-method status="PASS" signature="setScriptHelper(java.lang.String, org.testng.ITestContext)[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="setScriptHelper" is-config="true" duration-ms="4834" started-at="2018-08-09T12:19:50Z" finished-at="2018-08-09T12:19:55Z">
           <params>
             <param index="0">
               <value is-null="true"/>
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@71391b3f]]>
+                <![CDATA[org.testng.TestRunner@6e1f8469]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setScriptHelper -->
-        <test-method status="PASS" signature="runTC_03_Login_Twitter()[pri:0, instance:testScripts.TWITTER.TC_03_Login_Twitter@3ecd23d9]" name="runTC_03_Login_Twitter" duration-ms="3071" started-at="2018-08-08T14:02:09Z" finished-at="2018-08-08T14:02:12Z">
+        <test-method status="PASS" signature="Testing_TC04_Sanity_Test_For_SIGMA_Catalogue()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="Testing_TC04_Sanity_Test_For_SIGMA_Catalogue" duration-ms="37545" started-at="2018-08-09T12:19:55Z" finished-at="2018-08-09T12:20:32Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- runTC_03_Login_Twitter -->
-        <test-method status="PASS" signature="testMethodTearDown(org.testng.ITestResult)[pri:0, instance:testScripts.TWITTER.TC_03_Login_Twitter@3ecd23d9]" name="testMethodTearDown" is-config="true" duration-ms="7077" started-at="2018-08-08T14:02:12Z" finished-at="2018-08-08T14:02:19Z">
+        </test-method> <!-- Testing_TC04_Sanity_Test_For_SIGMA_Catalogue -->
+        <test-method status="PASS" signature="testMethodTearDown(org.testng.ITestResult)[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="testMethodTearDown" is-config="true" duration-ms="982" started-at="2018-08-09T12:20:32Z" finished-at="2018-08-09T12:20:33Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=runTC_03_Login_Twitter status=SUCCESS method=TC_03_Login_Twitter.runTC_03_Login_Twitter()[pri:0, instance:testScripts.TWITTER.TC_03_Login_Twitter@3ecd23d9] output={null}]]]>
+                <![CDATA[[TestResult name=Testing_TC04_Sanity_Test_For_SIGMA_Catalogue status=SUCCESS method=TC04_Sanity_Test_For_SIGMA_Catalogue.Testing_TC04_Sanity_Test_For_SIGMA_Catalogue()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMethodTearDown -->
-        <test-method status="PASS" signature="wrapUp()[pri:0, instance:testScripts.TWITTER.TC_03_Login_Twitter@3ecd23d9]" name="wrapUp" is-config="true" duration-ms="0" started-at="2018-08-08T14:02:19Z" finished-at="2018-08-08T14:02:19Z">
+        <test-method status="PASS" signature="wrapUp()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="wrapUp" is-config="true" duration-ms="0" started-at="2018-08-09T12:20:33Z" finished-at="2018-08-09T12:20:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wrapUp -->
-        <test-method status="PASS" signature="windUp()[pri:0, instance:testScripts.TWITTER.TC_03_Login_Twitter@3ecd23d9]" name="windUp" is-config="true" duration-ms="0" started-at="2018-08-08T14:02:19Z" finished-at="2018-08-08T14:02:19Z">
+        <test-method status="PASS" signature="windUp()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="windUp" is-config="true" duration-ms="0" started-at="2018-08-09T12:20:33Z" finished-at="2018-08-09T12:20:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- windUp -->
-      </class> <!-- testScripts.TWITTER.TC_03_Login_Twitter -->
+      </class> <!-- testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

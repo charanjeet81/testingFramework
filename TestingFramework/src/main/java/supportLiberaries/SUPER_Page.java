@@ -72,7 +72,6 @@ public class SUPER_Page extends ReusableLiberaries
 
 	/**
 	 * This method is to validate URL part, passed as a parameter
-	 * 
 	 * @author Charanjeet
 	 * @param Text to validate
 	 **/
@@ -81,14 +80,13 @@ public class SUPER_Page extends ReusableLiberaries
 		waitForPageToBeReady();
 		driver.manage().timeouts().pageLoadTimeout(-1, TimeUnit.SECONDS);
 		if (driver.getCurrentUrl().contains(textToValidate.trim()))
-			Reporting(textToValidate + " is coming as a part of URL <br/> " + driver.getCurrentUrl(), Status.DONE);
+			Reporting(textToValidate + ", is coming as a part of URL <br/> " + driver.getCurrentUrl(), Status.DONE);
 		else
-			Reporting(textToValidate + " is not coming as a part of URL " + driver.getCurrentUrl(), Status.FAIL);
+			Reporting(textToValidate + ", is not coming as a part of URL " + driver.getCurrentUrl(), Status.FAIL);
 	}
 
 	/**
 	 * This method is to click on the WebElement if it is displayed.
-	 * 
 	 * @author Charanjeet
 	 * @param WebElement
 	 *            to Click
@@ -177,37 +175,33 @@ public class SUPER_Page extends ReusableLiberaries
 
 	/**
 	 * This method is to check if any page element is displayed or not
-	 * 
 	 * @author Charanjeet
-	 * @param Heading
-	 *            to validate
-	 * @param Description
-	 *            about element
+	 * @param Heading to validate
+	 * @param Description about element
 	 **/
-	public void validate_ElementDisplayed(WebElement webElement, String elementDescription) {
-		//WaitTool.waitForElementDisplayed(driver, webElement, 21);
+	public void validate_ElementDisplayed(WebElement webElement, String elementDescription)
+	{
+		WaitTools.waitForElementDisplayed(driver, webElement, 21);
 		try {
 			if (webElement.isDisplayed())
-				Reporting(elementDescription + " is displayed as expected.", Status.PASS);
+				Reporting(elementDescription + ", is displayed as expected.", Status.PASS);
 		} catch (Exception e) {
-			Reporting(elementDescription + " is not displayed as expected.", Status.FAIL);
+			Reporting(elementDescription + ", is not displayed as expected.", Status.FAIL);
 		}
 	}
 
 	/**
 	 * This method is to check if any page element is displayed or not
-	 * 
 	 * @author Charanjeet
-	 * @param Value
-	 *            to check
-	 * @param Underlying
-	 *            html tag
+	 * @param Value to check
+	 * @param Underlying html tag
 	 **/
-	public void validate_ElementDisplayed(String value, String htmlTag) {
+	public void validate_ElementDisplayed(String value, String htmlTag) 
+	{
 		WebElement linkWE = null;
 		try {
 			linkWE = driver.findElement(By.xpath("(//" + htmlTag + "[contains(text(),'" + value + "')])[1]"));
-			//WaitTool.waitForElementDisplayed(driver, linkWE, 18);
+			WaitTools.waitForElementDisplayed(driver, linkWE, 18);
 			scrollToElement(linkWE);
 			if (linkWE.isDisplayed()) {
 				Reporting("Element '" + linkWE.getText() + "' is displayed as expected.", Status.PASS);
@@ -219,16 +213,13 @@ public class SUPER_Page extends ReusableLiberaries
 
 	/**
 	 * This method is to check dropdown content/options
-	 * 
 	 * @author Charanjeet
-	 * @param Array
-	 *            of options
-	 * @param Webelement
-	 *            for select dropdown/select
+	 * @param Array of options
+	 * @param Webelement for select dropdown/select
 	 **/
 	public void validate_DropdownContent(String[] contentList, WebElement selectElement) {
 		int count = 0;
-		//WaitTool.waitForElementDisplayed(driver, selectElement, 21);
+		WaitTools.waitForElementDisplayed(driver, selectElement, 21);
 		Select dropdown = new Select(selectElement);
 		for (WebElement option : dropdown.getOptions()) {
 			if (option.getText().contains(contentList[count]))
@@ -244,10 +235,8 @@ public class SUPER_Page extends ReusableLiberaries
 	 * This method is to check if list items are displayed or not
 	 * 
 	 * @author Charanjeet
-	 * @param List
-	 *            to check
-	 * @param Underlying
-	 *            html tag
+	 * @param List to check
+	 * @param Underlying html tag
 	 **/
 	public void validate_List(String[] list, String htmlTag) {
 		for (String listItem : list) {
@@ -321,18 +310,16 @@ public class SUPER_Page extends ReusableLiberaries
 		WebElement linkWE = null;
 		try {
 			linkWE = driver.findElement(By.xpath("//" + linkTag + "[contains(text(),'" + link + "')]"));
-			//WaitTool.waitForElementDisplayed(driver, linkWE, 9);
+			WaitTools.waitForElementDisplayed(driver, linkWE, 9);
 			if (linkWE.isDisplayed()) {
 				Reporting("Link <u>" + link + "</u> is present on the page.", Status.DONE);
 				scrollToElement(linkWE);
 				linkWE.click();
 				Reporting("Clicked to the link <u>" + link + "</u>.", Status.DONE);
 			}
-		} catch (Exception e) {
-			if (link.equals("close X") || link.equals("MyAccount Home"))
-				Reporting("<u>" + link + "</u> link is not available on the application.", Status.DONE);
-			else
-				Reporting("<u>" + link + "</u> link is not available on the application.", Status.FAIL);
+		} catch (Exception e) 
+		{
+			Reporting("Error wihile clicking on the Link.", Status.FAIL);
 		}
 	}
 
@@ -526,16 +513,17 @@ public class SUPER_Page extends ReusableLiberaries
 
 	}
 
-	public void waitForPageToBeReady() {
+	public void waitForPageToBeReady() 
+	{
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		// This loop will rotate for 100 times to check If page Is ready after
 		// every 1 second.
 		// You can replace your if you wants to Increase or decrease wait time.
-		for (int i = 0; i < 400; i++) {
+		for (int i = 0; i < 400; i++) 
+		{
 			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-			}
+				Thread.sleep(2000);
+			} catch (InterruptedException e) { }
 			// To check page ready state.
 
 			if (executor.executeScript("return document.readyState").toString().equals("complete")) {

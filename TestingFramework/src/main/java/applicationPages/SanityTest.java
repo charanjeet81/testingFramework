@@ -1,5 +1,6 @@
 package applicationPages;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import supportLiberaries.SUPER_Page;
 import supportLiberaries.ScriptHelper;
 import supportLiberaries.Status;
+import supportLiberaries.WaitTools;
 
 public class SanityTest extends SUPER_Page  
 {
@@ -45,7 +47,8 @@ public class SanityTest extends SUPER_Page
 	WebElement sigmaCatalog_Password_TXT;
 	@FindBy(id = "signInButton")
 	WebElement sigmaCatalog_SignIn_BTN;
-	
+	@FindBy(xpath = "//input[@placeholder='Search Salesforce']")
+	WebElement searchSalesforce;
 		
 	//::::::::::::::::: M E T H O D S ::::::::::::::::://
 	
@@ -84,9 +87,9 @@ public class SanityTest extends SUPER_Page
 		{
 			sync(1);
 			if(leftPanItem.getText().equals(strLeftPan[count]))
-				Reporting(strLeftPan[count]+" menu is coming as expected.", Status.PASS);
+				Reporting(strLeftPan[count]+", menu is coming as expected.", Status.PASS);
 			else
-				Reporting(strLeftPan[count]+" menu is not coming as expected.", Status.FAIL);
+				Reporting(strLeftPan[count]+", menu is not coming as expected.", Status.FAIL);
 			count++;
 		}
 		return this;
@@ -109,20 +112,26 @@ public class SanityTest extends SUPER_Page
 		scrollToElement(sfdcUsername_TXT);
 		sfdcUsername_TXT.sendKeys(userName);
 		Reporting("SFDC Username set as: "+userName, Status.DONE);
-		scrollToElement(sfdcPassword_TXT);
 		sfdcPassword_TXT.sendKeys(password);
 		Reporting("SFDC Password set as: "+password, Status.DONE);
 		sfdcSignIn_BTN.click();
 		Reporting("Clicked on 'SIGN IN' button.", Status.DONE);
-		if(sfdcError_MSG.getText().contains("Sign in failed!"))
-			Reporting("Error message is coming as expected: "+sfdcError_MSG.getText(), Status.PASS);
-		else
-			Reporting("Error message is not coming as expected: "+sfdcError_MSG.getText(), Status.FAIL);
+		validate_ElementDisplayed(searchSalesforce, "Salesforce search bar");
+		sync(5);
+		validate_URL("/lightning/page/home");
+		Reporting("Application screentshot after login.", Status.SCREENSHOT);
 		return this;
 	}
 	
+	@FindBy(css = "div#newItemDropdown>div div")
+	List<WebElement> newItemList;
+	@FindBy(xpath = "//div[contains(text(),'Last log-in time:')]")
+	WebElement lastLogIn;
+	
 	public SanityTest loginToSIGMACatalog()
 	{
+		int count = 0;
+		String[] newItems = {"New Product", "New Charge", "New Discount", "New Logical Catalog Entity", "New Change Entity", "New Cost"};
 		String userName = dataTable.getData("UserName");
 		String password = dataTable.getData("Password");
 		sigmaCatalog_Username_TXT.sendKeys(userName);
@@ -132,11 +141,91 @@ public class SanityTest extends SUPER_Page
 		sync(1);
 		sigmaCatalog_SignIn_BTN.click();
 		sync(2);
-//		Reporting("Clicked on 'SIGN IN' button.", Status.DONE);
-//		if(sfdcError_MSG.getText().contains("Sign in failed!"))
-//			Reporting("Error message is coming as expected: "+sfdcError_MSG.getText(), Status.PASS);
-//		else
-//			Reporting("Error message is not coming as expected: "+sfdcError_MSG.getText(), Status.FAIL);
+		Reporting("Clicked on 'SIGN IN' button.", Status.DONE);
+		
+		// Selecting Instance.
+		clickTo("#/Default/", "td");
+		
+		WaitTools.waitForElementDisplayed(driver, lastLogIn, 21);
+		try 
+		{
+			if(lastLogIn.isDisplayed())
+			{
+				lastLogIn.click();
+				Reporting("Clicked on 'Last Login' link.", Status.DONE);
+			}
+		} catch (Exception e) { }
+		
+		//Validating New Items.
+		clickTo("New Item", "span");
+		
+		for (WebElement newItem : newItemList) 
+		{
+			if(newItem.getText().contains(newItems[count]))
+				Reporting(newItem.getText()+", is coming as a part of 'New Item'.", Status.PASS);
+			else
+				Reporting(newItem.getText()+", is not coming as a part of 'New Item'.", Status.FAIL);
+			count++;
+		}
+		Reporting("Application screentshot after login.", Status.SCREENSHOT);
+		return this;
+	}
+	
+	
+	
+	@FindBy(id = "userName")
+	WebElement sOM_Username_TXT;
+	@FindBy(id = "password")
+	WebElement sOM_Password_TXT;
+	@FindBy(xpath = "//li[@role='presentation']/a")
+	List<WebElement> sOM_AdminOptions;
+	@FindBy(css = "ul.navbar-nav>li")
+	List<WebElement> sOM_Designer_Options_WE;
+	
+	public SanityTest loginToSIGMA_OM(String application)
+	{
+		int count = 0;
+		String commonString;
+		
+		if(application.contains("Designer"))
+		{
+			clickTo("Sign In", "a");
+			commonString = "Unpublished,Processes,Tasks,Systems,Workgroups";
+		}
+		else if(application.contains("Runtime"))
+		{
+			clickTo("Sign In", "a");
+			commonString = "My Tasks,Assign Tasks,Orders,My Orders";
+		}
+		else if(application.contains("OM Admin"))
+		{
+			commonString = "Sigma Admin,Order Management,Help,About";
+		}
+		else
+		{
+			commonString = "Help,About";
+		}
+		String userName = dataTable.getData("UserName");
+		String password = dataTable.getData("Password");
+		WaitTools.waitForElementDisplayed(driver, sOM_Username_TXT, 21);
+		sOM_Username_TXT.sendKeys(userName);
+		Reporting("SFDC Username set as: "+userName, Status.DONE);
+		sOM_Password_TXT.sendKeys(password);
+		Reporting("SFDC Password set as: "+password, Status.DONE);
+		sync(1);
+		clickTo("Sign in", "button");
+		sync(2);
+		Reporting("Clicked on 'SIGN IN' button.", Status.DONE);
+		
+		for (String sOM_Designer_Option : commonString.split(",")) 
+		{
+			if(sOM_Designer_Options_WE.get(count).getText().contains(sOM_Designer_Option))
+				Reporting(sOM_Designer_Option+", is coming as a part of 'Admin Setting Options'.", Status.PASS);
+			else
+				Reporting(sOM_Designer_Option+", is not coming as a part of 'Admin Setting Options'.", Status.FAIL);
+			count++;
+		}
+		Reporting("Application screentshot after login.", Status.SCREENSHOT);
 		return this;
 	}
 }

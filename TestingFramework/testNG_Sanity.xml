@@ -9,9 +9,12 @@
 	<parameter name="browser" value="Chrome"></parameter>
 		<classes>
 			<class name="testScripts.BASIC_SANITY_TEST.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone" />
-			<class name="testScripts.BASIC_SANITY_TEST.TC02_Sanity_Test_For_SIGMA_CPQ_Salesforce_Plugin" />
 			<class name="testScripts.BASIC_SANITY_TEST.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login" />
 			<class name="testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue" />
+			<class name="testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin" />
+			<class name="testScripts.BASIC_SANITY_TEST.TC11_Sanity_Test_For_SIGMA_OM_Designer" />
+			<class name="testScripts.BASIC_SANITY_TEST.TC12_Sanity_Test_For_SIGMA_OM_Runtime" />
+			<class name="testScripts.BASIC_SANITY_TEST.TC13_Sanity_Test_For_SIGMA_OM_Admin" />
 		</classes>
 	</test>
 <!-- 	<test name="Test-Firefox" preserve-order="true">

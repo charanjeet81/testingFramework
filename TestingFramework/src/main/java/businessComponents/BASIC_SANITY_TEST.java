@@ -55,7 +55,9 @@ public class BASIC_SANITY_TEST extends ReusableLiberaries
 	}
 	public void tC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin()
 	{
-		
+		SanityTest sanityTest = new SanityTest(scriptHelper);
+		sanityTest.invokeApplication()
+				  .loginToSIGMA_OM("OM Admin");
 	}
 	public void tC10_Sanity_Test_For_SIGMA_OM_Sigma_AnA()
 	{
@@ -63,15 +65,21 @@ public class BASIC_SANITY_TEST extends ReusableLiberaries
 	}
 	public void tC11_Sanity_Test_For_SIGMA_OM_Designer()
 	{
-		
+		SanityTest sanityTest = new SanityTest(scriptHelper);
+		sanityTest.invokeApplication()
+				  .loginToSIGMA_OM("Designer");
 	}
 	public void tC12_Sanity_Test_For_SIGMA_OM_Runtime()
 	{
-		
+		SanityTest sanityTest = new SanityTest(scriptHelper);
+		sanityTest.invokeApplication()
+				  .loginToSIGMA_OM("Runtime");
 	}
 	public void tC13_Sanity_Test_For_SIGMA_OM_Admin()
 	{
-		
+		SanityTest sanityTest = new SanityTest(scriptHelper);
+		sanityTest.invokeApplication()
+				  .loginToSIGMA_OM("Admin");
 	}
 	public void tC14_Sanity_Test_For_NOKIA_PnA_Instant_Link()
 	{

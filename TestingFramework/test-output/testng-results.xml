@@ -2,64 +2,64 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="43379" started-at="2018-08-09T12:19:50Z" finished-at="2018-08-09T12:20:33Z">
+  <suite name="Default suite" duration-ms="21196" started-at="2018-08-10T06:21:04Z" finished-at="2018-08-10T06:21:25Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="43379" started-at="2018-08-09T12:19:50Z" finished-at="2018-08-09T12:20:33Z">
-      <class name="testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue">
-        <test-method status="PASS" signature="reportInitializations()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="reportInitializations" is-config="true" duration-ms="9" started-at="2018-08-09T12:19:50Z" finished-at="2018-08-09T12:19:50Z">
+    <test name="Default test" duration-ms="21196" started-at="2018-08-10T06:21:04Z" finished-at="2018-08-10T06:21:25Z">
+      <class name="testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin">
+        <test-method status="PASS" signature="reportInitializations()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin@28ac3dc3]" name="reportInitializations" is-config="true" duration-ms="11" started-at="2018-08-10T06:21:04Z" finished-at="2018-08-10T06:21:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reportInitializations -->
-        <test-method status="PASS" signature="initializations(org.testng.ITestContext)[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="initializations" is-config="true" duration-ms="4" started-at="2018-08-09T12:19:50Z" finished-at="2018-08-09T12:19:50Z">
+        <test-method status="PASS" signature="initializations(org.testng.ITestContext)[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin@28ac3dc3]" name="initializations" is-config="true" duration-ms="4" started-at="2018-08-10T06:21:04Z" finished-at="2018-08-10T06:21:04Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@6e1f8469]]>
+                <![CDATA[org.testng.TestRunner@36a7abe1]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializations -->
-        <test-method status="PASS" signature="setScriptHelper(java.lang.String, org.testng.ITestContext)[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="setScriptHelper" is-config="true" duration-ms="4834" started-at="2018-08-09T12:19:50Z" finished-at="2018-08-09T12:19:55Z">
+        <test-method status="PASS" signature="setScriptHelper(java.lang.String, org.testng.ITestContext)[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin@28ac3dc3]" name="setScriptHelper" is-config="true" duration-ms="5587" started-at="2018-08-10T06:21:04Z" finished-at="2018-08-10T06:21:10Z">
           <params>
             <param index="0">
               <value is-null="true"/>
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@6e1f8469]]>
+                <![CDATA[org.testng.TestRunner@36a7abe1]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setScriptHelper -->
-        <test-method status="PASS" signature="Testing_TC04_Sanity_Test_For_SIGMA_Catalogue()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="Testing_TC04_Sanity_Test_For_SIGMA_Catalogue" duration-ms="37545" started-at="2018-08-09T12:19:55Z" finished-at="2018-08-09T12:20:32Z">
+        <test-method status="PASS" signature="Testing_TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin@28ac3dc3]" name="Testing_TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin" duration-ms="14604" started-at="2018-08-10T06:21:10Z" finished-at="2018-08-10T06:21:24Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Testing_TC04_Sanity_Test_For_SIGMA_Catalogue -->
-        <test-method status="PASS" signature="testMethodTearDown(org.testng.ITestResult)[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="testMethodTearDown" is-config="true" duration-ms="982" started-at="2018-08-09T12:20:32Z" finished-at="2018-08-09T12:20:33Z">
+        </test-method> <!-- Testing_TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin -->
+        <test-method status="PASS" signature="testMethodTearDown(org.testng.ITestResult)[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin@28ac3dc3]" name="testMethodTearDown" is-config="true" duration-ms="983" started-at="2018-08-10T06:21:24Z" finished-at="2018-08-10T06:21:25Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Testing_TC04_Sanity_Test_For_SIGMA_Catalogue status=SUCCESS method=TC04_Sanity_Test_For_SIGMA_Catalogue.Testing_TC04_Sanity_Test_For_SIGMA_Catalogue()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9] output={null}]]]>
+                <![CDATA[[TestResult name=Testing_TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin status=SUCCESS method=TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin.Testing_TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin@28ac3dc3] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMethodTearDown -->
-        <test-method status="PASS" signature="wrapUp()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="wrapUp" is-config="true" duration-ms="0" started-at="2018-08-09T12:20:33Z" finished-at="2018-08-09T12:20:33Z">
+        <test-method status="PASS" signature="wrapUp()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin@28ac3dc3]" name="wrapUp" is-config="true" duration-ms="0" started-at="2018-08-10T06:21:25Z" finished-at="2018-08-10T06:21:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wrapUp -->
-        <test-method status="PASS" signature="windUp()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue@3ecd23d9]" name="windUp" is-config="true" duration-ms="0" started-at="2018-08-09T12:20:33Z" finished-at="2018-08-09T12:20:33Z">
+        <test-method status="PASS" signature="windUp()[pri:0, instance:testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin@28ac3dc3]" name="windUp" is-config="true" duration-ms="0" started-at="2018-08-10T06:21:25Z" finished-at="2018-08-10T06:21:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- windUp -->
-      </class> <!-- testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue -->
+      </class> <!-- testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -83,7 +83,9 @@ public class BASIC_SANITY_TEST extends ReusableLiberaries
 	}
 	public void tC14_Sanity_Test_For_NOKIA_PnA_Instant_Link()
 	{
-		
+		SanityTest sanityTest = new SanityTest(scriptHelper);
+		sanityTest.invokeApplication()
+		          .loginToNOKIA_OM("Order Management");
 	}
 	public void tC15_Sanity_Test_For_NOKIA_SOA_WS()
 	{
@@ -95,7 +97,9 @@ public class BASIC_SANITY_TEST extends ReusableLiberaries
 	}
 	public void tC17_Sanity_Test_For_NOKIA_Service_Catalogue()
 	{
-		
+		SanityTest sanityTest = new SanityTest(scriptHelper);
+		sanityTest.invokeApplication()
+				  .loginToComptelCatalog();
 	}
 	public void tC18_Sanity_Test_For_NOKIA_FlowOne_API()
 	{
@@ -113,4 +117,19 @@ public class BASIC_SANITY_TEST extends ReusableLiberaries
 	{
 		
 	}
+	public void tC22_Sanity_Test_For_NOKIA_PnA_Workflow_Client()
+	{
+		SanityTest sanityTest = new SanityTest(scriptHelper);
+		sanityTest.invokeApplication()
+		          .loginToNOKIA_OM("Workflow Client");
+	}
+	public void tC23_Sanity_Test_For_IDAM()
+	{
+		SanityTest sanityTest = new SanityTest(scriptHelper);
+		sanityTest.invokeApplication()
+				  .loginToIDAM();
+	}
+
+	
+	
 }

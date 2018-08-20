@@ -122,11 +122,11 @@ public class SUPER_Page extends ReusableLiberaries
 
 	/**
 	 * This method is to check title of the page
-	 * 
 	 * @author Charanjeet
 	 * @param Title to validate
 	 **/
-	public void validate_PageTitle(String titleToValidate) {
+	public void validate_PageTitle(String titleToValidate) 
+	{
 		driver.manage().timeouts().pageLoadTimeout(-1, TimeUnit.SECONDS);
 		if (driver.getTitle().contains(titleToValidate.trim()))
 			Reporting(titleToValidate + ", title is coming as page title.", Status.DONE);
@@ -136,12 +136,9 @@ public class SUPER_Page extends ReusableLiberaries
 
 	/**
 	 * This method is to check heading displayed.
-	 * 
 	 * @author Charanjeet
-	 * @param Heading
-	 *            to validate
-	 * @param Underlying
-	 *            html tag
+	 * @param Heading to validate
+	 * @param Underlying html tag
 	 **/
 	public void validate_HeadingDisplayed(String heading, String htmlTag) {
 		try {

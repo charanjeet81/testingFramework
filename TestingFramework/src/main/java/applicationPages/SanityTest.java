@@ -49,6 +49,15 @@ public class SanityTest extends SUPER_Page
 	WebElement sigmaCatalog_SignIn_BTN;
 	@FindBy(xpath = "//input[@placeholder='Search Salesforce']")
 	WebElement searchSalesforce;
+	@FindBy(id = "username")
+	WebElement uNameNOKIA_OM;
+	@FindBy(id = "password")
+	WebElement pwdNOKIA_OM;
+	@FindBy(xpath = "//h1[contains(text(),'Welcome to Order Management')]")
+	WebElement welcome_NOKIA_OM;
+	@FindBy(xpath = "//span[contains(text(),'Workflow Client')]")
+	WebElement welcome_NOKIA_WC;
+	
 		
 	//::::::::::::::::: M E T H O D S ::::::::::::::::://
 	
@@ -57,6 +66,80 @@ public class SanityTest extends SUPER_Page
 		String url = dataTable.getData("URL");
 		driver.get(url);
 		Reporting("Application invoked under: "+url, Status.DONE);
+		return this;
+	}
+	
+	public SanityTest loginToComptelCatalog()
+	{
+		// Note NOKIA OM & Comptel Catalog web-elements are identical. 
+		int count = 0;
+		String[] listItem = {"My Details", "Items", "Export", "Import"};
+		String userName = dataTable.getData("UserName");
+		String password = dataTable.getData("Password");
+		WaitTools.waitForElementDisplayed(driver, uNameNOKIA_OM, 21);
+		uNameNOKIA_OM.sendKeys(userName);
+		Reporting("Comptel Catalog Username set as: "+userName, Status.DONE);
+		pwdNOKIA_OM.sendKeys(password);
+		Reporting("Comptel Catalog Password set as: "+password, Status.DONE);
+		clickTo("Login", "a");
+		
+		List<WebElement> list = driver.findElements(By.tagName("li"));
+		for (WebElement singleListElement : list) 
+		{
+			if(singleListElement.getText().contains(listItem[count]))
+				Reporting(listItem[count]+", is coming as expected heading.", Status.PASS);
+			else
+				Reporting(listItem[count]+", is not coming as expected heading.", Status.FAIL);
+			count++;
+		}
+		Reporting("Application screentshot after login.", Status.SCREENSHOT);
+		return this;
+	}
+	
+	public SanityTest loginToIDAM()
+	{
+		// Note SFDC & IDAM web-elements are identical.  
+		String userName = dataTable.getData("UserName");
+		String password = dataTable.getData("Password");
+		WaitTools.waitForElementDisplayed(driver, sfdcUsername_TXT, 21);
+		sfdcUsername_TXT.sendKeys(userName);
+		Reporting("IDAM Username set as: "+userName, Status.DONE);
+		sfdcPassword_TXT.sendKeys(password);
+		Reporting("IDAM Password set as: "+password, Status.DONE);
+		sfdcSignIn_BTN.click();
+		Reporting("Clicked on 'Sign In' button.", Status.DONE);
+		
+		validate_PageTitle("Inmarsat - Sandbox - Sign In");
+		validate_URL("app/UserHome");
+		Reporting("Application screentshot after login.", Status.SCREENSHOT);
+		return this;
+	}
+	
+	public SanityTest loginToNOKIA_OM(String appType)
+	{
+		String userName = dataTable.getData("UserName");
+		String password = dataTable.getData("Password");
+		WaitTools.waitForElementDisplayed(driver, uNameNOKIA_OM, 21);
+		uNameNOKIA_OM.sendKeys(userName);
+		Reporting("NOKIA OM Username set as: "+userName, Status.DONE);
+		pwdNOKIA_OM.sendKeys(password);
+		Reporting("NOKIA OM Password set as: "+password, Status.DONE);
+		clickTo("LOG IN", "button");
+		
+		// Validate Successful Login.
+		sync(5);
+		if(appType.contains("Order Management"))
+		{
+			driver.switchTo().frame("mainFrame");
+			WaitTools.waitForElementDisplayed(driver, welcome_NOKIA_OM, 21);
+			validate_ElementDisplayed(welcome_NOKIA_OM, "Welcome message for NOKIA OM");
+		}
+		else // Workflow Client.
+		{
+			WaitTools.waitForElementDisplayed(driver, welcome_NOKIA_WC, 21);
+			validate_ElementDisplayed(welcome_NOKIA_WC, "Workflow Client message");
+		}
+		Reporting("Application screentshot after login.", Status.SCREENSHOT);
 		return this;
 	}
 	

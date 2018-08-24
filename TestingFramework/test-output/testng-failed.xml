@@ -3,17 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScripts.BASIC_SANITY_TEST.TC22_Sanity_Test_For_NOKIA_PnA_Workflow_Client">
+      <class name="testScripts.BASIC_SANITY_TEST.TC23_Sanity_Test_For_IDAM">
         <methods>
           <include name="windUp"/>
           <include name="setScriptHelper"/>
           <include name="testMethodTearDown"/>
-          <include name="Testing_TC22_Sanity_Test_For_NOKIA_PnA_Workflow_Client"/>
           <include name="wrapUp"/>
+          <include name="Testing_TC23_Sanity_Test_For_IDAM"/>
           <include name="reportInitializations"/>
           <include name="initializations"/>
         </methods>
-      </class> <!-- testScripts.BASIC_SANITY_TEST.TC22_Sanity_Test_For_NOKIA_PnA_Workflow_Client -->
+      </class> <!-- testScripts.BASIC_SANITY_TEST.TC23_Sanity_Test_For_IDAM -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

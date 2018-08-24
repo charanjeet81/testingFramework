@@ -69,7 +69,8 @@ public class TestCaseBase
 	@BeforeTest
 	public void initializations(ITestContext ctx) 
 	{
-		
+		deleteFile("target\\surefire-reports\\CompleteExecution.html");
+		deleteFile("target\\surefire-reports\\testng-results.xml");
 	}
 	
 	@BeforeMethod
@@ -334,5 +335,18 @@ public class TestCaseBase
 	public boolean JIRAUpdate()
 	{
 		return Boolean.parseBoolean(properties.getProperty("JIRA_Update"));
+	}
+	
+	public void deleteFile(String filePath)
+	{
+		File fileToDelete = new File(System.getProperty("user.dir")+"\\"+filePath);
+		if(fileToDelete.exists())
+		{
+			fileToDelete.delete();
+		}
+		else
+		{
+			System.err.println("File does not exists to delete.");
+		}
 	}
 }

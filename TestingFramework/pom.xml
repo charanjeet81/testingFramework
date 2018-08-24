@@ -270,9 +270,9 @@
 					<forkMode>never</forkMode>
 					<testFailureIgnore>true</testFailureIgnore>
 					<scope>integration-test</scope>
-					<!-- <reportsDirectory>report_${maven.build.timestamp}</reportsDirectory> -->
-					<!-- <systemPropertyVariables> <environment>${env.ENV}</environment> 
-						</systemPropertyVariables> -->
+				<!-- 	<systemPropertyVariables>
+						<environment>${env.ENV}</environment>
+					</systemPropertyVariables> -->
 				</configuration>
 			</plugin>
 			<plugin>

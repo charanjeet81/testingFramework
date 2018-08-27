@@ -44,6 +44,7 @@ import com.zapi.base.ZapiBase;
 public class TestCaseBase  
 {
 	protected String environment;
+	protected String env;
 	protected WebDriver driver;
 	protected DriverScript driverScript;
 	protected ScriptHelper scriptHelper;
@@ -96,7 +97,17 @@ public class TestCaseBase
 		}
 		
 		//Setting-up Environment.
-		environment = properties.getProperty("Environment");
+		env = System.getProperty("environment");
+
+		if(env==null)
+		{
+			environment = properties.getProperty("Environment");
+		}
+		else
+		{
+			properties.setProperty("Environment", env);
+			environment = properties.getProperty("Environment");
+		}
 		
 		//Setting-up DataTables.
 		dataTable = new DataTable(environment, canonicalName, invocationCount);

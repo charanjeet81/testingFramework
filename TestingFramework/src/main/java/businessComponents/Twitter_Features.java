@@ -26,12 +26,12 @@ public class Twitter_Features extends ReusableLiberaries
 	
 	public void tC_03_Login_Twitter() throws Exception
 	{
-//		SoapBase soapBase = new SoapBase(scriptHelper);
-//		SOAPMessage response = soapBase.soapCall(googleReqPath, "ADD");
-//		String addResult = soapBase.getTagValueFromResponse(response, "m:NumberToDollarsResult");
+		SoapBase soapBase = new SoapBase(scriptHelper);
+		SOAPMessage response = soapBase.soapCall(googleReqPath, "ADD");
+		String addResult = soapBase.getTagValueFromResponse(response, "m:NumberToDollarsResult");
 
-		Twitter_Page login = new Twitter_Page(scriptHelper);
-		login.invokeApplication();
+//		Twitter_Page login = new Twitter_Page(scriptHelper);
+//		login.invokeApplication();
 //			 .login_To_Twitter();
 	}
 	

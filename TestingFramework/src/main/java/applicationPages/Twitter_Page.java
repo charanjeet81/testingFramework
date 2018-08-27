@@ -34,6 +34,7 @@ public class Twitter_Page extends SUPER_Page
 	{
 		sync(2);
 		driver.get(properties.getProperty("Twitter_URL"));
+		Reporting(dataTable.getData("VersionName"), Status.DONE);
 		Reporting("Application invoked as: "+properties.getProperty("Twitter_URL"), Status.DONE);
 		mainLogIn_BTN.click();
 		Reporting("Clicked on 'Log In' button.", Status.DONE);

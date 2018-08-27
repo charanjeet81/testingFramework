@@ -2,9 +2,11 @@ package supportLiberaries;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -33,6 +35,7 @@ import org.apache.poi.ss.usermodel.Row;
 
 public class SoapBase extends SUPER_Page
 {
+	public String responseFilePath = ""; 
 	String env = properties.getProperty("Environment");
 	private String fileName = System.getProperty("user.dir") + "\\Resources\\TestDataSheets\\SOAP_WSDL.xls";
 	public SoapBase(ScriptHelper scriptHelper)
@@ -73,6 +76,30 @@ public class SoapBase extends SUPER_Page
 		// Printing the SOAP Response
 		System.out.println("Response SOAP Message =========> ");
 		soapResponse.writeTo(System.out);
+
+		//String res = soapResponse.getSOAPBody().getTextContent();
+		
+		responseFilePath = Reporting.currentTCReportPathForServices + "\\Response1.xml";
+		File file1 = new File(responseFilePath);
+		if (file1.exists())
+		{
+			responseFilePath = responseFilePath.replace("Response1.xml", "Response2.xml");
+			File file2 = new File(responseFilePath);
+			if (file2.exists())
+			{
+				responseFilePath = responseFilePath.replace("Response2.xml", "Response3.xml");
+			}
+		}
+		try (FileWriter fileWriter = new FileWriter(responseFilePath)) 
+		{
+			fileWriter.write(soapResponse.getSOAPBody().getTextContent());
+			fileWriter.flush();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
 		soapConnection.close();
 		System.out.println(soapResponse.toString());
 		return soapResponse;
@@ -138,10 +165,10 @@ public class SoapBase extends SUPER_Page
 		switch (requestAPI.toUpperCase())
 		{
 			case "ADD":
-				String valueA = dataTable.getData("ValueA");
-				String valueB = dataTable.getData("ValueB");
-				String addingTwoNumbers = StringUtils.replace(request.toString(), "$valueA$", valueA);
-				strrequest = StringUtils.replace(addingTwoNumbers, "$valueB$", valueB);
+				strrequest = request.toString(); 
+//				String valueA = dataTable.getData("ValueA");
+//				String addingTwoNumbers = StringUtils.replace(request.toString(), "$valueA$", valueA);
+//				strrequest = StringUtils.replace(addingTwoNumbers, "$valueB$", valueB);
 				break;
 	
 			default:

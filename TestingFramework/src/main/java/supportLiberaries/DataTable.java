@@ -140,8 +140,10 @@ public class DataTable {
 							{
 								if (cellIndex == 0) 
 								{
-									System.err.println(field + " field is not present in the datasheet " + packageName + ".xls");
-								} else 
+									System.err.println(field + ", field is not present in the datasheet." + packageName + ".xls");
+									break;
+								} 
+								else 
 								{
 									data = getData(rowCount, cellIndex);
 									flag = true;
@@ -154,6 +156,10 @@ public class DataTable {
 			}
 		} catch (Exception e) {
 			System.err.println("Error while getting Data.");
+		}
+		if(data==null)
+		{
+			throw new NullPointerException(field + ", field is not present in the datasheet." + packageName + ".xls");
 		}
 		return data;
 	}

@@ -171,7 +171,7 @@
 
 	<profiles>
 		<profile>
-			<id>Smoke</id>
+			<id>smoke</id>
 			<build>
 				<resources>
 					<resource>
@@ -186,7 +186,7 @@
 						<version>2.16</version>
 						<configuration>
 							<suiteXmlFiles>
-								<suiteXmlFile>testNG_Smoke.xml</suiteXmlFile>
+								<suiteXmlFile>testNG_SMOKE.xml</suiteXmlFile>
 							</suiteXmlFiles>
 							<forkMode>never</forkMode>
 							<testFailureIgnore>true</testFailureIgnore>
@@ -213,7 +213,7 @@
 			</build>
 		</profile>
 		<profile>
-			<id>Regression</id>
+			<id>sanity</id>
 			<build>
 				<resources>
 					<resource>
@@ -228,7 +228,7 @@
 						<version>2.16</version>
 						<configuration>
 							<suiteXmlFiles>
-								<suiteXmlFile>testNG_Regression.xml</suiteXmlFile>
+								<suiteXmlFile>testNG_SANITY.xml</suiteXmlFile>
 							</suiteXmlFiles>
 							<forkMode>never</forkMode>
 							<testFailureIgnore>true</testFailureIgnore>
@@ -255,9 +255,8 @@
 			</build>
 		</profile>
 	</profiles>
+	
 	<build>
-		<!-- <resources> <resource> <directory>supportLiberaries</directory> <filtering>true</filtering> 
-			</resource> </resources> -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -265,12 +264,12 @@
 				<version>2.16</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>testNG_Sanity.xml</suiteXmlFile>
+						<suiteXmlFile>testNG_SANITY.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<forkMode>never</forkMode>
 					<testFailureIgnore>true</testFailureIgnore>
 					<scope>integration-test</scope>
-				<!-- 	<systemPropertyVariables>
+					<!-- <systemPropertyVariables>
 						<environment>${env.ENV}</environment>
 					</systemPropertyVariables> -->
 				</configuration>
@@ -283,8 +282,9 @@
 					<source>1.8</source>
 					<target>1.8</target>
 					<encoding>UTF-8</encoding>
-					<!-- <systemPropertyVariables> <environment>${env.ENV}</environment> 
-						</systemPropertyVariables> -->
+					<!-- <systemPropertyVariables>
+						<environment>${env.ENV}</environment>
+					</systemPropertyVariables> -->
 				</configuration>
 			</plugin>
 		</plugins>

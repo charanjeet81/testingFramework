@@ -1,19 +1,10 @@
 package supportLiberaries;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.Assert;
 
 public class DriverScript extends ReusableLiberaries
@@ -22,6 +13,9 @@ public class DriverScript extends ReusableLiberaries
 	{
 		super(scriptHelper);
 	}
+	
+	boolean flag;
+	String tcToExecute;
 	
 	public void startExecution(String testCaseToExecute)
 	{
@@ -41,11 +35,12 @@ public class DriverScript extends ReusableLiberaries
 				{
 					Class<?> className = Class.forName("businessComponents."+classToSearch.getName().replace(".class", ""));
 					Method[] testCaseMethods = className.getMethods();
+					tcToExecute = Character.toLowerCase(testCaseToExecute.charAt(0))+testCaseToExecute.substring(1, testCaseToExecute.length());
 					for (Method method : testCaseMethods) 
 					{
-						String tcToExecute = Character.toLowerCase(testCaseToExecute.charAt(0))+testCaseToExecute.substring(1, testCaseToExecute.length());
 						if(method.getName().equals(tcToExecute))
 						{
+							flag = true;
 							try
 							{
 								Constructor<?> ctor = className.getDeclaredConstructors()[0];
@@ -65,6 +60,7 @@ public class DriverScript extends ReusableLiberaries
 							}
 						}
 					}
+					
 				} 
 				catch (SecurityException e)
 				{
@@ -74,6 +70,11 @@ public class DriverScript extends ReusableLiberaries
 					e.printStackTrace();
 				}
 			}
+		}
+		if(!flag)
+		{
+			reporting.updateReport("DriverScript.triggerExecution()", tcToExecute+" does not exists in BusinessComponents.", Status.FAIL);
+			System.err.println(tcToExecute+", does not exists in BusinessComponents.");
 		}
 	}
 }

@@ -8,8 +8,9 @@
 	<test name="Test-Chrome" preserve-order="true">
 	<parameter name="browser" value="Chrome"></parameter>
 		<classes>
+		
 			<class name="testScripts.BASIC_SANITY_TEST.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone" />
-			<class name="testScripts.BASIC_SANITY_TEST.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login" />
+		<!-- 	<class name="testScripts.BASIC_SANITY_TEST.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login" />
 			<class name="testScripts.BASIC_SANITY_TEST.TC04_Sanity_Test_For_SIGMA_Catalogue" />
 			<class name="testScripts.BASIC_SANITY_TEST.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin" />
 			<class name="testScripts.BASIC_SANITY_TEST.TC11_Sanity_Test_For_SIGMA_OM_Designer" />
@@ -18,7 +19,7 @@
 			<class name="testScripts.BASIC_SANITY_TEST.TC14_Sanity_Test_For_NOKIA_PnA_Instant_Link" />
 			<class name="testScripts.BASIC_SANITY_TEST.TC17_Sanity_Test_For_NOKIA_Service_Catalogue" />
 			<class name="testScripts.BASIC_SANITY_TEST.TC22_Sanity_Test_For_NOKIA_PnA_Workflow_Client" />
-			<class name="testScripts.BASIC_SANITY_TEST.TC23_Sanity_Test_For_IDAM" />	
+			<class name="testScripts.BASIC_SANITY_TEST.TC23_Sanity_Test_For_IDAM" />	 -->
 		</classes>
 	</test>
 <!-- 	<test name="Test-Firefox" preserve-order="true">

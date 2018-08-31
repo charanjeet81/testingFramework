@@ -90,8 +90,8 @@ public class ZapiBase
 //		Cycle_Name = rd.getValue("DATA", currentTest, "JIRA_CycleName");
 //		Issue_Key = rd.getValue("DATA", currentTest, "JIRA_IssueKey");
 		
-		Cycle_Name = "Smoke Cycle";//
-		Issue_Key = "NP-3";//
+		System.out.println(Cycle_Name); 
+		System.out.println(Issue_Key);
 
 		USERNAME = getAppProperties("JIRA_UserName");
 		PASSWORD = getAppProperties("JIRA_Password");

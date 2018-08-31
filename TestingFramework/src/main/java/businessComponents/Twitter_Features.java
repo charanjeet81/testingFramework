@@ -56,22 +56,23 @@ public class Twitter_Features extends ReusableLiberaries
 		String respond = serviceBase.getValueFromResponse("Response1.json", response, "status");
 		serviceBase.putRespond("Status", respond);
 		
-		respond = serviceBase.getValueFromResponse("Response2.json", response, "results[0].types");
+		respond = serviceBase.getValueFromResponse("Response1.json", response, "results[0].types");
 		
-		respond = serviceBase.getValueFromResponse("Response3.json", response, "results[0].vicinity");
+		respond = serviceBase.getValueFromResponse("Response1.json", response, "results[0].vicinity");
 		
 		serviceBase.getValuesFromResponse(response, "vicinity");
 		
 		//Response File parse
-        String files = serviceBase.getJsonFile(Reporting.currentTCReportPathForServices+"\\Response.json");
+        String files = serviceBase.getJsonFile(Reporting.currentTCReportPathForServices+"\\Response1.json");
         DocumentContext documentContext = JsonPath.parse(files);
 
         //Basic Assertions for the API like,  Response Time, Status-Code and Content-Type.
         String responseTime = serviceBase.getURI("responseTime");
         serviceBase.basicAssertions(response, Integer.parseInt(responseTime));
 
+        serviceBase.HttpStatusCodeValidation(response);
         //Tester-Defined Assertions for the API response
-        serviceBase.validateResponse("Response1", response);  
+        //serviceBase.validateResponse("Response1", response);  
 	}
 	
 	public void tC_06_POST_Create_Place()
@@ -115,7 +116,8 @@ public class Twitter_Features extends ReusableLiberaries
 		String requestString = serviceBase.generateRequestBody(googleReqPath+"\\POST_CreatePlace.json", bodyParameter);
 		Response response = serviceBase.executeAPI("POST", completeURI, queryParameter, requestString);
 		
-		serviceBase.validateResponse("Response1", response);
+		//serviceBase.validateResponse("Response1", response);
+		serviceBase.HttpStatusCodeValidation(response);
 		
         String placeId = serviceBase.getValueFromResponse("Response1.json", response, "place_id");
         System.out.println(placeId);

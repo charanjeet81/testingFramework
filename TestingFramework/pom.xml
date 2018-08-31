@@ -160,6 +160,7 @@
 			<version>3.13.0</version>
 			<systemPath>${project.basedir}/Resources/selenium-server-standalone-3.13.0.jar</systemPath>
 		</dependency>
+		
 		<dependency>
 			<groupId>Jwt-generator</groupId>
 			<artifactId>Jwt-generator</artifactId>
@@ -255,8 +256,14 @@
 			</build>
 		</profile>
 	</profiles>
-	
+
 	<build>
+		<resources>
+			<resource>
+				<directory>Resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -269,9 +276,8 @@
 					<forkMode>never</forkMode>
 					<testFailureIgnore>true</testFailureIgnore>
 					<scope>integration-test</scope>
-					<!-- <systemPropertyVariables>
-						<environment>${env.ENV}</environment>
-					</systemPropertyVariables> -->
+					<!-- <systemPropertyVariables> <environment>${env.ENV}</environment> 
+						</systemPropertyVariables> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -282,9 +288,8 @@
 					<source>1.8</source>
 					<target>1.8</target>
 					<encoding>UTF-8</encoding>
-					<!-- <systemPropertyVariables>
-						<environment>${env.ENV}</environment>
-					</systemPropertyVariables> -->
+					<!-- <systemPropertyVariables> <environment>${env.ENV}</environment> 
+						</systemPropertyVariables> -->
 				</configuration>
 			</plugin>
 		</plugins>

@@ -307,10 +307,14 @@ public class TestCaseBase
 			{
 				status = JIRAStatus.FAIL.getValue();
 			}
-			ZapiBase zapi = new ZapiBase(currentTest);
 			String issueKey = dataTable.getData("IssueKey");
 			String versionName = dataTable.getData("VersionName");
 			String cycleName = dataTable.getData("CycleName");
+			
+			ZapiBase.Cycle_Name = cycleName;
+			ZapiBase.Issue_Key = issueKey;
+			
+			ZapiBase zapi = new ZapiBase(currentTest);
 			//reporting.updateReport("ZapiUpdate", "Test Status update for, IssueKey: "+issueKey+", VersionName: "+versionName+" and CycleName: "+cycleName, Status.DONE);
 			Map<String, Map<String, String>> cycleList = zapi.getListOfCycles(versionName);
 			System.out.println("cycleList "+cycleList);
@@ -321,7 +325,7 @@ public class TestCaseBase
 			{
 				comment = currentTest + ", is Passed and updated using Automation.";
 			} 
-			else 	if (status.equals("2"))
+			else if (status.equals("2"))
 			{
 				comment = currentTest + ", is Failed and updated using Automation.";
 			}

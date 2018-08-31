@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -37,8 +37,8 @@
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" class="navigator-link" panel-name="suite-Default_suite">
-              <span class="suite-name border-passed">Default suite</span>
+            <a href="#" class="navigator-link" panel-name="suite-Smoke">
+              <span class="suite-name border-failed">Smoke</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -48,37 +48,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>D:\Users\charanjeet.singh\AppData\Local\Temp\1\testng-eclipse--1953310467\testng-customsuite.xml</span>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Smoke">
+                    <span>D:\Users\charanjeet.singh\git\testingFramework\TestingFramework\testNG_SMOKE.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="testlist-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="testlist-Smoke">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="group-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="group-Smoke">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="times-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="times-Smoke">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="reporter-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="reporter-Smoke">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="ignored-methods-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Smoke">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="chronological-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="chronological-Smoke">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -91,21 +91,45 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">4 methods, 1 failed,   3 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Smoke" class="hide-methods failed suite-Smoke"> (hide)</a> <!-- hide-methods failed suite-Smoke -->
+                      <a href="#" panel-name="suite-Smoke" class="show-methods failed suite-Smoke"> (show)</a> <!-- show-methods failed suite-Smoke -->
+                    </span>
+                    <div class="method-list-content failed suite-Smoke">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Smoke" title="testScripts.SMOKE.TC12_Sanity_Test_For_SIGMA_OM_Runtime" hash-for-method="Testing_TC12_Sanity_Test_For_SIGMA_OM_Runtime">Testing_TC12_Sanity_Test_For_SIGMA_OM_Runtime</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Smoke -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
                     <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Smoke" class="hide-methods passed suite-Smoke"> (hide)</a> <!-- hide-methods passed suite-Smoke -->
+                      <a href="#" panel-name="suite-Smoke" class="show-methods passed suite-Smoke"> (show)</a> <!-- show-methods passed suite-Smoke -->
                     </span>
-                    <div class="method-list-content passed suite-Default_suite">
+                    <div class="method-list-content passed suite-Smoke">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="testScripts.TWITTER.TC_03_Login_Twitter" hash-for-method="runTC_03_Login_Twitter">runTC_03_Login_Twitter</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Smoke" title="testScripts.SMOKE.TC11_Sanity_Test_For_SIGMA_OM_Designer" hash-for-method="Testing_TC11_Sanity_Test_For_SIGMA_OM_Designer">Testing_TC11_Sanity_Test_For_SIGMA_OM_Designer</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Default_suite -->
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Smoke" title="testScripts.SMOKE.TC13_Sanity_Test_For_SIGMA_OM_Admin" hash-for-method="Testing_TC13_Sanity_Test_For_SIGMA_OM_Admin">Testing_TC13_Sanity_Test_For_SIGMA_OM_Admin</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Smoke" title="testScripts.SMOKE.TC_05_GET_Google_Search_Place" hash-for-method="runTC_05_GET_Google_Search_Place">runTC_05_GET_Google_Search_Place</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Smoke -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -116,137 +140,295 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-passed">
+        <div panel-name="suite-Smoke" class="panel Smoke">
+          <div class="suite-Smoke-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">testScripts.TWITTER.TC_03_Login_Twitter</span>
+              <img src="failed.png"/>
+              <span class="class-name">testScripts.SMOKE.TC12_Sanity_Test_For_SIGMA_OM_Runtime</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="runTC_03_Login_Twitter">
-                  </a> <!-- runTC_03_Login_Twitter -->
-                  <span class="method-name">runTC_03_Login_Twitter</span>
+                  <a name="Testing_TC12_Sanity_Test_For_SIGMA_OM_Runtime">
+                  </a> <!-- Testing_TC12_Sanity_Test_For_SIGMA_OM_Runtime -->
+                  <span class="method-name">Testing_TC12_Sanity_Test_For_SIGMA_OM_Runtime</span>
+                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
+	expected [true] but found [false]
+	at testScripts.SMOKE.TC12_Sanity_Test_For_SIGMA_OM_Runtime.Testing_TC12_Sanity_Test_For_SIGMA_OM_Runtime(TC12_Sanity_Test_For_SIGMA_OM_Runtime.java:20)
+... Removed 26 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-passed -->
-        </div> <!-- panel Default_suite -->
-        <div panel-name="test-xml-Default_suite" class="panel">
+          </div> <!-- suite-Smoke-class-failed -->
+          <div class="suite-Smoke-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">testScripts.SMOKE.TC11_Sanity_Test_For_SIGMA_OM_Designer</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="Testing_TC11_Sanity_Test_For_SIGMA_OM_Designer">
+                  </a> <!-- Testing_TC11_Sanity_Test_For_SIGMA_OM_Designer -->
+                  <span class="method-name">Testing_TC11_Sanity_Test_For_SIGMA_OM_Designer</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke-class-passed -->
+          <div class="suite-Smoke-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">testScripts.SMOKE.TC_05_GET_Google_Search_Place</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="runTC_05_GET_Google_Search_Place">
+                  </a> <!-- runTC_05_GET_Google_Search_Place -->
+                  <span class="method-name">runTC_05_GET_Google_Search_Place</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke-class-passed -->
+          <div class="suite-Smoke-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">testScripts.SMOKE.TC13_Sanity_Test_For_SIGMA_OM_Admin</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="Testing_TC13_Sanity_Test_For_SIGMA_OM_Admin">
+                  </a> <!-- Testing_TC13_Sanity_Test_For_SIGMA_OM_Admin -->
+                  <span class="method-name">Testing_TC13_Sanity_Test_For_SIGMA_OM_Admin</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke-class-passed -->
+        </div> <!-- panel Smoke -->
+        <div panel-name="test-xml-Smoke" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">D:\Users\charanjeet.singh\AppData\Local\Temp\1\testng-eclipse--1953310467\testng-customsuite.xml</span>
+            <span class="header-content">D:\Users\charanjeet.singh\git\testingFramework\TestingFramework\testNG_SMOKE.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Default suite&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
+&lt;suite configfailurepolicy=&quot;continue&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Smoke&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;supportLiberaries.ExtentReporterNG&quot;/&gt;
+  &lt;/listeners&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Test-Chrome&quot;&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;Chrome&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;testScripts.TWITTER.TC_03_Login_Twitter&quot;/&gt;
+      &lt;class name=&quot;testScripts.SMOKE.TC11_Sanity_Test_For_SIGMA_OM_Designer&quot;/&gt;
+      &lt;class name=&quot;testScripts.SMOKE.TC_05_GET_Google_Search_Place&quot;/&gt;
+      &lt;class name=&quot;testScripts.SMOKE.TC12_Sanity_Test_For_SIGMA_OM_Runtime&quot;/&gt;
+      &lt;class name=&quot;testScripts.SMOKE.TC13_Sanity_Test_For_SIGMA_OM_Admin&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Default test --&gt;
-&lt;/suite&gt; &lt;!-- Default suite --&gt;
+  &lt;/test&gt; &lt;!-- Test-Chrome --&gt;
+&lt;/suite&gt; &lt;!-- Smoke --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-Default_suite" class="panel">
+        <div panel-name="testlist-Smoke" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for Default suite</span>
+            <span class="header-content">Tests for Smoke</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Default test (1 class)</span>
+                <span class="test-name">Test-Chrome (4 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-Default_suite" class="panel">
+        <div panel-name="group-Smoke" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for Default suite</span>
+            <span class="header-content">Groups for Smoke</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-Default_suite" class="panel">
+        <div panel-name="times-Smoke" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for Default suite</span>
+            <span class="header-content">Times for Smoke</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_Default_suite');
-function tableData_Default_suite() {
+suiteTableInitFunctions.push('tableData_Smoke');
+function tableData_Smoke() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(4);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'runTC_03_Login_Twitter')
-data.setCell(0, 2, 'testScripts.TWITTER.TC_03_Login_Twitter')
-data.setCell(0, 3, 197811);
-window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
+data.setCell(0, 1, 'Testing_TC11_Sanity_Test_For_SIGMA_OM_Designer')
+data.setCell(0, 2, 'testScripts.SMOKE.TC11_Sanity_Test_For_SIGMA_OM_Designer')
+data.setCell(0, 3, 11640);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'Testing_TC12_Sanity_Test_For_SIGMA_OM_Runtime')
+data.setCell(1, 2, 'testScripts.SMOKE.TC12_Sanity_Test_For_SIGMA_OM_Runtime')
+data.setCell(1, 3, 10572);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'Testing_TC13_Sanity_Test_For_SIGMA_OM_Admin')
+data.setCell(2, 2, 'testScripts.SMOKE.TC13_Sanity_Test_For_SIGMA_OM_Admin')
+data.setCell(2, 3, 8641);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'runTC_05_GET_Google_Search_Place')
+data.setCell(3, 2, 'testScripts.SMOKE.TC_05_GET_Google_Search_Place')
+data.setCell(3, 3, 1637);
+window.suiteTableData['Smoke']= { tableData: data, tableDiv: 'times-div-Smoke'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 minutes</span>
-              <div id="times-div-Default_suite">
-              </div> <!-- times-div-Default_suite -->
+              <span class="suite-total-time">Total running time: 32 seconds</span>
+              <div id="times-div-Smoke">
+              </div> <!-- times-div-Smoke -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-Default_suite" class="panel">
+        <div panel-name="reporter-Smoke" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for Default suite</span>
+            <span class="header-content">Reporter output for Smoke</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-Default_suite" class="panel">
+        <div panel-name="ignored-methods-Smoke" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">12 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">testScripts.SMOKE.TC12_Sanity_Test_For_SIGMA_OM_Runtime</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">windUp</span>
+                <br/>
+                <span class="ignored-method-name">wrapUp</span>
+                <br/>
+                <span class="ignored-method-name">reportInitializations</span>
+                <br/>
+                <span class="ignored-method-name">initializations</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">testScripts.SMOKE.TC_05_GET_Google_Search_Place</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">windUp</span>
+                <br/>
+                <span class="ignored-method-name">wrapUp</span>
+                <br/>
+                <span class="ignored-method-name">reportInitializations</span>
+                <br/>
+                <span class="ignored-method-name">initializations</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">testScripts.SMOKE.TC13_Sanity_Test_For_SIGMA_OM_Admin</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">windUp</span>
+                <br/>
+                <span class="ignored-method-name">wrapUp</span>
+                <br/>
+                <span class="ignored-method-name">reportInitializations</span>
+                <br/>
+                <span class="ignored-method-name">initializations</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="chronological-Default_suite" class="panel">
+        <div panel-name="chronological-Smoke" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">testScripts.TWITTER.TC_03_Login_Twitter</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">testScripts.SMOKE.TC11_Sanity_Test_For_SIGMA_OM_Designer</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">reportInitializations</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
-                <span class="method-name">initializations(org.testng.TestRunner@47ec7422)</span>
-                <span class="method-start">17 ms</span>
+                <span class="method-name">initializations(org.testng.TestRunner@11582db6)</span>
+                <span class="method-start">15 ms</span>
               </div> <!-- configuration-test before -->
               <div class="configuration-method before">
-                <span class="method-name">setScriptHelper(null, org.testng.TestRunner@47ec7422)</span>
-                <span class="method-start">40 ms</span>
+                <span class="method-name">setScriptHelper(Chrome, org.testng.TestRunner@11582db6)</span>
+                <span class="method-start">31 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">runTC_03_Login_Twitter</span>
-                <span class="method-start">5931 ms</span>
+                <span class="method-name">Testing_TC11_Sanity_Test_For_SIGMA_OM_Designer</span>
+                <span class="method-start">5413 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">testMethodTearDown([TestResult name=runTC_03_Login_Twitter status=SUCCESS method=TC_03_Login_Twitter.runTC_03_Login_Twi...)</span>
-                <span class="method-start">203749 ms</span>
+                <span class="method-name">testMethodTearDown([TestResult name=Testing_TC11_Sanity_Test_For_SIGMA_OM_Designer status=SUCCESS method=TC11_Sanity_Te...)</span>
+                <span class="method-start">17055 ms</span>
               </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">testScripts.SMOKE.TC_05_GET_Google_Search_Place</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setScriptHelper(Chrome, org.testng.TestRunner@11582db6)</span>
+                <span class="method-start">24671 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">runTC_05_GET_Google_Search_Place</span>
+                <span class="method-start">28718 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">testMethodTearDown([TestResult name=runTC_05_GET_Google_Search_Place status=SUCCESS method=TC_05_GET_Google_Search_Plac...)</span>
+                <span class="method-start">30355 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">testScripts.SMOKE.TC12_Sanity_Test_For_SIGMA_OM_Runtime</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setScriptHelper(Chrome, org.testng.TestRunner@11582db6)</span>
+                <span class="method-start">37102 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">Testing_TC12_Sanity_Test_For_SIGMA_OM_Runtime</span>
+                <span class="method-start">41284 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">testMethodTearDown([TestResult name=Testing_TC12_Sanity_Test_For_SIGMA_OM_Runtime status=FAILURE method=TC12_Sanity_Tes...)</span>
+                <span class="method-start">51872 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">testScripts.SMOKE.TC13_Sanity_Test_For_SIGMA_OM_Admin</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setScriptHelper(Chrome, org.testng.TestRunner@11582db6)</span>
+                <span class="method-start">65954 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Testing_TC13_Sanity_Test_For_SIGMA_OM_Admin</span>
+                <span class="method-start">69933 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">testMethodTearDown([TestResult name=Testing_TC13_Sanity_Test_For_SIGMA_OM_Admin status=SUCCESS method=TC13_Sanity_Test_...)</span>
+                <span class="method-start">78574 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">testScripts.SMOKE.TC11_Sanity_Test_For_SIGMA_OM_Designer</div> <!-- chronological-class-name -->
               <div class="configuration-test after">
                 <span class="method-name">wrapUp</span>
-                <span class="method-start">205007 ms</span>
+                <span class="method-start">85404 ms</span>
               </div> <!-- configuration-test after -->
               <div class="configuration-suite after">
                 <span class="method-name">windUp</span>
-                <span class="method-start">205033 ms</span>
+                <span class="method-start">85420 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

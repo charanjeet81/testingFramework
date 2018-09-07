@@ -150,7 +150,7 @@
 			<artifactId>Zapi</artifactId>
 			<scope>system</scope>
 			<version>1.0</version>
-			<systemPath>${project.basedir}/Resources/Zapi.jar</systemPath>
+			<systemPath>${project.basedir}/Resources/Jars/Zapi.jar</systemPath>
 		</dependency>
 
 		<dependency>
@@ -158,7 +158,7 @@
 			<artifactId>selenium-server-standalone-3.13.0</artifactId>
 			<scope>system</scope>
 			<version>3.13.0</version>
-			<systemPath>${project.basedir}/Resources/selenium-server-standalone-3.13.0.jar</systemPath>
+			<systemPath>${project.basedir}/Resources/Jars/selenium-server-standalone-3.13.0.jar</systemPath>
 		</dependency>
 		
 		<dependency>
@@ -166,7 +166,7 @@
 			<artifactId>Jwt-generator</artifactId>
 			<scope>system</scope>
 			<version>1.0</version>
-			<systemPath>${project.basedir}/Resources/jwt-generator.jar</systemPath>
+			<systemPath>${project.basedir}/Resources/Jars/jwt-generator.jar</systemPath>
 		</dependency>
 	</dependencies>
 

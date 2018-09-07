@@ -12,9 +12,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,6 +29,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -61,6 +65,7 @@ public class TestCaseBase
 	ExtentReporterNG extentReport;
 	static int invocationCount = 1;
 	protected boolean allIterations = false;
+	URL url;
 	
 	@BeforeSuite
 	public void reportInitializations() 
@@ -115,7 +120,7 @@ public class TestCaseBase
 		
 		// For TestNG parallel execution.
 		propBrowser = properties.getProperty("Browser");
-		if(strBrowser==null)
+		if(strBrowser==null) // strBrowser from testNG file
 		{
 			browser = dataTable.getData("Browser");
 			if(!browser.isEmpty())
@@ -130,7 +135,7 @@ public class TestCaseBase
 		}
 		
 		//Setting-up Execution Mode.
-		switch (properties.getProperty("ExecutionMode")) 
+		switch (properties.getProperty("Execution_Mode")) 
 		{
 			case "Local": 
 				driver = getDriver(browser);
@@ -139,7 +144,10 @@ public class TestCaseBase
 				break;
 				
 			case "Grid":
-				
+				String hubURL = properties.getProperty("HUB_URL");
+				driver = getDriver(browser, hubURL);
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 				break;
 				
 			case "Docker":
@@ -203,6 +211,14 @@ public class TestCaseBase
 		}
 		
 		// Quitting Browser.
+		if (browser.contains("InternetExplorer")) 
+		{
+			try {
+				Runtime.getRuntime().exec("taskkill /F /IM iexplore.exe");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		driver.quit();
 	}
 	
@@ -211,7 +227,6 @@ public class TestCaseBase
 	{ 
 		
 	}
-	
 	
 	@AfterSuite
 	public void windUp()
@@ -228,6 +243,7 @@ public class TestCaseBase
 		this.allIterations = allIterations;
 	}
 	
+	// For Local Execution
 	public WebDriver getDriver(String browser)
 	{
 		if(browser==null || browser.isEmpty())
@@ -289,6 +305,79 @@ public class TestCaseBase
 			//System.setProperty("webdriver.chrome.driver", "D:\\workD\\TestingFramework\\Resources\\Browsers\\chromedriver.exe");
 			//driver = new InternetExplorerDriver();
 		}
+		return driver;
+	}
+	
+	// For Grid Execution.
+	public WebDriver getDriver(String browser, String hubURL)
+	{
+	   DesiredCapabilities desireCapabilities;
+		
+	   if(browser==null || browser.isEmpty())
+		{
+			this.browser = properties.getProperty("Browser");
+		}
+		
+		if(this.browser.equalsIgnoreCase("chrome"))
+		{
+			String[] switches = { "--ignore-certificate-errors","disable-popup-blocking",};
+			desireCapabilities = DesiredCapabilities.chrome();
+			desireCapabilities.setBrowserName("chrome");
+			desireCapabilities.setPlatform(Platform.WINDOWS);
+			ChromeOptions options = new ChromeOptions(); 
+			options.addArguments("--start-maximized"); 
+			options.addArguments("no-sandbox");
+			options.addArguments("test-type");
+			options.addArguments("disable-popup-blocking");
+			options.addArguments("chrome.switches","--disable-extensions");
+			options.addArguments("disable-infobars");
+			desireCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("credentials_enable_service", false);
+			prefs.put("profile.password_manager_enabled", false);
+			options.setExperimentalOption("prefs", prefs);
+			desireCapabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+			desireCapabilities.setCapability("chrome.switches", Arrays.asList(switches));
+			desireCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			options.merge(desireCapabilities);
+		}
+		else if(this.browser.equalsIgnoreCase("InternetExplorer"))
+		{
+			desireCapabilities =  DesiredCapabilities.internetExplorer();
+			desireCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); 
+			desireCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+			desireCapabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true); 
+			desireCapabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+			desireCapabilities.setJavascriptEnabled(true); 
+			desireCapabilities.setCapability("requireWindowFocus", true);
+			desireCapabilities.setCapability("ignoreProtectedModeSettings", true);
+			desireCapabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+			desireCapabilities.setCapability("nativeEvents", false);
+			desireCapabilities.setCapability("unexpectedAlertBehaviour", "accept");
+			desireCapabilities.setCapability("disable-popup-blocking", true);
+			desireCapabilities.setCapability("enablePersistentHover", true);
+		}
+		else if(this.browser.equalsIgnoreCase("firefox"))
+		{
+			desireCapabilities =  DesiredCapabilities.firefox();
+//			desireCapabilities.setCapability("marionette", false);
+//			desireCapabilities.setBrowserName("firefox");
+//			desireCapabilities.setPlatform(Platform.WINDOWS);
+//			//desireCapabilities.setVersion("ANY");
+//			//desireCapabilities.acceptInsecureCerts();
+//			FirefoxOptions opt = new FirefoxOptions();
+//			opt.merge(desireCapabilities);
+		}
+		else
+		{
+			desireCapabilities = DesiredCapabilities.firefox();
+		}
+		try {
+			url = new URL(hubURL);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		driver = new RemoteWebDriver(url, desireCapabilities);
 		return driver;
 	}
 	

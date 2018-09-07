@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Sanity" configfailurepolicy="continue">
+<suite name="Sanity" parallel="tests" thread-count="2" configfailurepolicy="continue">
 	<listeners>
 		<listener class-name="supportLiberaries.ExtentReporterNG" />
 	</listeners>
@@ -8,27 +8,30 @@
 	<test name="Test-Chrome" preserve-order="true">
 	<parameter name="browser" value="Chrome"></parameter>
 		<classes>
-			<!-- <class name="testScripts.TWITTER.TC_03_Login_Twitter" /> -->
 			<class name="testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone" />			
+			<!-- <class name="testScripts.TWITTER.TC_03_Login_Twitter" />
 			<class name="testScripts.SANITY.TC14_Sanity_Test_For_NOKIA_PnA_Instant_Link" />
 			<class name="testScripts.SANITY.TC17_Sanity_Test_For_NOKIA_Service_Catalogue" />
-			<!-- <class name="testScripts.SANITY.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin" />
+			<class name="testScripts.SANITY.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin" />
 			<class name="testScripts.SANITY.TC04_Sanity_Test_For_SIGMA_Catalogue" />
 			<class name="testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login" />
 			<class name="testScripts.SANITY.TC11_Sanity_Test_For_SIGMA_OM_Designer" />
 			<class name="testScripts.SANITY.TC12_Sanity_Test_For_SIGMA_OM_Runtime" />
 			<class name="testScripts.SANITY.TC13_Sanity_Test_For_SIGMA_OM_Admin" />
 			<class name="testScripts.SANITY.TC22_Sanity_Test_For_NOKIA_PnA_Workflow_Client" />
-			<class name="testScripts.SANITY.TC23_Sanity_Test_For_IDAM" /> -->	
+			<class name="testScripts.SANITY.TC23_Sanity_Test_For_IDAM" />	 -->
 		</classes>
 	</test>
-<!-- 	<test name="Test-Firefox" preserve-order="true">
-	<parameter name="browser" value="Firefox"></parameter>
+	<test name="Test-IE" preserve-order="true">
+		<parameter name="browser" value="InternetExplorer"></parameter>
 		<classes>
 			<class name="testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone" />
-			<class name="testScripts.SANITY.TC02_Sanity_Test_For_SIGMA_CPQ_Salesforce_Plugin" />
-			<class name="testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login" />
-			<class name="testScripts.SANITY.TC04_Sanity_Test_For_SIGMA_Catalogue" />
+		</classes>
+	</test>
+	<!-- <test name="Test-Firefox" preserve-order="true">
+		<parameter name="browser" value="Firefox"></parameter>
+		<classes>
+			<class name="testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone" />
 		</classes>
 	</test> -->
 </suite>

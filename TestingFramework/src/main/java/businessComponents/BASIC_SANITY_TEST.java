@@ -14,9 +14,9 @@ public class BASIC_SANITY_TEST extends ReusableLiberaries
 	public void tC01_Sanity_Test_For_SIGMA_CPQ_Standalone()
 	{
 		SanityTest sanityTest = new SanityTest(scriptHelper);
-		sanityTest.invokeApplication();
-				 // .loginToSIGMA();
-//				  .customerSearch();
+		sanityTest.invokeApplication()
+				  .loginToSIGMA()
+				  .customerSearch();
 	}
 	public void tC02_Sanity_Test_For_SIGMA_CPQ_Salesforce_Plugin()
 	{

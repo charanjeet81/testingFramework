@@ -3,9 +3,9 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone">
+      <class name="testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login">
         <methods>
-          <include name="Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone"/>
+          <include name="Testing_TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login"/>
           <include name="windUp"/>
           <include name="setScriptHelper"/>
           <include name="testMethodTearDown"/>
@@ -13,7 +13,7 @@
           <include name="reportInitializations"/>
           <include name="initializations"/>
         </methods>
-      </class> <!-- testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone -->
+      </class> <!-- testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

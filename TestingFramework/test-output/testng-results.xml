@@ -1,117 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Sanity" duration-ms="6613" started-at="2018-09-07T12:59:51Z" finished-at="2018-09-07T12:59:58Z">
+  <suite name="Default suite" duration-ms="19433" started-at="2018-09-11T10:14:46Z" finished-at="2018-09-11T10:15:06Z">
     <groups>
     </groups>
-    <test name="Test-IE" duration-ms="3710" started-at="2018-09-07T12:59:51Z" finished-at="2018-09-07T12:59:55Z">
-      <class name="testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone">
-        <test-method status="PASS" signature="reportInitializations()[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@47db50c5]" name="reportInitializations" is-config="true" duration-ms="9" started-at="2018-09-07T12:59:51Z" finished-at="2018-09-07T12:59:51Z">
+    <test name="Default test" duration-ms="19433" started-at="2018-09-11T10:14:46Z" finished-at="2018-09-11T10:15:06Z">
+      <class name="testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login">
+        <test-method status="PASS" signature="reportInitializations()[pri:0, instance:testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login@4e718207]" name="reportInitializations" is-config="true" duration-ms="12" started-at="2018-09-11T10:14:46Z" finished-at="2018-09-11T10:14:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reportInitializations -->
-        <test-method status="PASS" signature="initializations(org.testng.ITestContext)[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@47db50c5]" name="initializations" is-config="true" duration-ms="0" started-at="2018-09-07T12:59:51Z" finished-at="2018-09-07T12:59:51Z">
+        <test-method status="PASS" signature="initializations(org.testng.ITestContext)[pri:0, instance:testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login@4e718207]" name="initializations" is-config="true" duration-ms="3" started-at="2018-09-11T10:14:46Z" finished-at="2018-09-11T10:14:46Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@120d6fe6]]>
+                <![CDATA[org.testng.TestRunner@7674a051]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializations -->
-        <test-method status="PASS" signature="setScriptHelper(java.lang.String, org.testng.ITestContext)[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@47db50c5]" name="setScriptHelper" is-config="true" duration-ms="2792" started-at="2018-09-07T12:59:51Z" finished-at="2018-09-07T12:59:54Z">
+        <test-method status="PASS" signature="setScriptHelper(java.lang.String, org.testng.ITestContext)[pri:0, instance:testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login@4e718207]" name="setScriptHelper" is-config="true" duration-ms="4866" started-at="2018-09-11T10:14:46Z" finished-at="2018-09-11T10:14:51Z">
           <params>
             <param index="0">
-              <value>
-                <![CDATA[InternetExplorer]]>
-              </value>
+              <value is-null="true"/>
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@120d6fe6]]>
+                <![CDATA[org.testng.TestRunner@7674a051]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setScriptHelper -->
-        <test-method status="PASS" signature="Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone()[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@47db50c5]" name="Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone" duration-ms="784" started-at="2018-09-07T12:59:54Z" finished-at="2018-09-07T12:59:55Z">
+        <test-method status="PASS" signature="Testing_TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login()[pri:0, instance:testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login@4e718207]" name="Testing_TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login" duration-ms="13452" started-at="2018-09-11T10:14:51Z" finished-at="2018-09-11T10:15:05Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone -->
-        <test-method status="PASS" signature="testMethodTearDown(org.testng.ITestResult)[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@47db50c5]" name="testMethodTearDown" is-config="true" duration-ms="128" started-at="2018-09-07T12:59:55Z" finished-at="2018-09-07T12:59:55Z">
+        </test-method> <!-- Testing_TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login -->
+        <test-method status="PASS" signature="testMethodTearDown(org.testng.ITestResult)[pri:0, instance:testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login@4e718207]" name="testMethodTearDown" is-config="true" duration-ms="1091" started-at="2018-09-11T10:15:05Z" finished-at="2018-09-11T10:15:06Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone status=SUCCESS method=TC01_Sanity_Test_For_SIGMA_CPQ_Standalone.Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone()[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@47db50c5] output={null}]]]>
+                <![CDATA[[TestResult name=Testing_TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login status=SUCCESS method=TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login.Testing_TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login()[pri:0, instance:testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login@4e718207] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMethodTearDown -->
-        <test-method status="PASS" signature="wrapUp()[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@47db50c5]" name="wrapUp" is-config="true" duration-ms="0" started-at="2018-09-07T12:59:55Z" finished-at="2018-09-07T12:59:55Z">
+        <test-method status="PASS" signature="wrapUp()[pri:0, instance:testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login@4e718207]" name="wrapUp" is-config="true" duration-ms="0" started-at="2018-09-11T10:15:06Z" finished-at="2018-09-11T10:15:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wrapUp -->
-        <test-method status="PASS" signature="windUp()[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@47db50c5]" name="windUp" is-config="true" duration-ms="1" started-at="2018-09-07T12:59:58Z" finished-at="2018-09-07T12:59:58Z">
+        <test-method status="PASS" signature="windUp()[pri:0, instance:testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login@4e718207]" name="windUp" is-config="true" duration-ms="0" started-at="2018-09-11T10:15:06Z" finished-at="2018-09-11T10:15:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- windUp -->
-      </class> <!-- testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone -->
-    </test> <!-- Test-IE -->
-    <test name="Test-Chrome" duration-ms="6613" started-at="2018-09-07T12:59:51Z" finished-at="2018-09-07T12:59:58Z">
-      <class name="testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone">
-        <test-method status="PASS" signature="initializations(org.testng.ITestContext)[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@7403c468]" name="initializations" is-config="true" duration-ms="4" started-at="2018-09-07T12:59:51Z" finished-at="2018-09-07T12:59:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[org.testng.TestRunner@1176dcec]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- initializations -->
-        <test-method status="PASS" signature="setScriptHelper(java.lang.String, org.testng.ITestContext)[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@7403c468]" name="setScriptHelper" is-config="true" duration-ms="5716" started-at="2018-09-07T12:59:51Z" finished-at="2018-09-07T12:59:57Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@1176dcec]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setScriptHelper -->
-        <test-method status="PASS" signature="Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone()[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@7403c468]" name="Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone" duration-ms="672" started-at="2018-09-07T12:59:57Z" finished-at="2018-09-07T12:59:58Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone -->
-        <test-method status="PASS" signature="testMethodTearDown(org.testng.ITestResult)[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@7403c468]" name="testMethodTearDown" is-config="true" duration-ms="201" started-at="2018-09-07T12:59:58Z" finished-at="2018-09-07T12:59:58Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone status=SUCCESS method=TC01_Sanity_Test_For_SIGMA_CPQ_Standalone.Testing_TC01_Sanity_Test_For_SIGMA_CPQ_Standalone()[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@7403c468] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodTearDown -->
-        <test-method status="PASS" signature="wrapUp()[pri:0, instance:testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone@7403c468]" name="wrapUp" is-config="true" duration-ms="0" started-at="2018-09-07T12:59:58Z" finished-at="2018-09-07T12:59:58Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- wrapUp -->
-      </class> <!-- testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone -->
-    </test> <!-- Test-Chrome -->
-  </suite> <!-- Sanity -->
+      </class> <!-- testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

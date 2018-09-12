@@ -57,7 +57,18 @@ public class SanityTest extends SUPER_Page
 	WebElement welcome_NOKIA_OM;
 	@FindBy(xpath = "//span[contains(text(),'Workflow Client')]")
 	WebElement welcome_NOKIA_WC;
-	
+	@FindBy(css = "div#newItemDropdown>div div")
+	List<WebElement> newItemList;
+	@FindBy(xpath = "//div[contains(text(),'Last log-in time:')]")
+	WebElement lastLogIn;
+	@FindBy(id = "userName")
+	WebElement sOM_Username_TXT;
+	@FindBy(id = "password")
+	WebElement sOM_Password_TXT;
+	@FindBy(xpath = "//li[@role='presentation']/a")
+	List<WebElement> sOM_AdminOptions;
+	@FindBy(css = "ul.navbar-nav>li")
+	List<WebElement> sOM_Designer_Options_WE;
 		
 	//::::::::::::::::: M E T H O D S ::::::::::::::::://
 	
@@ -109,7 +120,7 @@ public class SanityTest extends SUPER_Page
 		sfdcSignIn_BTN.click();
 		Reporting("Clicked on 'Sign In' button.", Status.DONE);
 		
-		validate_PageTitle("Inmarsat - Sandbox - Sign In");
+		validate_PageTitle("Inmarsat - Sandbox - My Applications");
 		validate_URL("app/UserHome");
 		Reporting("Application screentshot after login.", Status.SCREENSHOT);
 		return this;
@@ -199,17 +210,13 @@ public class SanityTest extends SUPER_Page
 		Reporting("SFDC Password set as: "+password, Status.DONE);
 		sfdcSignIn_BTN.click();
 		Reporting("Clicked on 'SIGN IN' button.", Status.DONE);
-		validate_ElementDisplayed(searchSalesforce, "Salesforce search bar");
 		sync(5);
-		validate_URL("/lightning/page/home");
+		WaitTools.waitForLoad(driver);
+		validate_URL("/home/home.jsp");
+		validate_PageTitle("Salesforce - Enterprise Edition");
 		Reporting("Application screentshot after login.", Status.SCREENSHOT);
 		return this;
 	}
-	
-	@FindBy(css = "div#newItemDropdown>div div")
-	List<WebElement> newItemList;
-	@FindBy(xpath = "//div[contains(text(),'Last log-in time:')]")
-	WebElement lastLogIn;
 	
 	public SanityTest loginToSIGMACatalog()
 	{
@@ -242,28 +249,17 @@ public class SanityTest extends SUPER_Page
 		//Validating New Items.
 		clickTo("New Item", "span");
 		
-		for (WebElement newItem : newItemList) 
-		{
-			if(newItem.getText().contains(newItems[count]))
-				Reporting(newItem.getText()+", is coming as a part of 'New Item'.", Status.PASS);
-			else
-				Reporting(newItem.getText()+", is not coming as a part of 'New Item'.", Status.FAIL);
-			count++;
-		}
+//		for (WebElement newItem : newItemList) 
+//		{
+//			if(newItem.getText().contains(newItems[count]))
+//				Reporting(newItem.getText()+", is coming as a part of 'New Item'.", Status.PASS);
+//			else
+//				Reporting(newItem.getText()+", is not coming as a part of 'New Item'.", Status.FAIL);
+//			count++;
+//		}
 		Reporting("Application screentshot after login.", Status.SCREENSHOT);
 		return this;
 	}
-	
-	
-	
-	@FindBy(id = "userName")
-	WebElement sOM_Username_TXT;
-	@FindBy(id = "password")
-	WebElement sOM_Password_TXT;
-	@FindBy(xpath = "//li[@role='presentation']/a")
-	List<WebElement> sOM_AdminOptions;
-	@FindBy(css = "ul.navbar-nav>li")
-	List<WebElement> sOM_Designer_Options_WE;
 	
 	public SanityTest loginToSIGMA_OM(String application)
 	{

@@ -135,6 +135,19 @@ public class WaitTools
 		} 
 	}
 	
+	public static void waitForLoad(WebDriver driver) 
+	{
+		ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() 
+		{
+			public Boolean apply(WebDriver driver) 
+			{
+				return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+			}
+		};
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(pageLoadCondition);
+    }
+	
 	public static boolean waitForElementNotDisplayed (WebDriver driver, WebElement webElement) {
 		boolean isElementPresent = true;
 		try{

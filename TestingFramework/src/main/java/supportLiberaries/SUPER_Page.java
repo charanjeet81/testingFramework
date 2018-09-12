@@ -26,7 +26,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -128,6 +130,9 @@ public class SUPER_Page extends ReusableLiberaries
 	public void validate_PageTitle(String titleToValidate) 
 	{
 		driver.manage().timeouts().pageLoadTimeout(-1, TimeUnit.SECONDS);
+		WaitTools.waitForLoad(driver);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.titleContains(titleToValidate));
 		if (driver.getTitle().contains(titleToValidate.trim()))
 			Reporting(titleToValidate + ", title is coming as page title.", Status.DONE);
 		else
@@ -303,7 +308,8 @@ public class SUPER_Page extends ReusableLiberaries
 		Reporting(description + ", element is clicked using JSE.", Status.DONE);
 	}
 
-	public void clickTo(String link, String linkTag) {
+	public void clickTo(String link, String linkTag) 
+	{
 		WebElement linkWE = null;
 		try {
 			linkWE = driver.findElement(By.xpath("//" + linkTag + "[contains(text(),'" + link + "')]"));

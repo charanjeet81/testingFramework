@@ -33,6 +33,4 @@ public class Home_Page extends SUPER_Page
 			Reporting("Title is not coming as expected.", Status.FAIL);
 		return this;
 	}
-	
-	
 }

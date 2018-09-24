@@ -28,7 +28,7 @@ public class Reporting
 {
 	public boolean failTC = false;
 	int count = 1;
-	String tcStatus;
+	public String tcStatus;
 	String startTime;
 	String testStep = "";
 	String testSteps = "";

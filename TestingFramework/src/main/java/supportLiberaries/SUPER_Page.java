@@ -9,12 +9,15 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
+import java.text.SimpleDateFormat;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -24,21 +27,46 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
+import com.cucumber.listener.Reporter;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import bdd.TestRunner.TestRunner_SANITY;
+
 public class SUPER_Page extends ReusableLiberaries
 {
+	static int n = 0; 
 	public SUPER_Page(ScriptHelper scriptHelper)
 	{
 		super(scriptHelper);
 		PageFactory.initElements(driver, this);
+	}
+	
+	public String screenshot()
+	{
+		String imgPath = null;
+		sync(3);
+		n = n + 1;
+		DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_MM_SS");
+		Date date = new Date();
+		String timeStamp = dateFormat.format(date);
+		File scrFileSelenium = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		imgPath = TestRunner_SANITY.resultFolder + "/screenshots" + "/" + timeStamp + ".png";
+		try {
+			FileUtils.copyFile(scrFileSelenium, new File(imgPath));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return new File(imgPath).getAbsolutePath();
 	}
 	
 	public void Reporting(String description, Status status)
@@ -53,6 +81,56 @@ public class SUPER_Page extends ReusableLiberaries
 			System.out.println(callerMethod + "@" + stack[2].getLineNumber());
 		} else
 			reporting.updateReport(callerMethod, description, status);
+	}
+	
+	public void TakeScreenshot()
+	{
+		try {
+			Reporter.addScreenCaptureFromPath(screenshot());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void LogReport(String description, Status status)
+	{
+		try 
+		{
+			switch (status.getValue().toUpperCase())
+			{
+				case "DONE":
+					Reporter.addStepLog(description);
+					break;
+				
+				case "PASS":
+					Assert.assertTrue(true);
+					Reporter.addStepLog(description);
+					if(Boolean.parseBoolean(properties.getProperty("ScreenShotOnPass").trim()))
+					{
+						Reporter.addScreenCaptureFromPath(screenshot());
+					}
+					break;
+					
+				case "FAIL":
+					Assert.assertTrue(false, description);
+					if(Boolean.parseBoolean(properties.getProperty("ScreenShotOnFail").trim()))
+					{
+						Reporter.addScreenCaptureFromPath(screenshot());
+					}
+					break;
+					
+				case "SCREENSHOT":
+					Reporter.addScreenCaptureFromPath(screenshot());
+					break;
+		
+				default:
+					System.err.println("Wrong Status Selected.");
+					break;
+			}
+		} catch (Exception e) {
+			System.err.println("Exception occured while logging.");
+		}
 	}
 	
 	public boolean deviceExecution() 

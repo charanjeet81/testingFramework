@@ -22,7 +22,7 @@ public class DataTable {
 	String tcName;
 	int iteration;
 
-	DataTable(String environment, String path, int iteration) 
+	public DataTable(String environment, String path, int iteration) 
 	{
 		this.iteration = iteration;
 		this.sheetName = environment;
@@ -155,10 +155,13 @@ public class DataTable {
 				}
 			}
 		} catch (Exception e) {
+			System.err.println(e.toString());
 			System.err.println("Error while getting Data.");
 		}
 		if(data==null)
 		{
+			System.out.println("test");
+			System.out.println("test");
 			throw new NullPointerException(field + ", field is not present in the datasheet." + packageName + ".xls");
 		}
 		return data;

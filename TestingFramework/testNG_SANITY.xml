@@ -9,7 +9,7 @@
 	<parameter name="browser" value="Chrome"></parameter>
 		<classes>
 			<class name="testScripts.SANITY.TC01_Sanity_Test_For_SIGMA_CPQ_Standalone" />			
-			<class name="testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login" />
+		<!-- 	<class name="testScripts.SANITY.TC03_Sanity_Test_For_SIGMA_CPQ_Salesforce_Website_Login" />
 			<class name="testScripts.SANITY.TC04_Sanity_Test_For_SIGMA_Catalogue" />
 			<class name="testScripts.SANITY.TC09_Sanity_Test_For_SIGMA_OM_Sigma_Admin" />
 			<class name="testScripts.SANITY.TC11_Sanity_Test_For_SIGMA_OM_Designer" />
@@ -18,7 +18,7 @@
 			<class name="testScripts.SANITY.TC14_Sanity_Test_For_NOKIA_PnA_Instant_Link" />
 			<class name="testScripts.SANITY.TC17_Sanity_Test_For_NOKIA_Service_Catalogue" />
 			<class name="testScripts.SANITY.TC22_Sanity_Test_For_NOKIA_PnA_Workflow_Client" />
-			<class name="testScripts.SANITY.TC23_Sanity_Test_For_IDAM" />	
+			<class name="testScripts.SANITY.TC23_Sanity_Test_For_IDAM" />	 -->
 		</classes>
 	</test>
 	<!-- <test name="Test-IE" preserve-order="true">

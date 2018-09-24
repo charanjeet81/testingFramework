@@ -15,7 +15,7 @@ public class BASIC_SANITY_TEST extends ReusableLiberaries
 	{
 		SanityTest sanityTest = new SanityTest(scriptHelper);
 		sanityTest.invokeApplication()
-				  .loginToSIGMA()
+				 // .loginToSIGMA()
 				  .customerSearch();
 	}
 	public void tC02_Sanity_Test_For_SIGMA_CPQ_Salesforce_Plugin()
@@ -129,7 +129,5 @@ public class BASIC_SANITY_TEST extends ReusableLiberaries
 		sanityTest.invokeApplication()
 				  .loginToIDAM();
 	}
-
-	
 	
 }

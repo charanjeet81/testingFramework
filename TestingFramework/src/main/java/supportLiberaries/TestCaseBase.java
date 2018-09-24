@@ -45,7 +45,7 @@ import org.testng.asserts.SoftAssert;
 
 import com.zapi.base.ZapiBase;
 
-public class TestCaseBase  
+public class TestCaseBase
 {
 	protected String environment;
 	protected String env;

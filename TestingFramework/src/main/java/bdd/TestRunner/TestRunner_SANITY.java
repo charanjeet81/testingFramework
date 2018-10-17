@@ -28,7 +28,7 @@ import com.cucumber.listener.Reporter;
 
 	//@RunWith(Cucumber.class)
 	@CucumberOptions(
-			dryRun = true, 
+			dryRun = false, 
 			strict = true, 
 			monochrome = true,
 			features = "FeatureFiles\\SANITY", 
